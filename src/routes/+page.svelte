@@ -5,20 +5,16 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Tyler Fischer</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
 <section>
 	<h1>
 		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
+      testing 123
 		</span>
 
-		to your new<br />SvelteKit app
 	</h1>
 
 	<h2>
