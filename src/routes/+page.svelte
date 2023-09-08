@@ -1,55 +1,24 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import '../app.css';
+	import MeSection from './MeSection.svelte';
+	import ProjectSection, { colorBackground } from './ProjectSection.svelte';
+	import WorkHistorySection from './WorkHistorySection.svelte';
+	import OtherSection from './OtherSection.svelte';
+	import Container from './Container.svelte';
+	$: {
+		console.log('hello');
+	}
+	const a = '2';
 </script>
 
-<svelte:head>
-	<title>Tyler Fischer</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<slot />
+<div class="">
+	<Container content={MeSection} {colorBackground} />
+	<!-- <MeSection /> -->
 
-<section>
-	<h1>
-		<span class="welcome">
-      testing 123
-		</span>
+	<Container content={ProjectSection} {colorBackground} />
+	<!-- <WorkHistorySection /> -->
+	<!-- <OtherSection /> -->
+</div>
 
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
+<style></style>
