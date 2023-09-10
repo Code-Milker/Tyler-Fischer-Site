@@ -6,8 +6,10 @@ export default {
       colors: {
         primary: '#040D12',
         secondary: '#183D3D',
+        secondaryComplement: '#3d1818',
         teritary: '#5c8374',
         lastColor: '#93B1A6'
+
       }
     }
   },

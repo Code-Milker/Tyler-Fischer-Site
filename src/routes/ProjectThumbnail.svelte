@@ -4,16 +4,26 @@
 	import '../app.css';
 </script>
 
-<div
-	class="bg-primary rounded-md flex justify-center flex-col min-w-[100%] max-h-[300px] hover:cursor-pointer p-4 pb-0 pt-8 caret-transparent hover:bg-secondary"
->
-	<img
-		src={project.image}
-		alt="unable to load project"
-		class="rounded-md max-h-[225px] min-h-[225px] min-w-[225px] max-w-[200px] mx-auto"
-	/>
+<div>
+	<div
+		class="mx-auto bg-primary rounded-md flex justify-center flex-col max-w-[500px] max-h-[600px] hover:cursor-pointer pb-0 pt-8 caret-transparent hover:bg-teritary"
+	>
+		<img
+			src={project.image}
+			alt="unable to load project"
+			class="  min-w-[70%] max-w-[70%] min-h-[225px] max-h-[225px] mx-auto"
+		/>
 
-	<div class="text-center py-2">{project.title}</div>
+		<div class="min-w-[70%] max-w-[70%] mx-auto pb-8">
+			<div class="text-left py-2">{project.title}</div>
+			<div class="text-left py-2 line-clamp-4 min-h-[150px]">
+				{project.description}
+			</div>
+			<a href={project.url} class="text-left py-2 underline hover:text-secondaryComplement"
+				>Read More</a
+			>
+		</div>
+	</div>
 </div>
 
 <style></style>

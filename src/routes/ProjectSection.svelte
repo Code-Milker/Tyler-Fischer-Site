@@ -7,13 +7,12 @@
 	import '../app.css';
 	import ProjectThumbnail from './ProjectThumbnail.svelte';
 	import type { ProjectThumbnailType } from '$lib/types.ts';
-	export const colorBackground = 'green';
 
 	const projects: ProjectThumbnailType[] = [
 		{
 			title: 'BIP 39',
 			description: 'some description',
-			url: 'https://opensea.io/collection/surf-punks-nft',
+			url: 'https://github.com/Milk-Maven/bip-39',
 			image: Bip39
 		},
 		{
@@ -39,19 +38,18 @@
 		},
 		{
 			title: 'MooMoo.js',
-			description: 'some description',
+			description:
+				'MooMoo.js offers an alternative way to build web apps with a strong focus on separation of concerns, keeping things simple, and staying vanilla ',
 			url: 'https://github.com/Milk-Maven/moomoo.js',
 			image: MooMoo
 		}
 	];
-
-	const a = '2';
 </script>
 
-<div class="bg-lastColor text-white">
+<div class="bg-secondary text-white w-full">
 	<h1 class="text-2xl text-center">Projects</h1>
-	<div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10 pt-2 pb-8 px-6">
-		{#each projects as project, index}
+	<div class="grid md:grid-cols-3 sm:grid-cols-1 gap-5 pt-2 pb-8 px-6 mb-0">
+		{#each projects as project}
 			<ProjectThumbnail {project} />
 		{/each}
 	</div>
