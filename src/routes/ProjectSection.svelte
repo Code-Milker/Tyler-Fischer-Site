@@ -42,13 +42,20 @@
 				'MooMoo.js offers an alternative way to build web apps with a strong focus on separation of concerns, keeping things simple, and staying vanilla ',
 			url: 'https://github.com/Milk-Maven/moomoo.js',
 			image: MooMoo
+		},
+		{
+			title: 'MooMoo.js',
+			description:
+				'MooMoo.js offers an alternative way to build web apps with a strong focus on separation of concerns, keeping things simple, and staying vanilla ',
+			url: 'https://github.com/Milk-Maven/moomoo.js',
+			image: MooMoo
 		}
 	];
 </script>
 
 <div class="bg-secondary text-white w-full">
-	<h1 class="text-2xl text-center">Projects</h1>
-	<div class="grid md:grid-cols-3 sm:grid-cols-1 gap-5 pt-2 pb-8 px-6 mb-0">
+	<h1 class="text-2xl text-center pt-4">Projects</h1>
+	<div class="grid md:grid-cols-3 sm:grid-cols-1 gap-5 pt-4 px-6 mb-0">
 		{#each projects as project}
 			<ProjectThumbnail {project} />
 		{/each}

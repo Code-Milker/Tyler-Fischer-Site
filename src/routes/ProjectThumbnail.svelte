@@ -11,7 +11,7 @@
 		<img
 			src={project.image}
 			alt="unable to load project"
-			class="  min-w-[70%] max-w-[70%] min-h-[225px] max-h-[225px] mx-auto"
+			class="min-w-[70%] max-w-[70%] min-h-[225px] max-h-[225px] mx-auto"
 		/>
 
 		<div class="min-w-[70%] max-w-[70%] mx-auto pb-8">

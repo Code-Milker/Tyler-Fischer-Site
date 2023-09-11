@@ -11,7 +11,6 @@
 
 <div class="grid justify-items-center">
 	<Container content={MeSection} />
-
 	<Container content={ProjectSection} />
 	<Container content={WorkHistorySection} />
 </div>
