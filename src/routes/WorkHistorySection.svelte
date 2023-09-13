@@ -3,11 +3,28 @@
 	import ProjectThumbnail from './ProjectThumbnail.svelte';
 
 	import Lseg from '$lib/images/lseg.jpeg';
-	const jobs: { description: string }[] = [
+	import Connecture from '$lib/images/connecture.png';
+	import Deso from '$lib/images/DesoLogo.jpeg';
+	const jobs: { description: string; img: string; title: string }[] = [
 		{
+			title: 'Developer Advocate Engineer',
+			img: Deso,
+			description: `
+I created and managed the DeSo Protocol and DeSo Protocol Types library, boosting developer efficiency. Hosting multiple MLH livestream events, I fostered community engagement in DeSo app development. Collaborating with the research team, I simplified Ethereum Metamask access to DeSo. Multiple developer calls gathered valuable feedback.
+
+Enhancing the identity Iframe for seamless transactions, I connected any Metamask user to the deso blockchain. I built the DeSo Developer Hub, offering interactive resources. In partnership meetings, I contributed technical insights. I also crafted airdrop bots for user acquisition and showcased derived keys in a prototype messaging app for secure group chats on DeSo blockchain.`
+		},
+		{
+			title: 'Lead Engineer',
+			img: Lseg,
 			description: `I was a seasoned software developer at Refinitiv, recognized for my contributions to modernizing financial applications by developing and maintaining reusable UI components. My expertise included Typescript, HTML5, CSS/SASS, JavaScript (Angular, Graphql, Jasmine), .Net Core, Postman, and Git (GitLab).
 
 I also led critical process improvements, including design, software release, and team estimation. I championed agile methodologies to align with Product Owners and Business Analysts, ensuring the successful delivery of high-quality products that met evolving business needs.`
+		},
+		{
+			title: 'Software Engineer',
+			img: Connecture,
+			description: ` I gained extensive knowledge in building WCAG and HIPAA Compliant web applications using Typescript and Angular 2+. Designed a client parsing service that read in JSON configurations and dynamically generated custom sites for clients. Closely followed acceptance criteria from business analysts and graphic designers to ensure that the functionality and appearance of our app were met.`
 		}
 	];
 </script>
@@ -17,12 +34,12 @@ I also led critical process improvements, including design, software release, an
 	{#each jobs as job}
 		<div class="flex jusify-start bg-secondary rounded-lg p-6">
 			<img
-				src={Lseg}
+				src={job.img}
 				alt="lseg"
 				class="min-w-[300px] max-w-[300px] min-h-[300px] max-h-[300px] rounded-l-lg my-auto"
 			/>
 			<div class="bg-primary rounded-r-lg p-4 flex flex-col justify-around">
-				<div><span>Title: Lead Engineer</span></div>
+				<div><span>Title: {job.title}</span></div>
 				<div><span>Description: {job.description}</span></div>
 
 				<!-- <div class="flex justify-center"> -->
