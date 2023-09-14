@@ -19,7 +19,7 @@
 		<div class="mt-y">
 			<div class="flex justify-around bg-secondary rounded-full">
 				<a href="https://twitter.com/TygerrFish"
-					><img class="max-w-[50px] min-w-[50px]" src={twitter} alt="twitter" /></a
+					><img class=" max-w-[50px] min-w-[50px]" src={twitter} alt="twitter" /></a
 				>
 				<a href="https://github.com/Milk-Maven">
 					<img class="max-w-[50px] min-w-[50px]" src={github} alt="github" /></a

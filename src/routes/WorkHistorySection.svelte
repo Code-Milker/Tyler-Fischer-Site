@@ -29,16 +29,20 @@ I also led critical process improvements, including design, software release, an
 	];
 </script>
 
-<div class="bg-secondary text-white py-6">
-	<h1 class=" text-center text-2xl mt-1">Work</h1>
+<div class="bg-secondary text-white py-6 flex justify-center flex-col">
+	<h1 class="text-center text-2xl mt-1">Work</h1>
 	{#each jobs as job}
-		<div class="flex jusify-start bg-secondary rounded-lg p-6">
-			<img
-				src={job.img}
-				alt="lseg"
-				class="min-w-[300px] max-w-[300px] min-h-[300px] max-h-[300px] rounded-l-lg my-auto"
-			/>
-			<div class="bg-primary rounded-r-lg p-4 flex flex-col justify-around">
+		<div class="flex bg-secondary rounded-lg p-6 sm:flex-col md:flex-row mx-auto">
+			<div class="bg-primary sm:w-[500px] sm:justify-center sm:flex p-6">
+				<img
+					src={job.img}
+					alt="lseg"
+					class="min-w-[300px] max-w-[300px] min-h-[300px] max-h-[300px] md:rounded-l-lg my-auto"
+				/>
+			</div>
+			<div
+				class="bg-primary md;rounded-r-lg p-4 flex flex-col justify-around sm:max-w-[500px] md:max-w-full"
+			>
 				<div><span>Title: {job.title}</span></div>
 				<div><span>Description: {job.description}</span></div>
 
