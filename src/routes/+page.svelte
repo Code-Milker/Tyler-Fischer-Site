@@ -3,7 +3,7 @@
 	import MeSection from './MeSection.svelte';
 	import ProjectSection from './ProjectSection.svelte';
 	import WorkHistorySection from './WorkHistorySection.svelte';
-	import OtherSection from './OtherSection.svelte';
+	import ArticleSection from './ArticleSection.svelte';
 	import Container from './Container.svelte';
 </script>
 
@@ -11,6 +11,7 @@
 
 <div class="grid justify-items-center">
 	<Container content={MeSection} />
+	<Container content={ArticleSection} />
 	<Container content={ProjectSection} />
 	<Container content={WorkHistorySection} />
 </div>
