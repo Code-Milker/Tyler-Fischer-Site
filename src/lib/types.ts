@@ -1,5 +1,4 @@
-
-export interface ProjectThumbnailType {
+export interface ContentPreviewType {
   title: string;
   description: string;
   url: string;

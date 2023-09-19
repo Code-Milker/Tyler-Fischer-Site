@@ -1,8 +1,8 @@
 <script lang="ts">
-	import SvelteMarkdown from 'svelte-markdown';
+	// import SvelteMarkdown from 'svelte-markdown';
 	const source = '';
 </script>
 
 <div>
-	<SvelteMarkdown {source} />
+	<!-- <SvelteMarkdown {source} /> -->
 </div>

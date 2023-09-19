@@ -10,10 +10,15 @@
 <!-- <slot /> -->
 
 <div class="grid justify-items-center">
-	<Container content={MeSection} />
-	<Container content={ArticleSection} />
-	<Container content={ProjectSection} />
-	<Container content={WorkHistorySection} />
+	<Container title="" color="text-white" content={MeSection} bg="bg-primary" />
+	<Container title="Articles" color="text-white" bg="bg-secondary" content={ArticleSection} />
+	<Container title="Projects" color="text-white" bg="bg-secondary" content={ProjectSection} />
+	<Container
+		title="Work history"
+		color="text-white"
+		bg="bg-secondary"
+		content={WorkHistorySection}
+	/>
 </div>
 
 <!-- <WorkHistorySection /> -->

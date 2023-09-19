@@ -6,9 +6,9 @@
 	import MooMoo from '$lib/images/moomoo.jpeg';
 	import '../app.css';
 	import ProjectThumbnail from './ProjectThumbnail.svelte';
-	import type { ProjectThumbnailType } from '$lib/types.ts';
+	import type { ContentPreviewType } from '$lib/types.ts';
 
-	const projects: ProjectThumbnailType[] = [
+	const projects: ContentPreviewType[] = [
 		{
 			title: 'BIP 39',
 			description: 'some description',
@@ -53,13 +53,10 @@
 	];
 </script>
 
-<div class="bg-secondary text-white w-full">
-	<h1 class="text-2xl text-center pt-4">Projects</h1>
-	<div class="grid md:grid-cols-3 sm:grid-cols-1 gap-5 pt-4 px-6 mb-0">
-		{#each projects as project}
-			<ProjectThumbnail {project} />
-		{/each}
-	</div>
+<div class="grid md:grid-cols-3 sm:grid-cols-1 gap-5 pt-4 px-6 mb-0">
+	{#each projects as project}
+		<ProjectThumbnail {project} />
+	{/each}
 </div>
 
 <style></style>

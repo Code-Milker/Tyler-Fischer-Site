@@ -1,10 +1,9 @@
 <script lang="ts">
 	import '../app.css';
-	import ProjectThumbnail from './ProjectThumbnail.svelte';
-
 	import Lseg from '$lib/images/lseg.jpeg';
 	import Connecture from '$lib/images/connecture.png';
 	import Deso from '$lib/images/DesoLogo.jpeg';
+	import ContentPreview from './ContentPreview.svelte';
 	const jobs: { description: string; img: string; title: string }[] = [
 		{
 			title: 'Developer Advocate Engineer',
@@ -29,36 +28,14 @@ I also led critical process improvements, including design, software release, an
 	];
 </script>
 
-<div class="bg-secondary text-white py-6 flex justify-center flex-col">
-	<h1 class="text-center text-2xl mt-1">Work</h1>
-	{#each jobs as job}
-		<div class="flex bg-secondary rounded-lg p-6 sm:flex-row md:flex-row mx-auto">
-			<div class="bg-primary sm:w-[500px] sm:justify-center sm:flex p-6">
-				<img
-					src={job.img}
-					alt="lseg"
-					class="min-w-[225px] max-w-[225px] min-h-[225px] max-h-[225px] rounded-lg my-auto"
-				/>
-			</div>
-			<div
-				class="bg-primary rounded-r-lg p-4 flex flex-col justify-around sm:max-w-[500px] md:max-w-full"
-			>
-				<div><span>Title: {job.title}</span></div>
-				<div><span>Description: {job.description}</span></div>
-
-				<!-- <div class="flex justify-center"> -->
-				<!-- 	<span class=" rounded-b px-1 text-center bg-secondary">techonology</span> -->
-				<!-- </div> -->
-				<!-- <div class="bg-primary rounded-full h-[100px] flex flex-col justify-between"> -->
-				<!-- <div class="flex justify-start"> -->
-				<!-- 	<div class="flex justify-around w-full pl-4 my-auto w-full flex justify-start"> -->
-				<!-- 		<div>react.png</div> -->
-				<!-- 		<div>angularpng</div> -->
-				<!-- 		<div>etc</div> -->
-				<!-- 	</div> -->
-				<!-- </div> -->
-				<!-- </div> -->
-			</div>
-		</div>
-	{/each}
-</div>
+{#each jobs as job}
+	<div class="my-6">
+		<ContentPreview
+			bg="bg-primary"
+			img={job.img}
+			title={job.title}
+			link={'TODO'}
+			description={job.description}
+		/>
+	</div>
+{/each}
