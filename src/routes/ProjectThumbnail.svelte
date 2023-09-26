@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ProjectThumbnailType } from '$lib/types.ts';
-	export let project: ProjectThumbnailType;
+	import type { ContentPreviewType } from '$lib/types.ts';
+	export let project: ContentPreviewType;
 	import '../app.css';
 </script>
 

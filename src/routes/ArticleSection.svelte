@@ -1,7 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { ContentPreviewType } from '$lib/types.ts';
 	import Bip from '$lib/images/bip-39.png';
 	import ContentPreview from './ContentPreview.svelte';
+	import { get, post } from '$lib/service';
+	onMount(async () => {
+		get('', {});
+	});
 	const articles: ContentPreviewType[] = [
 		{
 			title: 'Spiral Dynamics and its pragmatic use cases',
