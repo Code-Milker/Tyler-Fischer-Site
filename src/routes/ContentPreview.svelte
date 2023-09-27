@@ -6,7 +6,7 @@
 	export let bg: string;
 </script>
 
-<div class="sm:flex {bg} rounded-lg flex-row p-10">
+<div class="sm:flex {bg} flex-row mx-6 rounded-lg">
 	<div class="md:p-6 flex justify-center">
 		<img
 			src={img}

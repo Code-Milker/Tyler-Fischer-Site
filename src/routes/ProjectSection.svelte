@@ -53,7 +53,7 @@
 	];
 </script>
 
-<div class="grid md:grid-cols-3 sm:grid-cols-1 gap-5 pt-4 px-6 mb-0">
+<div class="grid md:grid-cols-3 sm:grid-cols-1 md:gap-5 xs:gap-0 pt-4 px-6 mb-0">
 	{#each projects as project}
 		<ProjectThumbnail {project} />
 	{/each}

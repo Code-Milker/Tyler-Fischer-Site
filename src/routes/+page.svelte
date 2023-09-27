@@ -5,11 +5,14 @@
 	import WorkHistorySection from './WorkHistorySection.svelte';
 	import ArticleSection from './ArticleSection.svelte';
 	import Container from './Container.svelte';
+	$: innerWidth = 0;
+	$: styles = innerWidth >= 640 ? 'grid justify-items-center text-white' : 'text-white';
 </script>
 
-<div class="grid justify-items-center">
+<svelte:window bind:innerWidth />
+<div class={styles}>
 	<Container
-		title=""
+		title="asdf"
 		color="text-white"
 		content={MeSection}
 		bg="bg-secondary"

@@ -25,14 +25,26 @@
 	];
 </script>
 
-{#each articles as article}
-	<div class="mb-6">
-		<ContentPreview
-			bg="bg-primary"
-			img={article.image}
-			title={article.title}
-			link={'TODO'}
-			description={article.description}
-		/>
-	</div>
+{#each articles as article, i}
+	{#if i === 0}
+		<div class="xs:mb-0">
+			<ContentPreview
+				bg="bg-primary"
+				img={article.image}
+				title={article.title}
+				link={'TODO'}
+				description={article.description}
+			/>
+		</div>
+	{:else}
+		<div class="md:mt-6 xs:mb-0">
+			<ContentPreview
+				bg="bg-primary"
+				img={article.image}
+				title={article.title}
+				link={'TODO'}
+				description={article.description}
+			/>
+		</div>
+	{/if}
 {/each}

@@ -1,9 +1,9 @@
 <script lang="ts">
 </script>
 
-<div class="invisible md:visible">
+<div class="hidden md:block">
 	<slot name="desktop" />
 </div>
-<div class="visible md:invisible">
+<div class="block md:hidden">
 	<slot name="mobile" />
 </div>

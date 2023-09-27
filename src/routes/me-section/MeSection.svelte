@@ -18,11 +18,11 @@
 <!--desktop-->
 <DeviceContainer>
 	<div slot="desktop" class="bg-secondary flex justify-start flex-col invisible md:visible">
-		<div class="bg-primary rounded-lg p-10">
+		<div class="bg-primary p-6">
 			<div class="bg-primary rounded-lg p-6">
 				<img
 					src={me}
-					class="max-w-[200px] max-h-[200px] rounded-full m-auto bg-secondary"
+					class="max-w-[200px] max-h-[200px] rounded-full m-auto"
 					alt="failed to load me"
 				/>
 				<div class="bg-primary rounded-lg pt-6 text-white">
@@ -42,7 +42,29 @@
 			</div>
 		</div>
 	</div>
-	<div slot="mobile">asdf</div>
+	<div slot="mobile">
+		<div class="bg-primary rounded-lg p-6">
+			<div class="bg-primary rounded-lg">
+				<img
+					src={me}
+					class="max-w-[200px] max-h-[200px] rounded-full m-auto bg-secondary"
+					alt="failed to load me"
+				/>
+				<h1 class="text-2xl">Hey, I'm Ty</h1>
+				{description}
+			</div>
+
+			<div class="text-white flex flex-col justify-around my-6">
+				<div class="flex justify-around bg-secondary rounded-full">
+					{#each links as link}
+						<a href={link.href}
+							><img class="max-w-[50px] min-w-[50px]" src={link.src} alt={link.alt} /></a
+						>
+					{/each}
+				</div>
+			</div>
+		</div>
+	</div>
 </DeviceContainer>
 
 <!-- "But that's not all. We're not just about software. We believe in the power of knowledge and exploration. -->
