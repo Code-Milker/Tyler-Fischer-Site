@@ -6,7 +6,7 @@
 
 <div>
 	<div
-		class="mx-auto bg-primary rounded-md flex justify-center flex-col max-w-[500px] max-h-[600px] hover:cursor-pointer pb-0 pt-8 caret-transparent hover:bg-teritary"
+		class="mx-auto bg-primary md:rounded-lg xs:rounded-none flex justify-center flex-col max-w-[500px] max-h-[600px] hover:cursor-pointer pb-0 pt-8 caret-transparent hover:bg-teritary"
 	>
 		<img
 			src={project.image}

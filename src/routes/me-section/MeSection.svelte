@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	<div slot="mobile">
-		<div class="bg-primary rounded-lg p-6">
+		<div class="bg-primary p-6">
 			<div class="bg-primary rounded-lg">
 				<img
 					src={me}

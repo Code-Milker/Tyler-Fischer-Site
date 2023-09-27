@@ -9,7 +9,7 @@
 </script>
 
 <DeviceContainer>
-	<div slot="desktop" class="{bg} flex flex-row mx-6 rounded-lg">
+	<div slot="desktop" class="{bg} flex flex-row mx-6 md:rounded-lg xs:rounded-none">
 		<div class="md:p-6 flex justify-center">
 			<img
 				src={img}
