@@ -28,13 +28,16 @@ I also led critical process improvements, including design, software release, an
 	];
 </script>
 
-{#each jobs as job}
-	<div class="my-6">
+{#each jobs as job, i}
+	{#if i !== 0}<div class="min-h-[40px] bg-secondary md:hidden xs:visible" />
+	{/if}
+
+	<div class="md:mt-6 xs:mt-2">
 		<ContentPreview
 			bg="bg-primary"
 			img={job.img}
 			title={job.title}
-			link={'TODO'}
+			url={'TODO'}
 			description={job.description}
 		/>
 	</div>

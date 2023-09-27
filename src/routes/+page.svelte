@@ -6,7 +6,7 @@
 	import ArticleSection from './ArticleSection.svelte';
 	import Container from './Container.svelte';
 	$: innerWidth = 0;
-	$: styles = innerWidth >= 640 ? 'grid justify-items-center text-white' : 'text-white';
+	$: styles = innerWidth >= 640 ? 'md:grid xs:block justify-items-center text-white' : 'text-white';
 </script>
 
 <svelte:window bind:innerWidth />
