@@ -1,18 +1,22 @@
-<script>
-	import '../../app.css';
-	import DeviceContainer from '$lib/DeviceContainer.svelte';
-	import me from '$lib/images/me.jpeg';
-	import github from '$lib/images/github.png';
-	import twitter from '$lib/images/twitter.svg';
-	import linkedin from '$lib/images/linkedin.svg';
-	const description = `Welcome, I'm your dedicated software contractor, specializing in web, blockchain, and mobile
-				development. My mission is to bring your software ideas to life with expertise and precision.
-				Send an email if you're interested in these services`;
-	const links = [
-		{ href: 'https://twitter.com/TygerrFish', src: twitter, alt: 'twitter' },
-		{ href: 'https://github.com/Milk-Maven', src: github, alt: 'github' },
-		{ href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin' }
-	];
+<script lang="ts">
+	// import '../../app.css';
+	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import type { LinksType } from '$lib/types';
+	import { onMount } from 'svelte';
+	onMount(() => {
+		getMeInfo();
+	});
+
+	let me: { description: string; me: string; links: LinksType[] } = {
+		description: '',
+		me: '',
+		links: []
+	};
+
+	async function getMeInfo() {
+		const response = await fetch('me-section');
+		me = await response.json();
+	}
 </script>
 
 <!--desktop-->
@@ -21,19 +25,19 @@
 		<div class="bg-primary p-6">
 			<div class="bg-primary rounded-lg p-6">
 				<img
-					src={me}
+					src={me.me}
 					class="max-w-[200px] max-h-[200px] rounded-full m-auto"
 					alt="failed to load me"
 				/>
 				<div class="bg-primary rounded-lg pt-6 text-white">
 					<h1 class="text-2xl">Hey, I'm Ty</h1>
-					{description}
+					{me.description}
 				</div>
 			</div>
 
 			<div class="text-white flex flex-col justify-around my-6">
 				<div class="flex justify-around bg-secondary rounded-full">
-					{#each links as link}
+					{#each me.links as link}
 						<a href={link.href}
 							><img class="max-w-[50px] min-w-[50px]" src={link.src} alt={link.alt} /></a
 						>
@@ -46,17 +50,17 @@
 		<div class="bg-primary p-6">
 			<div class="bg-primary rounded-lg">
 				<img
-					src={me}
+					src={me.me}
 					class="max-w-[200px] max-h-[200px] rounded-full m-auto bg-secondary"
 					alt="failed to load me"
 				/>
 				<h1 class="text-2xl">Hey, I'm Ty</h1>
-				{description}
+				{me.description}
 			</div>
 
 			<div class="text-white flex flex-col justify-around my-6">
 				<div class="flex justify-around bg-secondary rounded-full">
-					{#each links as link}
+					{#each me.links as link}
 						<a href={link.href}
 							><img class="max-w-[50px] min-w-[50px]" src={link.src} alt={link.alt} /></a
 						>

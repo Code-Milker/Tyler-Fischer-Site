@@ -1,10 +1,10 @@
 <script>
 	import '../app.css';
 	import MeSection from './me-section/MeSection.svelte';
-	import ProjectSection from './ProjectSection.svelte';
-	import WorkHistorySection from './WorkHistorySection.svelte';
-	import ArticleSection from './ArticleSection.svelte';
-	import Container from './Container.svelte';
+	import ProjectSection from './project-section/ProjectSection.svelte';
+	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
+	import ArticleSection from './article-section/ArticleSection.svelte';
+	import Container from '$lib/components/Container.svelte';
 	$: innerWidth = 0;
 	$: styles = innerWidth >= 640 ? 'md:grid xs:block justify-items-center text-white' : 'text-white';
 </script>

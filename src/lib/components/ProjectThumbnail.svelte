@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { ContentPreviewType } from '$lib/types.ts';
 	export let project: ContentPreviewType;
-	import '../app.css';
 </script>
 
 <div>

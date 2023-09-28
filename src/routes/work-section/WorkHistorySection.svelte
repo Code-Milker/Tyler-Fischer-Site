@@ -1,9 +1,8 @@
 <script lang="ts">
-	import '../app.css';
 	import Lseg from '$lib/images/lseg.jpeg';
 	import Connecture from '$lib/images/connecture.png';
 	import Deso from '$lib/images/DesoLogo.jpeg';
-	import ContentPreview from './ContentPreview.svelte';
+	import ContentPreview from '$lib/components/ContentPreview.svelte';
 	const jobs: { description: string; img: string; title: string }[] = [
 		{
 			title: 'Developer Advocate Engineer',

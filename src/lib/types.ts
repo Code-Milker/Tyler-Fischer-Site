@@ -4,3 +4,4 @@ export interface ContentPreviewType {
   url: string;
   image: string;
 }
+export interface LinksType { href: string; src: string; alt: string }

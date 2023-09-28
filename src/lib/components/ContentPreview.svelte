@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ProjectThumbnail from './ProjectThumbnail.svelte';
-	import DeviceContainer from '$lib/DeviceContainer.svelte';
+	import ProjectThumbnail from '$lib/components/ProjectThumbnail.svelte';
+	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	export let img: string;
 	export let description: string;
 	export let title: string;
