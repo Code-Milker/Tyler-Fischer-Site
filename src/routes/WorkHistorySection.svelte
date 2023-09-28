@@ -29,16 +29,17 @@ I also led critical process improvements, including design, software release, an
 </script>
 
 {#each jobs as job, i}
-	{#if i !== 0}<div class="min-h-[40px] bg-secondary md:hidden xs:visible" />
+	{#if i !== 0}<div class="min-h-[40px] bg-secondary" />
 	{/if}
 
-	<div class="md:mt-6 xs:mt-2">
-		<ContentPreview
-			bg="bg-primary"
-			img={job.img}
-			title={job.title}
-			url={'TODO'}
-			description={job.description}
-		/>
-	</div>
+	<ContentPreview
+		bg="bg-primary"
+		img={job.img}
+		title={job.title}
+		url={'TODO'}
+		description={job.description}
+	/>
+
+	{#if i === jobs.length - 1}<div class="min-h-[40px] bg-secondary" />
+	{/if}
 {/each}
