@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
-
 import img from '$lib/images/moomoo.jpeg';
+import { GITHUB_TOKEN } from '$env/static/private'
 export async function GET() {
   const getArticleTitles = async () => {
     const apiUrl = `https://api.github.com/repos/Milk-Maven/obsidian/contents/Articles`;
@@ -21,7 +21,7 @@ export async function GET() {
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token ${GITHUB_TOKEN}`,
 
       }
 
