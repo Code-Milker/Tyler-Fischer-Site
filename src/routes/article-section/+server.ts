@@ -7,11 +7,12 @@ export async function GET() {
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token ${GITHUB_TOKEN}`,
       }
     })
 
     const files = await response.json()
+    console.log(files)
     // @ts-ignore
     return files.map(f => f.name)
   }
@@ -24,13 +25,10 @@ export async function GET() {
         Authorization: `token ${GITHUB_TOKEN}`,
 
       }
-
     })
     let a: any = await response.json()
     return { image: img, title: fileName, description: Buffer.from(a.content, 'base64').toString('utf-8') }
   }
-
-
   const files = await getArticleTitles()
   const articles = await Promise.all(files.map((f: any) => {
     return getFile(f)
