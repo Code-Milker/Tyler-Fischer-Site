@@ -1,22 +1,41 @@
 import { json } from '@sveltejs/kit'
 
-import type { ContentPreviewType } from '$lib/types.ts';
-import Bip from '$lib/images/bip-39.png';
-export function GET() {
-  const articles: ContentPreviewType[] = [
-    {
-      title: 'Spiral Dynamics and its pragmatic use cases',
-      image: Bip,
-      description: '',
-      url: ''
-    },
-    {
-      title: '5 starter improvements for you developer workflow',
-      image: Bip,
-      description:
-        ' alskdjfl asldjkflkdsjf lkdjfdlkfjdlkfjdlkfj dlfkjd flkdjfd lkjd flkdj fldk jfldk jfdlkjf dlk fjdlkj fdlk jflkdj fldkjf ldkjf dlk jflk djfdlk jfdlk jfdlkjf dlkzjfda;lkjdf;alskjf;aslkjfas;ljfa;sldkjfasd; lfjas;lasj d;lkjasd  f;lsad:',
-      url: ''
-    }
-  ];
+import img from '$lib/images/moomoo.jpeg';
+export async function GET() {
+  const getArticleTitles = async () => {
+    const apiUrl = `https://api.github.com/repos/Milk-Maven/obsidian/contents/Articles`;
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        Authorization: `token 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`,
+      }
+    })
+
+    const files = await response.json()
+    // @ts-ignore
+    return files.map(f => f.name)
+  }
+
+  const getFile = async (fileName: string) => {
+    const apiUrl = `https://api.github.com/repos/Milk-Maven/obsidian/contents/Articles/${fileName}`;
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        Authorization: `token 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`,
+
+      }
+
+    })
+    let a: any = await response.json()
+    return { image: img, title: fileName, description: Buffer.from(a.content, 'base64').toString('utf-8') }
+  }
+
+
+  const files = await getArticleTitles()
+  const articles = await Promise.all(files.map((f: any) => {
+    return getFile(f)
+  }))
+  // // @ts-ignore
+  // const fileContent = Buffer.from(response.content, 'base64').toString('utf-8');
   return json(articles)
 }

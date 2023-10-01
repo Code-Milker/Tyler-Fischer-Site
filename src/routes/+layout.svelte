@@ -4,7 +4,7 @@
 </script>
 
 <div class="app bg-black">
-	<Header />
+	<!-- <Header /> -->
 
 	<main>
 		<slot />
@@ -12,7 +12,7 @@
 
 	<footer>
 		<div class="flex justify-around w-full bg-primary text-white min-h-[40px]">
-			<p class="my-auto">Tyler Fischer</p>
+			<!-- <p class="my-auto">Tyler Fischer</p> -->
 		</div>
 	</footer>
 </div>

@@ -4,11 +4,11 @@
 	import { onMount } from 'svelte';
 	let articles: ContentPreviewType[] = [];
 	onMount(() => {
-		getArticles();
+		getArticles(new FileReader());
 	});
-	async function getArticles() {
-		const response = await fetch('article-section');
-		articles = await response.json();
+	async function getArticles(fileReader: FileReader) {
+		const res = await (await fetch('article-section')).json();
+		articles = res;
 	}
 </script>
 

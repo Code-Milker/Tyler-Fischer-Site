@@ -5,8 +5,12 @@
 	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
 	import ArticleSection from './article-section/ArticleSection.svelte';
 	import Container from '$lib/components/Container.svelte';
+	import { onMount } from 'svelte';
 	$: innerWidth = 0;
 	$: styles = innerWidth >= 640 ? 'md:grid xs:block justify-items-center text-white' : 'text-white';
+	onMount(() => {
+		document.title = 'Ty Fischer';
+	});
 </script>
 
 <svelte:window bind:innerWidth />
