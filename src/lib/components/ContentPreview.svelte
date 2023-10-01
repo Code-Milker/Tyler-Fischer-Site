@@ -1,11 +1,15 @@
 <script lang="ts">
 	import ProjectThumbnail from '$lib/components/ProjectThumbnail.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import SvelteMarkdown from 'svelte-markdown';
 	export let img: string;
 	export let description: string;
 	export let title: string;
 	export let url: string;
 	export let bg: string;
+	const queryParams = new URLSearchParams();
+	queryParams.set('title', title);
+	queryParams.set('description', description);
 </script>
 
 <DeviceContainer>
@@ -17,11 +21,16 @@
 				class="min-w-[225px] max-w-[225px] min-h-[225px] max-h-[225px] rounded-lg"
 			/>
 		</div>
-		<div
-			class="rounded-r-lg flex flex-col justify-around sm:max-w-[500px] md:max-w-full min-h-[225px] md:max-h-[225px] w-full"
-		>
-			<div><span>Title: {title}</span></div>
-			<div><span class="">Description: {description}</span></div>
+		<div class="px-8 py-10">
+			<div>
+				<span class="overflow-hidden line-clamp-[8]">
+					<SvelteMarkdown source={description} />
+				</span>
+				<a
+					href={`article-section/read?${queryParams.toString()}`}
+					class="underline hover:text-lastColor cursor-pointer mt-2">read more</a
+				>
+			</div>
 		</div>
 	</div>
 	<div slot="mobile">

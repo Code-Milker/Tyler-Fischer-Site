@@ -12,7 +12,6 @@ export async function GET() {
     })
 
     const files = await response.json()
-    console.log(files)
     // @ts-ignore
     return files.map(f => f.name)
   }

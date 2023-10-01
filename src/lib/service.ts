@@ -22,7 +22,6 @@ export async function post(endpoint: string, payload: any = {}) {
 }
 
 export async function get(endpoint: string, data?: any) {
-  // console.log('oy')
   // return
   // const params = data ? `?input=${encodeURI(JSON.stringify(data))}` : '';
   // let response = await fetch(`${baseUrl}/${endpoint}${params}`);

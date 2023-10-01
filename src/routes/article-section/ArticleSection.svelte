@@ -7,8 +7,9 @@
 		getArticles(new FileReader());
 	});
 	async function getArticles(fileReader: FileReader) {
-		const res = await (await fetch('article-section')).json();
+		const res = await (await fetch('article-section/[slug]')).json();
 		articles = res;
+		console.log(articles);
 	}
 </script>
 
