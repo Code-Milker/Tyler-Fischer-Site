@@ -1,10 +1,10 @@
 <script>
-	import Header from '$lib/components/Header.svelte';
 	import './styles.css';
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <div class="app bg-black">
-	<!-- <Header /> -->
+	<Header />
 
 	<main>
 		<slot />

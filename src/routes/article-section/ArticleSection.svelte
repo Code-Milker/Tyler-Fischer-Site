@@ -22,7 +22,7 @@
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
-				url={'TODO'}
+				url={article.url}
 				description={article.description}
 			/>
 		</div>
@@ -32,7 +32,7 @@
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
-				url={'TODO'}
+				url={article.url}
 				description={article.description}
 			/>
 		</div>

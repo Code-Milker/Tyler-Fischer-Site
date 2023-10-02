@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let content: any | undefined;
 	export let title: string;
+	export let titlePosition = 'center';
+
 	export let color: string;
 	export let bg: string;
 	export let firstContainer: boolean = false;
@@ -14,7 +16,7 @@
 
 <div class={`${styles} ${color} ${bg}`}>
 	{#if !firstContainer}<h1
-			class="mx-auto text-2xl inline-block text-center align-middle w-full min-h-[40px]"
+			class="mx-auto text-2xl inline-block text-{titlePosition} align-middle w-full min-h-[40px]"
 		>
 			<div class="mt-1">
 				{title}
