@@ -16,7 +16,7 @@
 <svelte:window bind:innerWidth />
 <div class={styles}>
 	<Container
-		title="asdf"
+		title=""
 		color="text-white"
 		content={MeSection}
 		bg="bg-secondary"
