@@ -22,9 +22,22 @@
 		bg="bg-secondary"
 		firstContainer={true}
 	/>
-	<Container title="Articles" color="text-white" bg="bg-secondary" content={ArticleSection} />
-	<Container title="Projects" color="text-white" bg="bg-secondary" content={ProjectSection} />
 	<Container
+		title="Articles"
+		titlePosition="text-center"
+		color="text-white"
+		bg="bg-secondary"
+		content={ArticleSection}
+	/>
+	<Container
+		title="Projects"
+		titlePosition="text-center"
+		color="text-white"
+		bg="bg-secondary"
+		content={ProjectSection}
+	/>
+	<Container
+		titlePosition="text-center"
 		title="Work history"
 		color="text-white"
 		bg="bg-secondary"
