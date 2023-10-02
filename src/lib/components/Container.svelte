@@ -14,7 +14,7 @@
 
 <div class={`${styles} ${color} ${bg}`}>
 	{#if !firstContainer}<h1
-			class=" mx-auto text-2xl inline-block text-center align-middle w-full min-h-[40px]"
+			class="mx-auto text-2xl inline-block text-center align-middle w-full min-h-[40px]"
 		>
 			<div class="mt-1">
 				{title}

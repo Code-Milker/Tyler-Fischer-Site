@@ -36,13 +36,13 @@
 			</div>
 
 			<div class="text-white flex flex-col justify-around my-6">
-				<div class="flex justify-around bg-secondary rounded-full">
+				<span class="flex justify-around bg-secondary rounded-full">
 					{#each me.links as link}
 						<a href={link.href}
-							><img class="max-w-[50px] min-w-[50px]" src={link.src} alt={link.alt} /></a
-						>
+							><img class="max-w-[40px] min-h-[40px]" src={link.src} alt={link.alt} />
+						</a>
 					{/each}
-				</div>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -62,7 +62,7 @@
 				<div class="flex justify-around bg-secondary rounded-full">
 					{#each me.links as link}
 						<a href={link.href}
-							><img class="max-w-[50px] min-w-[50px]" src={link.src} alt={link.alt} /></a
+							><img class="max-w-[30px] min-h-[30px]" src={link.src} alt={link.alt} /></a
 						>
 					{/each}
 				</div>
