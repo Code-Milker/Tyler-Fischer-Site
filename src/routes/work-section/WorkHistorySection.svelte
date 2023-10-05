@@ -3,6 +3,7 @@
 	import Connecture from '$lib/images/connecture.png';
 	import Deso from '$lib/images/DesoLogo.jpeg';
 	import ContentPreview from '$lib/components/ContentPreview.svelte';
+	export let device: 'mobile' | 'desktop' = 'mobile';
 	const jobs: { description: string; img: string; title: string }[] = [
 		{
 			title: 'Developer Advocate Engineer',
@@ -32,6 +33,7 @@ I also led critical process improvements, including design, software release, an
 	{/if}
 
 	<ContentPreview
+		{device}
 		color="text-white"
 		bg="bg-primary"
 		img={job.img}

@@ -29,40 +29,40 @@
 		color="text-white"
 		bg="bg-secondary"
 	>
-		<div slot="desktop">
+		<div class="w-full" slot="desktop">
 			<ArticleSection device="desktop" />
 		</div>
 		<div slot="mobile">
 			<ArticleSection device="mobile" />
 		</div>
 	</DeviceContainer>
-	<!-- <DeviceContainer -->
-	<!-- 	title="Projects" -->
-	<!-- 	titlePosition="text-center" -->
-	<!-- 	color="text-white" -->
-	<!-- 	bg="bg-secondary" -->
-	<!-- > -->
-	<!-- 	<div slot="desktop"> -->
-	<!-- 		<ProjectSection device="desktop" /> -->
-	<!-- 	</div> -->
-	<!-- 	<div slot="mobile"> -->
-	<!-- 		<ProjectSection device="mobile" /> -->
-	<!-- 	</div> -->
-	<!-- </DeviceContainer> -->
-	<!-- <DeviceContainer -->
-	<!-- 	titlePosition="text-center" -->
-	<!-- 	title="Work history" -->
-	<!-- 	color="text-white" -->
-	<!-- 	bg="bg-secondary" -->
-	<!-- > -->
-	<!-- 	> -->
-	<!-- 	<div slot="desktop"> -->
-	<!-- 		<WorkHistorySection /> -->
-	<!-- 	</div> -->
-	<!-- 	<div slot="mobile"> -->
-	<!-- 		<WorkHistorySection /> -->
-	<!-- 	</div> -->
-	<!-- </DeviceContainer> -->
+	<DeviceContainer
+		title="Projects"
+		titlePosition="text-center"
+		color="text-white"
+		bg="bg-secondary"
+	>
+		<div slot="desktop">
+			<ProjectSection device="desktop" />
+		</div>
+		<div slot="mobile">
+			<ProjectSection device="mobile" />
+		</div>
+	</DeviceContainer>
+	<DeviceContainer
+		titlePosition="text-center"
+		title="Work history"
+		color="text-white"
+		bg="bg-secondary"
+	>
+		>
+		<div slot="desktop">
+			<WorkHistorySection device="desktop" />
+		</div>
+		<div slot="mobile">
+			<WorkHistorySection device="mobile" />
+		</div>
+	</DeviceContainer>
 </div>
 
 <style></style>

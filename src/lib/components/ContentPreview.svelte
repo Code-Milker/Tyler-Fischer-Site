@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ProjectThumbnail from '$lib/components/ProjectThumbnail.svelte';
-	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	export let img: string;
 	export let description: string;
@@ -8,7 +7,7 @@
 	export let url: string;
 	export let bg: string;
 	export let color: string;
-	export let device: 'mobile' | 'desktop' = 'mobile';
+	export let device: 'mobile' | 'desktop' = 'desktop';
 	const queryParams = new URLSearchParams();
 	queryParams.set('title', title);
 	queryParams.set('description', description);

@@ -13,14 +13,13 @@
 	}
 </script>
 
-{device} asdf
-{device === 'desktop'}
 {#each articles as article, i}
 	{#if i !== 0}<div class="min-h-[40px] bg-secondary md:hidden xs:visible" />
 	{/if}
 	{#if i === 0}
 		<div class="xs:mb-2">
 			<ContentPreview
+				{device}
 				color="text-white"
 				bg="bg-primary"
 				img={article.image}
@@ -32,6 +31,7 @@
 	{:else}
 		<div class="md:mt-6 xs:mt-2">
 			<ContentPreview
+				{device}
 				color="text-white"
 				bg="bg-primary"
 				img={article.image}
