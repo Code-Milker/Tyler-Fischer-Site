@@ -26,6 +26,7 @@ export async function GET() {
       }
     })
     let a: any = await response.json()
+    console.log('asdf', a)
     return { image: img, title: fileName, description: Buffer.from(a.content, 'base64').toString('utf-8') }
   }
   const files = await getArticleTitles()
