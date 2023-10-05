@@ -1,12 +1,10 @@
 <script lang="ts">
-	export let content: any | undefined;
 	export let title: string;
 	export let titlePosition = 'text-center';
 
 	export let color: string;
 	export let bg: string;
 	export let firstContainer: boolean = false;
-	console.log(bg, color);
 	$: innerWidth = 0;
 	$: styles =
 		innerWidth >= 640 ? 'min-w-[64rem] max-w-[64rem] {color} {bg}' : 'w-full {bg} {color}';
@@ -23,9 +21,5 @@
 			</div>
 		</h1>
 	{/if}
-	{#if content}
-		<svelte:component this={content} />
-	{:else}
-		<slot />
-	{/if}
+	<slot />
 </div>

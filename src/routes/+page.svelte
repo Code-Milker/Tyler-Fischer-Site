@@ -4,7 +4,7 @@
 	import ProjectSection from './project-section/ProjectSection.svelte';
 	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
 	import ArticleSection from './article-section/ArticleSection.svelte';
-	import Container from '$lib/components/Container.svelte';
+	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import { onMount } from 'svelte';
 	$: innerWidth = 0;
 	$: styles = innerWidth >= 640 ? 'md:grid xs:block justify-items-center text-white' : 'text-white';
@@ -15,34 +15,54 @@
 
 <svelte:window bind:innerWidth />
 <div class={styles}>
-	<Container
-		title=""
-		color="text-white"
-		content={MeSection}
-		bg="bg-secondary"
-		firstContainer={true}
-	/>
-	<Container
+	<DeviceContainer title="" color="text-white" bg="bg-secondary" firstContainer={true}>
+		<div slot="desktop">
+			<MeSection device="desktop" />
+		</div>
+		<div slot="mobile">
+			<MeSection device="mobile" />
+		</div>
+	</DeviceContainer>
+	<DeviceContainer
 		title="Articles"
 		titlePosition="text-center"
 		color="text-white"
 		bg="bg-secondary"
-		content={ArticleSection}
-	/>
-	<Container
-		title="Projects"
-		titlePosition="text-center"
-		color="text-white"
-		bg="bg-secondary"
-		content={ProjectSection}
-	/>
-	<Container
-		titlePosition="text-center"
-		title="Work history"
-		color="text-white"
-		bg="bg-secondary"
-		content={WorkHistorySection}
-	/>
+	>
+		<div slot="desktop">
+			<ArticleSection device="desktop" />
+		</div>
+		<div slot="mobile">
+			<ArticleSection device="mobile" />
+		</div>
+	</DeviceContainer>
+	<!-- <DeviceContainer -->
+	<!-- 	title="Projects" -->
+	<!-- 	titlePosition="text-center" -->
+	<!-- 	color="text-white" -->
+	<!-- 	bg="bg-secondary" -->
+	<!-- > -->
+	<!-- 	<div slot="desktop"> -->
+	<!-- 		<ProjectSection device="desktop" /> -->
+	<!-- 	</div> -->
+	<!-- 	<div slot="mobile"> -->
+	<!-- 		<ProjectSection device="mobile" /> -->
+	<!-- 	</div> -->
+	<!-- </DeviceContainer> -->
+	<!-- <DeviceContainer -->
+	<!-- 	titlePosition="text-center" -->
+	<!-- 	title="Work history" -->
+	<!-- 	color="text-white" -->
+	<!-- 	bg="bg-secondary" -->
+	<!-- > -->
+	<!-- 	> -->
+	<!-- 	<div slot="desktop"> -->
+	<!-- 		<WorkHistorySection /> -->
+	<!-- 	</div> -->
+	<!-- 	<div slot="mobile"> -->
+	<!-- 		<WorkHistorySection /> -->
+	<!-- 	</div> -->
+	<!-- </DeviceContainer> -->
 </div>
 
 <style></style>

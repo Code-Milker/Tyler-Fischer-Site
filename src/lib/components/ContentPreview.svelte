@@ -7,13 +7,15 @@
 	export let title: string;
 	export let url: string;
 	export let bg: string;
+	export let color: string;
+	export let device: 'mobile' | 'desktop' = 'mobile';
 	const queryParams = new URLSearchParams();
 	queryParams.set('title', title);
 	queryParams.set('description', description);
 </script>
 
-<DeviceContainer>
-	<div slot="desktop" class="{bg} flex flex-row mx-6 md:rounded-lg xs:rounded-none">
+{#if device === 'desktop'}
+	<div class="{bg} flex flex-row mx-6 md:rounded-lg xs:rounded-none {color}">
 		<div class="md:p-6 flex justify-center">
 			<img
 				src={img}
@@ -33,7 +35,6 @@
 			</div>
 		</div>
 	</div>
-	<div slot="mobile">
-		<ProjectThumbnail project={{ title: title, description: description, url: url, image: img }} />
-	</div>
-</DeviceContainer>
+{:else}
+	<ProjectThumbnail project={{ title: title, description: description, url: url, image: img }} />
+{/if}

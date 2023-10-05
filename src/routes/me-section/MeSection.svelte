@@ -1,8 +1,8 @@
 <script lang="ts">
 	// import '../../app.css';
-	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import type { LinksType } from '$lib/types';
 	import { onMount } from 'svelte';
+	export let device: 'mobile' | 'desktop' = 'mobile';
 	onMount(() => {
 		getMeInfo();
 	});
@@ -12,16 +12,19 @@
 		me: '',
 		links: []
 	};
+	// $: adevice = device;
 
 	async function getMeInfo() {
 		const response = await fetch('me-section');
 		me = await response.json();
 	}
+	console.log(device.toString());
 </script>
 
 <!--desktop-->
-<DeviceContainer>
-	<div slot="desktop" class="bg-secondary flex justify-start flex-col invisible md:visible">
+
+{#if device === 'desktop'}
+	<div style="desktop" class="bg-secondary flex justify-start flex-col invisible md:visible">
 		<div class="bg-primary p-6">
 			<div class="bg-primary rounded-lg p-6">
 				<img
@@ -46,7 +49,8 @@
 			</div>
 		</div>
 	</div>
-	<div slot="mobile">
+{:else}
+	<div style="mobile">
 		<div class="bg-primary p-6">
 			<div class="bg-primary rounded-lg">
 				<img
@@ -69,7 +73,7 @@
 			</div>
 		</div>
 	</div>
-</DeviceContainer>
+{/if}
 
 <!-- "But that's not all. We're not just about software. We believe in the power of knowledge and exploration. -->
 <!-- Join our newsletter, where we delve into philosophy, health and fitness, psychology, and thought-provoking -->

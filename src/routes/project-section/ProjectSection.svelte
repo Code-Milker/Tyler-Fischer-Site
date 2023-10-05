@@ -3,6 +3,7 @@
 	import type { ContentPreviewType } from '$lib/types.ts';
 	import { onMount } from 'svelte';
 
+	export let device: 'mobile' | 'desktop' = 'mobile';
 	let projects: ContentPreviewType[] = [];
 	onMount(() => {
 		getProjects();

@@ -1,9 +1,32 @@
 <script lang="ts">
+	export let title: string;
+	export let titlePosition = 'text-center';
+
+	export let color: string;
+	export let bg: string;
+	export let firstContainer: boolean = false;
+	$: innerWidth = 0;
+	$: styles =
+		innerWidth >= 640 ? 'min-w-[64rem] max-w-[64rem] {color} {bg}' : 'w-full {bg} {color}';
+	console.log(innerWidth);
 </script>
 
-<div class="hidden md:block">
-	<slot name="desktop" />
-</div>
-<div class="block md:hidden">
-	<slot name="mobile" />
+<svelte:window bind:innerWidth />
+
+<div class={`${styles} ${color} ${bg}`}>
+	{#if !firstContainer}<h1
+			class="mx-auto text-2xl inline-block {titlePosition} align-middle w-full min-h-[40px]"
+		>
+			<div class="mt-1 {titlePosition}">
+				{title}
+			</div>
+		</h1>
+	{/if}
+
+	<div class="hidden md:block">
+		<slot name="desktop" />
+	</div>
+	<div class="block md:hidden">
+		<slot name="mobile" />
+	</div>
 </div>

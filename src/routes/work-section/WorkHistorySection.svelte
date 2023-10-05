@@ -32,6 +32,7 @@ I also led critical process improvements, including design, software release, an
 	{/if}
 
 	<ContentPreview
+		color="text-white"
 		bg="bg-primary"
 		img={job.img}
 		title={job.title}

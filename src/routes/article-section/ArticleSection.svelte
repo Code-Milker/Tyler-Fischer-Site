@@ -2,6 +2,7 @@
 	import type { ContentPreviewType } from '$lib/types.ts';
 	import ContentPreview from '$lib/components/ContentPreview.svelte';
 	import { onMount } from 'svelte';
+	export let device: 'mobile' | 'desktop' = 'mobile';
 	let articles: ContentPreviewType[] = [];
 	onMount(() => {
 		getArticles(new FileReader());
@@ -9,16 +10,18 @@
 	async function getArticles(fileReader: FileReader) {
 		const res = await (await fetch('article-section/[slug]')).json();
 		articles = res;
-		console.log(articles);
 	}
 </script>
 
+{device} asdf
+{device === 'desktop'}
 {#each articles as article, i}
 	{#if i !== 0}<div class="min-h-[40px] bg-secondary md:hidden xs:visible" />
 	{/if}
 	{#if i === 0}
 		<div class="xs:mb-2">
 			<ContentPreview
+				color="text-white"
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
@@ -29,6 +32,7 @@
 	{:else}
 		<div class="md:mt-6 xs:mt-2">
 			<ContentPreview
+				color="text-white"
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
