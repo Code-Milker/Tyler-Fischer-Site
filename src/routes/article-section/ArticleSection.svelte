@@ -10,7 +10,6 @@
 	async function getArticles(fileReader: FileReader) {
 		const res = await (await fetch('article-section/[slug]')).json();
 		articles = res;
-		console.log(articles);
 	}
 </script>
 
@@ -25,7 +24,7 @@
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
-				url={article.url}
+				url={`article-section/read?title=${article.title}&description=${article.description}`}
 				description={article.description}
 			/>
 		</div>
@@ -37,7 +36,7 @@
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
-				url={article.url}
+				url={`article-section/read?title=${article.title}&description=${article.description}`}
 				description={article.description}
 			/>
 		</div>

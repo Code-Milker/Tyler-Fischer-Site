@@ -8,7 +8,6 @@
 	$: innerWidth = 0;
 	$: styles =
 		innerWidth >= 640 ? 'min-w-[64rem] max-w-[64rem] {color} {bg}' : 'w-full {bg} {color}';
-	console.log(innerWidth);
 </script>
 
 <svelte:window bind:innerWidth />

@@ -18,7 +18,7 @@
 
 				<div class="flex flex-col text-[#555] text-xs font-extralight pt-6 ml-auto px-10">
 					<div>Tyler Fischer</div>
-					<div>{new Date().toISOString().split('T')[0]}</div>
+					<!-- <div>{new Date().toISOString().split('T')[0]}</div> -->
 				</div>
 			</div>
 
@@ -31,10 +31,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	p {
-		margin-top: 40px;
-		margin-bottom: 10px;
-	}
-</style>

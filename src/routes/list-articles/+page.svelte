@@ -11,7 +11,6 @@
 	async function getArticles(fileReader: FileReader) {
 		const res = await (await fetch('article-section/[slug]')).json();
 		articles = res;
-		console.log(articles);
 	}
 </script>
 

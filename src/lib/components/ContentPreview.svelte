@@ -28,7 +28,7 @@
 					<SvelteMarkdown source={description} />
 				</span>
 				<a
-					href={`article-section/read?${queryParams.toString()}`}
+					href={`article-section/read?${queryParams}`}
 					class="underline hover:text-lastColor cursor-pointer mt-2">read more</a
 				>
 			</div>
