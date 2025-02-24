@@ -7,7 +7,7 @@ export function GET() {
   const description =
     `Welcome, I'm your dedicated software contractor, specializing in web, blockchain, and mobile
 				development. My mission is to bring your software ideas to life with expertise and precision.
-				Send an email if you're interested in these services at tylerf66@gmail.com`;
+				You can reach me at tylerf66@gmail.com`;
   const links = [
     { href: "https://twitter.com/TygerrFish", src: twitter, alt: "twitter" },
     { href: "https://github.com/Milk-Maven", src: github, alt: "github" },
