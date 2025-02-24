@@ -27,10 +27,6 @@
 				<span class="overflow-hidden line-clamp-[8]">
 					<SvelteMarkdown source={description} />
 				</span>
-				<a
-					href={`article-section/read?${queryParams}`}
-					class="underline hover:text-lastColor cursor-pointer mt-2">read more</a
-				>
 			</div>
 		</div>
 	</div>

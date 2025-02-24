@@ -3,7 +3,6 @@
 	import MeSection from './me-section/MeSection.svelte';
 	import ProjectSection from './project-section/ProjectSection.svelte';
 	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
-	import ArticleSection from './article-section/ArticleSection.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import { onMount } from 'svelte';
 	$: innerWidth = 0;
@@ -21,19 +20,6 @@
 		</div>
 		<div slot="mobile">
 			<MeSection device="mobile" />
-		</div>
-	</DeviceContainer>
-	<DeviceContainer
-		title="Articles"
-		titlePosition="text-center"
-		color="text-white"
-		bg="bg-secondary"
-	>
-		<div class="w-full" slot="desktop">
-			<ArticleSection device="desktop" />
-		</div>
-		<div slot="mobile">
-			<ArticleSection device="mobile" />
 		</div>
 	</DeviceContainer>
 	<DeviceContainer

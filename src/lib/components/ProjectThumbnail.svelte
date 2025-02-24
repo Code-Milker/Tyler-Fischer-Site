@@ -4,7 +4,8 @@
 </script>
 
 <div>
-	<div
+	<a
+		href={project.url}
 		class="mx-auto bg-primary md:rounded-lg xs:rounded-none flex justify-center flex-col max-w-[500px] max-h-[600px] hover:cursor-pointer pb-0 pt-8 caret-transparent md:hover:bg-teritary"
 	>
 		<img
@@ -18,11 +19,8 @@
 			<div class="text-left py-2 line-clamp-4 min-h-[150px]">
 				{project.description}
 			</div>
-			<a href={project.url} class="text-left py-2 underline hover:text-secondaryComplement"
-				>Read More</a
-			>
 		</div>
-	</div>
+	</a>
 </div>
 
 <style></style>
