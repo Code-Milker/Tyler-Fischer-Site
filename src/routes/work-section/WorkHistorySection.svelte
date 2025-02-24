@@ -2,6 +2,7 @@
 	import Lseg from '$lib/images/lseg.jpeg';
 	import Connecture from '$lib/images/connecture.png';
 	import Deso from '$lib/images/DesoLogo.jpeg';
+	import Liberty from '$lib/images/liberty.png';
 	import ContentPreview from '$lib/components/ContentPreview.svelte';
 	export let device: 'mobile' | 'desktop' = 'mobile';
 	const jobs: { description: string; img: string; title: string }[] = [
@@ -24,6 +25,11 @@ I also led critical process improvements, including design, software release, an
 			title: 'Software Engineer',
 			img: Connecture,
 			description: ` I gained extensive knowledge in building WCAG and HIPAA Compliant web applications using Typescript and Angular 2+. Designed a client parsing service that read in JSON configurations and dynamically generated custom sites for clients. Closely followed acceptance criteria from business analysts and graphic designers to ensure that the functionality and appearance of our app were met.`
+		},
+		{
+			title: 'Tech Start intern',
+			img: Liberty,
+			description: `I maintained Liberty Mutual's legacy application, Vantage Port, a central portal for employees providing access to tools, documents, and reporting. The application was built with jQuery and Spring Boot, where I ensured its stability, performance, and continuous improvements. Additionally, I developed an interactive collaboration board that enabled users to whiteboard ideas in real-time using WebSockets, enhancing team communication and brainstorming capabilities.`
 		}
 	];
 </script>
