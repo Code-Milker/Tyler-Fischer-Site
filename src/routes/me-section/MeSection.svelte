@@ -18,14 +18,13 @@
 		const response = await fetch('me-section');
 		me = await response.json();
 	}
-	console.log(device.toString());
 </script>
 
 <!--desktop-->
 
 {#if device === 'desktop'}
-	<div style="desktop" class="bg-secondary flex justify-start flex-col invisible md:visible">
-		<div class="bg-primary p-6">
+	<div style="desktop" class="bg-primary flex justify-start flex-col invisible md:visible">
+		<div class="p-6">
 			<div class="bg-primary rounded-lg p-6">
 				<img
 					src={me.me}
@@ -42,7 +41,7 @@
 				<span class="flex justify-around bg-secondary rounded-full">
 					{#each me.links as link}
 						<a href={link.href}
-							><img class="max-w-[40px] min-h-[40px]" src={link.src} alt={link.alt} />
+							><img class="max-w-[50px] min-h-[50px]" src={link.src} alt={link.alt} />
 						</a>
 					{/each}
 				</span>
@@ -74,11 +73,3 @@
 		</div>
 	</div>
 {/if}
-
-<!-- "But that's not all. We're not just about software. We believe in the power of knowledge and exploration. -->
-<!-- Join our newsletter, where we delve into philosophy, health and fitness, psychology, and thought-provoking -->
-<!-- ideas. Stay informed and inspired with our insights delivered right to your inbox." -->
-
-<!--mobile-->
-
-<style></style>
