@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import SvelteMarkdown from 'svelte-markdown';
-	import Container from '$lib/components/Container.svelte';
 	import moomoo from '$lib/images/moomoo.jpeg';
-	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	const pageURL = $page.url;
 	const border = 'border-b border-[#999] pb-2';
 </script>
