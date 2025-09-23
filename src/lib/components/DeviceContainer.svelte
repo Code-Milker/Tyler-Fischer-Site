@@ -1,7 +1,6 @@
 <script lang="ts">
 	export let title: string;
 	export let titlePosition = 'text-center';
-
 	export let color: string;
 	export let bg: string;
 	export let firstContainer: boolean = false;

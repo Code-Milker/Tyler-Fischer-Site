@@ -1,23 +1,24 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static'; // Changed to static adapter for full SSG
 import { vitePreprocess } from '@sveltejs/kit/vite';
-import css from 'rollup-plugin-css-only';
+import { mdsvex } from 'mdsvex';
+import remarkGfm from 'remark-gfm'; // For GitHub-style tables
+import rehypeSlug from 'rehype-slug'; // Adds IDs to headings
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'; // Auto-links headings
+
+/** @type {import('mdsvex').MdsvexOptions} */
+const mdsvexOptions = {
+	extensions: ['.md'],
+	remarkPlugins: [remarkGfm], // Enhances tables with GFM styling
+	rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] // Heading IDs and links
+};
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://kit.svelte.dev/docs/integrations#preprocessors
-  // for more information about preprocessors
-  preprocess: vitePreprocess(),
-
-  kit: {
-    // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-    // If your environment is not supported or you settled on a specific environment, switch out the adapter.
-    // See https://kit.svelte.dev/docs/adapters for more information about adapters.
-    adapter: adapter(),
-    // plugins: [
-    //   css({ output: 'bundle.css' })
-    // ]
-
-  }
+	extensions: ['.svelte', '.md'],
+	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+	kit: {
+		adapter: adapter() // Defaults to prerendering all routes as static files
+	}
 };
 
 export default config;
