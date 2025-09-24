@@ -30,29 +30,23 @@
 		class="rounded-lg bg-primary flex justify-start flex-col invisible md:visible"
 	>
 		<div class="bg-secondary">
-			<div class="bg-primary rounded-lg p-6 flex flex-col">
-				<div class="flex min-h-[200px]">
-					<div class="flex items-center justify-center flex-1">
-						<img
-							src={me.me}
-							class="max-h-[200px] max-w-[200px] rounded-full flex-2"
-							alt="failed to load me"
-						/>
-					</div>
-					<div
-						class="flex-1 bg-primary rounded-lg text-text text-justify flex flex-col justify-center gap-2"
-					>
-						<h1 class="text-4xl text-quaternary font-bold">Hey, I'm Ty</h1>
-						<p class="text-justify">{me.description}</p>
-					</div>
+			<div class="bg-primary rounded-lg p-6 grid grid-cols-3">
+				<div class="col-span-1 flex items-center justify-center">
+					<img
+						src={me.me}
+						class="max-h-[200px] max-w-[200px] rounded-full"
+						alt="failed to load me"
+					/>
 				</div>
-				<div class="flex items-center mt-4">
-					<div class="flex-1 flex justify-center">
-						<IconBanner />
-					</div>
-					<div class="flex-1 flex justify-start">
-						<Tabs />
-					</div>
+				<div class="col-span-2 flex flex-col justify-center gap-2 text-text text-justify">
+					<h1 class="text-4xl text-quaternary font-bold">Hey, I'm Ty</h1>
+					<p class="text-justify">{me.description}</p>
+				</div>
+				<div class="col-span-1 flex justify-center items-center mt-4">
+					<IconBanner />
+				</div>
+				<div class="col-span-2 flex justify-start items-center mt-4">
+					<Tabs />
 				</div>
 			</div>
 		</div>
