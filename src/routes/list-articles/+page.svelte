@@ -14,7 +14,7 @@
 	}
 </script>
 
-<Container title="" color="text-white" bg="bg-primary" firstContainer={true}>
+<Container title="" color="text-text" bg="bg-primary" firstContainer={true}>
 	<SubContainer>
 		<div slot="desktop">
 			<h1 class="text-xl">Articles</h1>
@@ -28,11 +28,11 @@
 		<div slot="mobile">mobile</div>
 	</SubContainer>
 </Container>
-<Container title="" color="text-white" bg="bg-secondary" firstContainer={true}>
+<Container title="" color="text-text" bg="bg-secondary" firstContainer={true}>
 	{#each articles as article, i}
 		<div class="xs:mb-2">
 			<ContentPreview
-				color="text-white"
+				color="text-text"
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}

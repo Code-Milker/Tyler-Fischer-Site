@@ -40,7 +40,7 @@ I also led critical process improvements, including design, software release, an
 
 	<ContentPreview
 		{device}
-		color="text-white"
+		color="text-text"
 		bg="bg-primary"
 		img={job.img}
 		title={job.title}

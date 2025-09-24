@@ -20,7 +20,7 @@
 		<div class="xs:mb-2">
 			<ContentPreview
 				{device}
-				color="text-white"
+				color="text-text"
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}
@@ -32,7 +32,7 @@
 		<div class="md:mt-6 xs:mt-2">
 			<ContentPreview
 				{device}
-				color="text-white"
+				color="text-text"
 				bg="bg-primary"
 				img={article.image}
 				title={article.title}

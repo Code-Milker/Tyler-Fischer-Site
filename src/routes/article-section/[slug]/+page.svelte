@@ -8,7 +8,7 @@
 
 <div class="bg-secondary flex flex-row justify-center">
 	<div class="bg-secondary p-6">
-		<div class="bg-primary text-white px-40 max-w-[1200px] py-12">
+		<div class="bg-primary text-text px-40 max-w-[1200px] py-12">
 			<div class={`flex ${border}`}>
 				<h1 class="text-3xl font-bold pt-6 px-10">
 					{pageURL.searchParams.get('title')}

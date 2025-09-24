@@ -8,7 +8,8 @@ export default {
 				secondary: '#183D3D',
 				secondaryComplement: '#3d1818',
 				tertiary: '#6A9A85', // Adjusted for better link contrast and harmony
-				quaternary: '#A0C3B5' // Softened to warmer light teal for cohesion
+				quaternary: '#A0C3B5', // Softened to warmer light teal for cohesion
+				text: '#ccc'
 			},
 			typography: () => ({
 				DEFAULT: {
