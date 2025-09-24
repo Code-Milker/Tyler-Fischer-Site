@@ -11,16 +11,7 @@
 
 <svelte:window bind:innerWidth />
 
-<div class={`${styles} ${color} ${bg}`}>
-	{#if !firstContainer}<h1
-			class="mx-auto text-2xl inline-block {titlePosition} align-middle w-full min-h-[40px]"
-		>
-			<div class="mt-1 {titlePosition}">
-				{title}
-			</div>
-		</h1>
-	{/if}
-
+<div class={`${styles} ${color} ${bg} rounded-lg p-8`}>
 	<div class="hidden md:block">
 		<slot name="desktop" />
 	</div>

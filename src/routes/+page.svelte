@@ -4,6 +4,7 @@
 	import ProjectSection from './project-section/ProjectSection.svelte';
 	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import Tabs from '$lib/components/Tabs.svelte'; // Adjust path as needed
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
@@ -11,6 +12,7 @@
 
 	$: innerWidth = 0;
 	$: styles = innerWidth >= 640 ? 'md:grid xs:block justify-items-center text-text' : 'text-text';
+	$: device = innerWidth >= 640 ? 'desktop' : 'mobile';
 	let resumeMarkdown = '';
 	onMount(async () => {
 		document.title = 'Ty Fischer';
@@ -28,7 +30,7 @@
 
 <svelte:window bind:innerWidth />
 
-<div class={styles}>
+<div class={styles + ' mt-10'}>
 	<DeviceContainer title="" color="text-text" bg="bg-secondary" firstContainer={true}>
 		<div slot="desktop">
 			<MeSection device="desktop" />
@@ -37,11 +39,12 @@
 			<MeSection device="mobile" />
 		</div>
 	</DeviceContainer>
+	<Tabs />
 
 	{#if $selectedTab === 'resume'}
 		<DeviceContainer title="" titlePosition="text-center" color="text-text" bg="bg-secondary">
 			<div slot="desktop">
-				<div class="bg-primary justify-center flex mx-6 p-5 rounded md:rounded-lg xs:rounded-none">
+				<div class="bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none">
 					<ViewMarkdown filename="resume.md" />
 				</div>
 			</div>
