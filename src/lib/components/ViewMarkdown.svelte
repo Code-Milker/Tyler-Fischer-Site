@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 
-	export let filename = 'resume.md'; // Default to resume.md, but accept prop
+	export let filename = ''; // Default to resume.md, but accept prop
 
 	let markdownContent = '';
 
@@ -23,6 +23,3 @@
 	<!-- Added prose-invert to apply dark theme styles -->
 	<SvelteMarkdown source={markdownContent} />
 </div>
-
-<style>
-</style>

@@ -14,7 +14,7 @@ export default {
 				DEFAULT: {
 					css: {
 						// Base typography overrides for tighter spacing
-						maxWidth: '65ch', // Keeps content readable but constrained
+						minWidth: '100ch', // Keeps content readable but constrained
 						fontSize: '0.95rem', // Slightly smaller base font for compactness
 						lineHeight: '1.5', // Reduced from default ~1.75 for less vertical space
 						'--tw-prose-body': '#020a12', // primary dark
@@ -26,14 +26,14 @@ export default {
 						'--tw-prose-pre-code': '#A0C3B5', // updated quaternary
 						'--tw-prose-pre-bg': '#020a12',
 
-						// Dark mode inverted styles
-						'--tw-prose-invert-body': '#ffffff',
+						// Dark mode inverted styles with softer gray (#cccccc) for less stark contrast
+						'--tw-prose-invert-body': '#cccccc', // Softer gray for body text
 						'--tw-prose-invert-headings': '#A0C3B5', // updated quaternary for headings
-						'--tw-prose-invert-lead': '#ffffff',
+						'--tw-prose-invert-lead': '#cccccc', // Match body
 						'--tw-prose-invert-links': '#6A9A85', // updated tertiary for links
-						'--tw-prose-invert-bold': '#ffffff',
-						'--tw-prose-invert-code': '#A0C3B5', // updated quaternary
-						'--tw-prose-invert-pre-code': '#ffffff',
+						'--tw-prose-invert-bold': '#cccccc', // Match body
+						'--tw-prose-invert-code': '#90b0a5', // Slightly desaturated quaternary
+						'--tw-prose-invert-pre-code': '#cccccc', // Match body
 						'--tw-prose-invert-pre-bg': 'rgb(2 10 18 / 50%)',
 
 						// Custom spacing reductions

@@ -1,9 +1,8 @@
 # Tyler Fischer
 **Contact**: **Milwaukee, WI** | **414-614-3453** | **[tylerf66@gmail.com](mailto:tylerf66@gmail.com)**  
-Location:
-**Portfolio:** [tyfischer.com]  
-**LinkedIn:** [https://www.linkedin.com/in/tyler-fischer-4a5309141]  
-**GitHub:** [https://github.com/Code-Milker]  
+**Portfolio:** [tyfischer.com](https://tyfischer.com)  
+**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/tyler-fischer-4a5309141)  
+**GitHub:** [GitHub Profile](https://github.com/Code-Milker)  
 
 ## Summary
 Senior Engineer and Developer Advocate with a deep-rooted passion for decentralized technology, stemming from early involvement in DeFi and investing in foundational protocols like Chainlink since 2017. With a proven track record in both traditional FinTech and the Web3 space, I excel at bridging the gap between complex blockchain concepts and practical developer application. My journey, including navigating the personal loss of funds to a phishing attack, has forged a profound commitment to building secure, resilient, and user-centric decentralized systems. Eager to apply my hands-on experience in mobile development, AI, and smart contracts to a challenging senior or staff role.
@@ -27,12 +26,12 @@ Senior Engineer and Developer Advocate with a deep-rooted passion for decentrali
 - Built the DeSo Developer Hub to provide interactive examples of the protocol library.  
 - Worked with the research team to implement a derived key solution enabling Ethereum Metamask users to onboard to Deso seamlessly.  
 - Hosted live streams:  
-  [https://www.youtube.com/watch?v=CU3cWfuBRVs](https://www.youtube.com/watch?v=CU3cWfuBRVs)  
-  [https://www.youtube.com/watch?v=2CkyJiVE_1o&t=4890s](https://www.youtube.com/watch?v=2CkyJiVE_1o&t=4890s)  
+  [Video 1](https://www.youtube.com/watch?v=CU3cWfuBRVs)  
+  [Video 2](https://www.youtube.com/watch?v=2CkyJiVE_1o&t=4890s)  
 - Contributed to work on GitHub:  
-  [https://github.com/DeSoDog?tab=overview&from=2022-12-01&to=2022-12-31](https://github.com/DeSoDog?tab=overview&from=2022-12-01&to=2022-12-31)  
+  [Contributions Overview](https://github.com/DeSoDog?tab=overview&from=2022-12-01&to=2022-12-31)  
   - state of library from upon leaving (was laster moved out of this workspace into a standalone deso js library)  
-    https://github.com/deso-protocol/deso-workspace/tree/testing-not-master  
+    [DeSo Protocol Workspace](https://github.com/deso-protocol/deso-workspace/tree/testing-not-master)  
 
 ### Lead UI Software Engineer | Refinitiv (An LSEG Business)
 *Apr 2020 – May 2021*  
@@ -49,28 +48,28 @@ Senior Engineer and Developer Advocate with a deep-rooted passion for decentrali
 ### Blockchain Projects, Research and Trading
 - Created an ERC-721 NFT application on Ethereum allowing users to mint a pair of surf trunks and reveal a unique surfer at a later date, utilizing Solidity, Hardhat, Ethers.js, and React.  
 - Wrote an RWA contract for Chateau Capital inspired by the 7540 standard, which was successfully audited by ByteDance.  
-  [https://github.com/Code-Milker/tokenvault]  
+  [TokenVault Repo](https://github.com/Code-Milker/tokenvault)  
 - Assisted in styling and implementing the UI for the xDAI Omnibridge, enabling users to bridge ERC-20 tokens to the xDAI chain.  
-  [Link to Project]  
+  [xDAI Omnibridge Project](Link to Project)  
 - prototyped a crypto fund tracing applications after malicious x attack on linkedin  
 - deeply understood and particpated with advanced defi contracts during the defi boom of 2021 name off a few projects here  
 
 ### Mobile Projects
 - Ventured into mobile development to build a pub pass-style application for a friend's business. The MVP was mostly completed, but development stopped as the client's funds currently cannot support continued development.  
 - Skills used: [Outline skills used here]  
-- [Link to repo frontend]  
-- [Link to repo back end]  
-- [Link to iOS download]  
+- [Frontend Repo](Link to repo frontend)  
+- [Backend Repo](Link to repo back end)  
+- [iOS Download](Link to iOS download)  
 - description  
 
 ### AI Projects
 - thoughts and approach to ai include link here  
 - Wrote a Lua library to quickly generate prompts.  
-  [Include link here]  
-  [Link to Published Paper or Document]  
+  [Lua Library Repo](Include link here)  
+  [Published Paper](Link to Published Paper or Document)  
 
 ### Web Projects
-[Link to your letter/blog post]  
+[Letter/Blog Post](Link to your letter/blog post)  
 
 ## Education
 ### University of Wisconsin Oshkosh

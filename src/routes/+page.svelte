@@ -27,10 +27,7 @@
 <svelte:window bind:innerWidth />
 <div class={styles}>
 	<!-- <DeviceContainer title="Resume" titlePosition="text-center" color="text-white" bg="bg-secondary"> -->
-	<div>
-		<ViewMarkdown />
-		<!-- <SvelteMarkdown source={resumeMarkdown} /> -->
-	</div>
+	<!-- <SvelteMarkdown source={resumeMarkdown} /> -->
 
 	<!-- </DeviceContainer> -->
 	<DeviceContainer title="" color="text-white" bg="bg-secondary" firstContainer={true}>
@@ -41,31 +38,42 @@
 			<MeSection device="mobile" />
 		</div>
 	</DeviceContainer>
-	<!-- <DeviceContainer -->
-	<!-- 	title="Projects" -->
-	<!-- 	titlePosition="text-center" -->
-	<!-- 	color="text-white" -->
-	<!-- 	bg="bg-secondary" -->
-	<!-- > -->
-	<!-- 	<div slot="desktop"> -->
-	<!-- 		<ProjectSection device="desktop" /> -->
-	<!-- 	</div> -->
-	<!-- 	<div slot="mobile"> -->
-	<!-- 		<ProjectSection device="mobile" /> -->
-	<!-- 	</div> -->
-	<!-- </DeviceContainer> -->
-	<!-- <DeviceContainer -->
-	<!-- 	titlePosition="text-center" -->
-	<!-- 	title="Work history" -->
-	<!-- 	color="text-white" -->
-	<!-- 	bg="bg-secondary" -->
-	<!-- > -->
-	<!-- 	> -->
-	<!-- 	<div slot="desktop"> -->
-	<!-- 		<WorkHistorySection device="desktop" /> -->
-	<!-- 	</div> -->
-	<!-- 	<div slot="mobile"> -->
-	<!-- 		<WorkHistorySection device="mobile" /> -->
-	<!-- 	</div> -->
-	<!-- </DeviceContainer> -->
+
+	<DeviceContainer title="Resume" titlePosition="text-center" color="text-white" bg="bg-secondary">
+		<div slot="desktop">
+			<div class="bg-primary justify-center flex mx-6 p-5 rounded md:rounded-lg xs:rounded-none">
+				<ViewMarkdown filename="resume.md" />
+			</div>
+		</div>
+		<div slot="mobile">
+			<ViewMarkdown filename="resume.md" />
+		</div>
+	</DeviceContainer>
+	<DeviceContainer
+		title="Projects"
+		titlePosition="text-center"
+		color="text-white"
+		bg="bg-secondary"
+	>
+		<div slot="desktop">
+			<ProjectSection device="desktop" />
+		</div>
+		<div slot="mobile">
+			<ProjectSection device="mobile" />
+		</div>
+	</DeviceContainer>
+	<DeviceContainer
+		titlePosition="text-center"
+		title="Work history"
+		color="text-white"
+		bg="bg-secondary"
+	>
+		>
+		<div slot="desktop">
+			<WorkHistorySection device="desktop" />
+		</div>
+		<div slot="mobile">
+			<WorkHistorySection device="mobile" />
+		</div>
+	</DeviceContainer>
 </div>
