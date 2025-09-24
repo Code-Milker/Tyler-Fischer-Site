@@ -47,7 +47,4 @@ I also led critical process improvements, including design, software release, an
 		url={'TODO'}
 		description={job.description}
 	/>
-
-	{#if i === jobs.length - 1}<div class="min-h-[40px] bg-secondary" />
-	{/if}
 {/each}

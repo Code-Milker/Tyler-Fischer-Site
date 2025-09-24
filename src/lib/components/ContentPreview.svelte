@@ -14,7 +14,7 @@
 </script>
 
 {#if device === 'desktop'}
-	<div class="{bg} flex flex-row mx-6 md:rounded-lg xs:rounded-none {color}">
+	<div class="{bg} flex flex-row md:rounded-lg xs:rounded-none {color}">
 		<div class="md:p-6 flex justify-center">
 			<img
 				src={img}

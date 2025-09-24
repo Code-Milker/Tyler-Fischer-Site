@@ -4,7 +4,6 @@
 	import ProjectSection from './project-section/ProjectSection.svelte';
 	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
-	import Tabs from '$lib/components/Tabs.svelte'; // Adjust path as needed
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
@@ -39,12 +38,11 @@
 			<MeSection device="mobile" />
 		</div>
 	</DeviceContainer>
-	<Tabs />
-
+	<div class="mt-10" />
 	{#if $selectedTab === 'resume'}
 		<DeviceContainer title="" titlePosition="text-center" color="text-text" bg="bg-secondary">
 			<div slot="desktop">
-				<div class="bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none">
+				<div class=" bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none">
 					<ViewMarkdown filename="resume.md" />
 				</div>
 			</div>

@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { selectedTab } from '$lib/stores/selectedTab'; // Import the store
 	import IconBanner from '$lib/components/IconBanner.svelte';
+	import Tabs from '$lib/components/Tabs.svelte';
 
 	export let device: 'mobile' | 'desktop' = 'mobile';
 
@@ -34,7 +35,7 @@
 					<div class="flex items-center justify-center flex-1">
 						<img
 							src={me.me}
-							class="max-h-[200px] max-w-[200px] rounded-full"
+							class="max-h-[200px] max-w-[200px] rounded-full flex-2"
 							alt="failed to load me"
 						/>
 					</div>
@@ -43,7 +44,14 @@
 					>
 						<h1 class="text-4xl text-quaternary font-bold">Hey, I'm Ty</h1>
 						<p class="text-justify">{me.description}</p>
+					</div>
+				</div>
+				<div class="flex items-center mt-4">
+					<div class="flex-1 flex justify-center">
 						<IconBanner />
+					</div>
+					<div class="flex-1 flex justify-start">
+						<Tabs />
 					</div>
 				</div>
 			</div>
@@ -60,6 +68,10 @@
 				/>
 				<h1 class="text-2xl">Hey, I'm Ty</h1>
 				<p class="text-justify mt-2">{me.description}</p>
+				<div class="flex flex-col items-center mt-4 gap-4">
+					<IconBanner />
+					<Tabs />
+				</div>
 			</div>
 		</div>
 	</div>
