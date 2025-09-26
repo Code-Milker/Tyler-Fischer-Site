@@ -13,15 +13,16 @@ export function GET() {
 	const articles: (Omit<ContentPreviewType, 'url'> & { filename: string })[] = [
 		{
 			title: 'Resume', // Adjust title as needed
-			description: resume.split('\n').slice(0, 5).join('\n') + '...', // Truncated preview
+			description: 'Resume for Tyler Fischer', // Truncated preview
 			image: Rwa, // Reuse existing image or import a new one
-			filename: './resume.md' // Added for full fetch in MarkdownViewer
+			filename: '/resume.md' // Added for full fetch in MarkdownViewer
 		},
 		{
 			title: 'AI Article', // Adjust title as needed
-			description: ai.split('\n').slice(0, 5).join('\n') + '...', // Truncated preview
+			description:
+				'Thoughts and approach to using ai in a general purpose Manner', // Truncated preview
 			image: DesoLogo, // Reuse existing image or import a new one
-			filename: './ai.md' // Added for full fetch in MarkdownViewer
+			filename: '/ai.md' // Added for full fetch in MarkdownViewer
 		}
 		// Add more articles here if needed, importing additional .md files with ?raw
 	];
