@@ -3,12 +3,12 @@
 
 	export let device: 'mobile' | 'desktop' = 'mobile';
 
-	let fontSize = device === 'desktop' ? 'text-2xl' : 'text-xl';
-	let baseClass = `font-bold text-tertiary ${fontSize}`;
-	let selectedClass = `font-bold    ${fontSize}`;
+	let fontSize = device === 'desktop' ? 'text-3xl' : 'text-xl';
+	let baseClass = `font-bold text-tertiary underline ${fontSize}`;
+	let selectedClass = `font-bold underline text-quaternary ${fontSize}`;
 </script>
 
-<nav class="flex justify-start gap-8 mt-0 mb-0 text-text">
+<nav class="flex justify-around my-0 text-text w-full">
 	<button
 		on:click={() => ($selectedTab = 'resume')}
 		class={$selectedTab === 'resume' ? selectedClass : baseClass}
@@ -26,5 +26,12 @@
 		class={$selectedTab === 'work' ? selectedClass : baseClass}
 	>
 		Work
+	</button>
+
+	<button
+		on:click={() => ($selectedTab = 'articles')}
+		class={$selectedTab === 'articles' ? selectedClass : baseClass}
+	>
+		Articles
 	</button>
 </nav>
