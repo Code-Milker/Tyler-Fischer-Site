@@ -4,8 +4,8 @@
 	import ProjectSection from './project-section/ProjectSection.svelte';
 	import WorkHistorySection from './work-section/WorkHistorySection.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import ArticleSection from './article-section/ArticleSection.svelte';
 	import { onMount } from 'svelte';
-	import SvelteMarkdown from 'svelte-markdown';
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
 	import { selectedTab } from '$lib/stores/selectedTab'; // Import the store
 
@@ -55,10 +55,10 @@
 	{#if $selectedTab === 'projects'}
 		<DeviceContainer title="" titlePosition="text-center" color="text-text" bg="bg-secondary">
 			<div slot="desktop">
-				<ProjectSection device="desktop" />
+				<ProjectSection />
 			</div>
 			<div slot="mobile">
-				<ProjectSection device="mobile" />
+				<ProjectSection />
 			</div>
 		</DeviceContainer>
 	{/if}
@@ -71,6 +71,15 @@
 			<div slot="mobile">
 				<WorkHistorySection device="mobile" />
 			</div>
+		</DeviceContainer>
+	{/if}
+
+	{#if $selectedTab === 'articles'}
+		<DeviceContainer titlePosition="text-center" title="" color="text-text" bg="bg-secondary">
+			<div slot="desktop">
+				<ArticleSection />
+			</div>
+			<div slot="mobile">ArticleSection</div>
 		</DeviceContainer>
 	{/if}
 </div>
