@@ -61,7 +61,7 @@
 					<img
 						src={article.image}
 						alt={article.title}
-						class="w-[150px] h-[150px] rounded-lg object-cover"
+						class="w-[200px] h-[200px] rounded-lg object-cover"
 					/>
 				</div>
 				<div class="flex-1">

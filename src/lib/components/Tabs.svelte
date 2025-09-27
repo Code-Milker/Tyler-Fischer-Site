@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
 	export let device: 'mobile' | 'desktop' = 'mobile';
-	let fontSize = device === 'desktop' ? 'text-3xl' : 'text-xl';
-	let baseClass = `font-bold text-tertiary underline ${fontSize}`;
-	let selectedClass = `font-bold underline text-quaternary ${fontSize}`;
-
+	export let orientation: 'horizontal' | 'vertical' = 'horizontal';
+	let fontSize = device === 'desktop' ? 'text-2xl' : 'text-lg';
+	let baseClass = `text-tertiary underline ${fontSize}`;
+	let selectedClass = ` underline text-quaternary ${fontSize}`;
 	let currentTab = '';
-
 	onMount(() => {
 		currentTab = window.location.hash.slice(1) || 'resume';
 		window.addEventListener('hashchange', () => {
@@ -16,7 +14,14 @@
 	});
 </script>
 
-<nav class="flex justify-around my-0 text-text w-full">
+<div class="pt-6" />
+<nav
+	class={`flex text-center   pt-2 ${
+		orientation === 'vertical'
+			? 'flex-col space-y-8'
+			: 'justify-around space-x-4'
+	} my-0 text-text w-full`}
+>
 	<a href="#resume" class={currentTab === 'resume' ? selectedClass : baseClass}>
 		Resume
 	</a>
@@ -26,13 +31,13 @@
 	>
 		Projects
 	</a>
-	<a href="#work" class={currentTab === 'work' ? selectedClass : baseClass}>
-		Work
-	</a>
 	<a
 		href="#articles"
 		class={currentTab === 'articles' ? selectedClass : baseClass}
 	>
 		Articles
+	</a>
+	<a href="#work" class={currentTab === 'work' ? selectedClass : baseClass}>
+		Work
 	</a>
 </nav>

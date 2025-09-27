@@ -15,9 +15,7 @@
 <div class={`${styles} ${color} ${bg}  `}>
 	{#if title}
 		<div class="border-text">
-			<h2
-				class={`${titlePosition} text-2xl font-bold ${color}  bg-primary p-4`}
-			>
+			<h2 class={`${titlePosition} text-2xl font-bold ${color} bg-primary p-4`}>
 				{title}
 			</h2>
 		</div>

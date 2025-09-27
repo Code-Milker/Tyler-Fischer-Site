@@ -7,100 +7,111 @@
 	import ArticleSection from './article-section/ArticleSection.svelte';
 	import { onMount } from 'svelte';
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
-
+	import Tabs from '$lib/components/Tabs.svelte';
 	$: innerWidth = 0;
 	$: styles =
-		innerWidth >= 640 ? 'flex flex-col justify-center text-text ' : 'text-text';
+		innerWidth >= 640
+			? 'flex flex-row text-text min-h-screen'
+			: 'flex flex-col text-text';
 	$: device = innerWidth >= 640 ? 'desktop' : 'mobile';
-
 	onMount(async () => {
 		document.title = 'Ty Fischer';
 	});
 </script>
 
 <svelte:window bind:innerWidth />
-
 <div class={styles + ' mt-10 '}>
-	<DeviceContainer
-		title=""
-		color="text-text"
-		bg="bg-secondary"
-		firstContainer={true}
+	{#if device === 'desktop'}
+		<div class="w-48 bg-primary p-4 fixed left-0 top-0 h-full overflow-y-auto">
+			<Tabs {device} orientation="vertical" />
+		</div>
+		<div class="w-48 bg-primary fixed right-0 top-0 h-full" />
+	{/if}
+	<div
+		class={device === 'desktop' ? 'ml-48 mr-48 flex-1 flex justify-center' : ''}
 	>
-		<div slot="desktop">
-			<MeSection device="desktop" />
-		</div>
-		<div slot="mobile">
-			<MeSection device="mobile" />
-		</div>
-	</DeviceContainer>
-
-	<div id="resume">
-		<DeviceContainer
-			title="Resume"
-			titlePosition="text-center"
-			color="text-text"
-			bg="bg-secondary"
-		>
-			<div slot="desktop">
-				<div
-					class=" bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none"
-				>
-					<ViewMarkdown filename="resume.md" />
+		<div class={device === 'desktop' ? 'max-w-[64rem] w-full' : ''}>
+			{#if device !== 'desktop'}
+				<Tabs orientation="horizontal" />
+			{/if}
+			<DeviceContainer
+				title=""
+				color="text-text"
+				bg="bg-secondary"
+				firstContainer={true}
+			>
+				<div slot="desktop">
+					<MeSection device="desktop" />
 				</div>
+				<div slot="mobile">
+					<MeSection device="mobile" />
+				</div>
+			</DeviceContainer>
+			<div id="resume">
+				<DeviceContainer
+					title="Resume"
+					titlePosition="text-center"
+					color="text-text"
+					bg="bg-secondary"
+				>
+					<div slot="desktop">
+						<div
+							class=" bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none"
+						>
+							<ViewMarkdown filename="resume.md" />
+						</div>
+					</div>
+					<div slot="mobile">
+						<ViewMarkdown filename="resume.md" />
+					</div>
+				</DeviceContainer>
 			</div>
-			<div slot="mobile">
-				<ViewMarkdown filename="resume.md" />
+			<div id="projects">
+				<DeviceContainer
+					title="Projects"
+					titlePosition="text-center"
+					color="text-text"
+					bg="bg-secondary"
+				>
+					<div slot="desktop">
+						<ProjectSection />
+					</div>
+					<div slot="mobile">
+						<ProjectSection />
+					</div>
+				</DeviceContainer>
 			</div>
-		</DeviceContainer>
-	</div>
-
-	<div id="projects">
-		<DeviceContainer
-			title="Projects"
-			titlePosition="text-center"
-			color="text-text"
-			bg="bg-secondary"
-		>
-			<div slot="desktop">
-				<ProjectSection />
+			<div id="articles">
+				<DeviceContainer
+					title="Articles"
+					titlePosition="text-center"
+					color="text-text"
+					bg="bg-secondary"
+				>
+					<div slot="desktop">
+						<ArticleSection />
+					</div>
+					<div slot="mobile">
+						<ArticleSection />
+					</div>
+				</DeviceContainer>
 			</div>
-			<div slot="mobile">
-				<ProjectSection />
+			<div id="work">
+				<DeviceContainer
+					title="Work History"
+					titlePosition="text-center"
+					color="text-text"
+					bg="bg-secondary"
+				>
+					<div slot="desktop">
+						<WorkHistorySection device="desktop" />
+					</div>
+					<div slot="mobile">
+						<WorkHistorySection device="mobile" />
+					</div>
+				</DeviceContainer>
 			</div>
-		</DeviceContainer>
-	</div>
-
-	<div id="work">
-		<DeviceContainer
-			title="Work History"
-			titlePosition="text-center"
-			color="text-text"
-			bg="bg-secondary"
-		>
-			<div slot="desktop">
-				<WorkHistorySection device="desktop" />
-			</div>
-			<div slot="mobile">
-				<WorkHistorySection device="mobile" />
-			</div>
-		</DeviceContainer>
-	</div>
-
-	<div id="articles">
-		<DeviceContainer
-			title="Articles"
-			titlePosition="text-center"
-			color="text-text"
-			bg="bg-secondary"
-		>
-			<div slot="desktop">
-				<ArticleSection />
-			</div>
-			<div slot="mobile">
-				<ArticleSection />
-			</div>
-		</DeviceContainer>
+		</div>
 	</div>
 </div>
 

@@ -38,16 +38,16 @@
 						alt="failed to load me"
 					/>
 				</div>
-				<div class="col-span-2 flex flex-col justify-center gap-2 text-text text-justify">
+				<div
+					class="col-span-2 flex flex-col justify-center gap-2 text-text text-justify"
+				>
 					<h1 class="text-4xl text-quaternary font-bold">Hey, I'm Ty</h1>
 					<p class="text-justify">{me.description}</p>
 				</div>
 				<div class="col-span-1 flex justify-center items-center mt-4">
 					<IconBanner />
 				</div>
-				<div class="col-span-2 flex justify-start items-center mt-4">
-					<Tabs />
-				</div>
+				<div class="col-span-2 flex justify-start items-center mt-4" />
 			</div>
 		</div>
 	</div>
@@ -64,7 +64,6 @@
 				<p class="text-justify mt-2">{me.description}</p>
 				<div class="flex flex-col items-center mt-4 gap-4">
 					<IconBanner />
-					<Tabs />
 				</div>
 			</div>
 		</div>
