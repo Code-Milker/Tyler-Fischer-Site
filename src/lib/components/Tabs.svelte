@@ -1,37 +1,38 @@
 <script lang="ts">
-	import { selectedTab } from '$lib/stores/selectedTab';
+	import { onMount } from 'svelte';
 
 	export let device: 'mobile' | 'desktop' = 'mobile';
-
 	let fontSize = device === 'desktop' ? 'text-3xl' : 'text-xl';
 	let baseClass = `font-bold text-tertiary underline ${fontSize}`;
 	let selectedClass = `font-bold underline text-quaternary ${fontSize}`;
+
+	let currentTab = '';
+
+	onMount(() => {
+		currentTab = window.location.hash.slice(1) || 'resume';
+		window.addEventListener('hashchange', () => {
+			currentTab = window.location.hash.slice(1);
+		});
+	});
 </script>
 
 <nav class="flex justify-around my-0 text-text w-full">
-	<button
-		on:click={() => ($selectedTab = 'resume')}
-		class={$selectedTab === 'resume' ? selectedClass : baseClass}
-	>
+	<a href="#resume" class={currentTab === 'resume' ? selectedClass : baseClass}>
 		Resume
-	</button>
-	<button
-		on:click={() => ($selectedTab = 'projects')}
-		class={$selectedTab === 'projects' ? selectedClass : baseClass}
+	</a>
+	<a
+		href="#projects"
+		class={currentTab === 'projects' ? selectedClass : baseClass}
 	>
 		Projects
-	</button>
-	<button
-		on:click={() => ($selectedTab = 'work')}
-		class={$selectedTab === 'work' ? selectedClass : baseClass}
-	>
+	</a>
+	<a href="#work" class={currentTab === 'work' ? selectedClass : baseClass}>
 		Work
-	</button>
-
-	<button
-		on:click={() => ($selectedTab = 'articles')}
-		class={$selectedTab === 'articles' ? selectedClass : baseClass}
+	</a>
+	<a
+		href="#articles"
+		class={currentTab === 'articles' ? selectedClass : baseClass}
 	>
 		Articles
-	</button>
+	</a>
 </nav>

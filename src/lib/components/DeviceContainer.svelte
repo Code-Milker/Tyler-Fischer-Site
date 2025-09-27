@@ -6,16 +6,26 @@
 	export let firstContainer: boolean = false;
 	$: innerWidth = 0;
 	$: styles =
-		innerWidth >= 640 ? 'min-w-[64rem] max-w-[64rem] {color} {bg}' : 'w-full {bg} {color}';
+		innerWidth >= 640
+			? 'min-w-[64rem] max-w-[64rem] {color} {bg}'
+			: 'w-full {bg} {color}';
 </script>
 
 <svelte:window bind:innerWidth />
-
-<div class={`${styles} ${color} ${bg} rounded-lg p-8`}>
-	<div class="hidden md:block">
+<div class={`${styles} ${color} ${bg}  `}>
+	{#if title}
+		<div class="border-text">
+			<h2
+				class={`${titlePosition} text-2xl font-bold ${color}  bg-primary p-4`}
+			>
+				{title}
+			</h2>
+		</div>
+	{/if}
+	<div class="hidden md:block p-8">
 		<slot name="desktop" />
 	</div>
-	<div class="block md:hidden">
+	<div class="block md:hidden p-8">
 		<slot name="mobile" />
 	</div>
 </div>

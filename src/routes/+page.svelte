@@ -7,32 +7,20 @@
 	import ArticleSection from './article-section/ArticleSection.svelte';
 	import { onMount } from 'svelte';
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
-	import { selectedTab } from '$lib/stores/selectedTab'; // Import the store
 
 	$: innerWidth = 0;
 	$: styles =
-		innerWidth >= 640
-			? 'md:grid xs:block justify-items-center text-text'
-			: 'text-text';
+		innerWidth >= 640 ? 'flex flex-col justify-center text-text ' : 'text-text';
 	$: device = innerWidth >= 640 ? 'desktop' : 'mobile';
-	let resumeMarkdown = '';
+
 	onMount(async () => {
 		document.title = 'Ty Fischer';
-		try {
-			const response = await fetch('/resume.md'); // Adjust path to your MD file in static/
-			if (response.ok) {
-				console.log(resumeMarkdown);
-				resumeMarkdown = await response.text();
-			}
-		} catch (error) {
-			console.error('Failed to load resume MD:', error);
-		}
 	});
 </script>
 
 <svelte:window bind:innerWidth />
 
-<div class={styles + ' mt-10'}>
+<div class={styles + ' mt-10 '}>
 	<DeviceContainer
 		title=""
 		color="text-text"
@@ -46,10 +34,10 @@
 			<MeSection device="mobile" />
 		</div>
 	</DeviceContainer>
-	<div class="mt-10" />
-	{#if $selectedTab === 'resume'}
+
+	<div id="resume">
 		<DeviceContainer
-			title=""
+			title="Resume"
 			titlePosition="text-center"
 			color="text-text"
 			bg="bg-secondary"
@@ -65,11 +53,11 @@
 				<ViewMarkdown filename="resume.md" />
 			</div>
 		</DeviceContainer>
-	{/if}
+	</div>
 
-	{#if $selectedTab === 'projects'}
+	<div id="projects">
 		<DeviceContainer
-			title=""
+			title="Projects"
 			titlePosition="text-center"
 			color="text-text"
 			bg="bg-secondary"
@@ -81,12 +69,12 @@
 				<ProjectSection />
 			</div>
 		</DeviceContainer>
-	{/if}
+	</div>
 
-	{#if $selectedTab === 'work'}
+	<div id="work">
 		<DeviceContainer
+			title="Work History"
 			titlePosition="text-center"
-			title=""
 			color="text-text"
 			bg="bg-secondary"
 		>
@@ -97,19 +85,28 @@
 				<WorkHistorySection device="mobile" />
 			</div>
 		</DeviceContainer>
-	{/if}
+	</div>
 
-	{#if $selectedTab === 'articles'}
+	<div id="articles">
 		<DeviceContainer
+			title="Articles"
 			titlePosition="text-center"
-			title=""
 			color="text-text"
 			bg="bg-secondary"
 		>
 			<div slot="desktop">
 				<ArticleSection />
 			</div>
-			<div slot="mobile">ArticleSection</div>
+			<div slot="mobile">
+				<ArticleSection />
+			</div>
 		</DeviceContainer>
-	{/if}
+	</div>
 </div>
+
+<style>
+	* {
+		scroll-behavior: smooth;
+		scroll-padding-top: 80px; /* Prevents overlap from fixed elements */
+	}
+</style>
