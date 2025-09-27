@@ -6,11 +6,10 @@
 	<main>
 		<slot />
 	</main>
-
 	<footer>
-		<div class="flex justify-around w-full bg-primary text-white min-h-[40px]">
-			<!-- <p class="my-auto">Tyler Fischer</p> -->
-		</div>
+		<div
+			class="flex justify-around w-full bg-primary text-white min-h-[40px]"
+		/>
 	</footer>
 </div>
 
@@ -21,7 +20,9 @@
 		flex-direction: column;
 		min-height: 100vh;
 	}
-
+	main {
+		flex: 1;
+	}
 	footer {
 		display: flex;
 		flex-direction: column;

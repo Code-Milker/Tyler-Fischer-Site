@@ -10,7 +10,10 @@
 	import { selectedTab } from '$lib/stores/selectedTab'; // Import the store
 
 	$: innerWidth = 0;
-	$: styles = innerWidth >= 640 ? 'md:grid xs:block justify-items-center text-text' : 'text-text';
+	$: styles =
+		innerWidth >= 640
+			? 'md:grid xs:block justify-items-center text-text'
+			: 'text-text';
 	$: device = innerWidth >= 640 ? 'desktop' : 'mobile';
 	let resumeMarkdown = '';
 	onMount(async () => {
@@ -30,7 +33,12 @@
 <svelte:window bind:innerWidth />
 
 <div class={styles + ' mt-10'}>
-	<DeviceContainer title="" color="text-text" bg="bg-secondary" firstContainer={true}>
+	<DeviceContainer
+		title=""
+		color="text-text"
+		bg="bg-secondary"
+		firstContainer={true}
+	>
 		<div slot="desktop">
 			<MeSection device="desktop" />
 		</div>
@@ -40,9 +48,16 @@
 	</DeviceContainer>
 	<div class="mt-10" />
 	{#if $selectedTab === 'resume'}
-		<DeviceContainer title="" titlePosition="text-center" color="text-text" bg="bg-secondary">
+		<DeviceContainer
+			title=""
+			titlePosition="text-center"
+			color="text-text"
+			bg="bg-secondary"
+		>
 			<div slot="desktop">
-				<div class=" bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none">
+				<div
+					class=" bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none"
+				>
 					<ViewMarkdown filename="resume.md" />
 				</div>
 			</div>
@@ -53,7 +68,12 @@
 	{/if}
 
 	{#if $selectedTab === 'projects'}
-		<DeviceContainer title="" titlePosition="text-center" color="text-text" bg="bg-secondary">
+		<DeviceContainer
+			title=""
+			titlePosition="text-center"
+			color="text-text"
+			bg="bg-secondary"
+		>
 			<div slot="desktop">
 				<ProjectSection />
 			</div>
@@ -64,7 +84,12 @@
 	{/if}
 
 	{#if $selectedTab === 'work'}
-		<DeviceContainer titlePosition="text-center" title="" color="text-text" bg="bg-secondary">
+		<DeviceContainer
+			titlePosition="text-center"
+			title=""
+			color="text-text"
+			bg="bg-secondary"
+		>
 			<div slot="desktop">
 				<WorkHistorySection device="desktop" />
 			</div>
@@ -75,7 +100,12 @@
 	{/if}
 
 	{#if $selectedTab === 'articles'}
-		<DeviceContainer titlePosition="text-center" title="" color="text-text" bg="bg-secondary">
+		<DeviceContainer
+			titlePosition="text-center"
+			title=""
+			color="text-text"
+			bg="bg-secondary"
+		>
 			<div slot="desktop">
 				<ArticleSection />
 			</div>
