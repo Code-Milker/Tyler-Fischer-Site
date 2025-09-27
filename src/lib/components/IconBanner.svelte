@@ -6,11 +6,10 @@
 	import SvelteMarkdown from 'svelte-markdown';
 	import jsPDF from 'jspdf';
 	import html2canvas from 'html2canvas';
-
 	const resumeFilename = 'resume.md'; // Assuming this is the file name; adjust if needed
 	let markdownContent = '';
 	let contentElement: HTMLElement | null = null; // Explicitly typed to fix implicit 'any'
-
+	export let vertical: boolean = false;
 	onMount(async () => {
 		try {
 			const response = await fetch(`/${resumeFilename}`);
@@ -21,21 +20,18 @@
 			console.error(`Failed to load resume Markdown:`, error);
 		}
 	});
-
 	async function downloadAsPDF(event: MouseEvent) {
 		event.preventDefault(); // Prevent navigation if using <a>
 		if (!contentElement || !markdownContent) {
 			alert('Resume content not loaded yet. Please try again.');
 			return;
 		}
-
 		// Capture the hidden rendered HTML as a canvas
 		const canvas = await html2canvas(contentElement, {
 			scale: 2, // Higher scale for better quality
 			useCORS: true, // If there are external images
 			logging: false
 		});
-
 		// Create PDF
 		const pdf = new jsPDF('p', 'mm', 'a4');
 		const imgData = canvas.toDataURL('image/png');
@@ -44,10 +40,8 @@
 		const imgHeight = (canvas.height * imgWidth) / canvas.width;
 		let heightLeft = imgHeight;
 		let position = 0;
-
 		pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 		heightLeft -= pageHeight;
-
 		// Add extra pages if content is long
 		while (heightLeft >= 0) {
 			position = heightLeft - imgHeight;
@@ -55,7 +49,6 @@
 			pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 			heightLeft -= pageHeight;
 		}
-
 		// Download the PDF
 		pdf.save('resume.pdf');
 	}
@@ -69,8 +62,11 @@
 >
 	<SvelteMarkdown source={markdownContent} />
 </div>
-
-<div class="flex justify-evenly w-full">
+<div
+	class={`flex ${
+		vertical ? 'flex-col space-y-10 items-center' : 'justify-evenly'
+	} w-full`}
+>
 	{#each [{ href: 'https://github.com/Milk-Maven', src: github, alt: 'github', tooltip: 'GitHub Profile' }, { href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin', tooltip: 'LinkedIn Profile' }, { href: '#', src: downloadResume, alt: 'download', tooltip: 'Download Resume', onClick: downloadAsPDF }] as link}
 		{#if link.onClick}
 			<a
