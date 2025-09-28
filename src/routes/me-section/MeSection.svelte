@@ -20,10 +20,10 @@
 {#if device === 'desktop'}
 	<div
 		style="desktop"
-		class="rounded-lg bg-primary flex justify-start flex-col invisible md:visible"
+		class="rounded-t-lg bg-primary flex justify-start flex-col invisible md:visible"
 	>
 		<div class="bg-secondary">
-			<div class="bg-primary rounded-lg p-3 grid grid-cols-3">
+			<div class="bg-primary rounded-t-lg p-3 grid grid-cols-3">
 				<div class="col-span-1 flex items-center justify-center">
 					<img
 						src={me.me}

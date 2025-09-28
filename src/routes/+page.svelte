@@ -24,17 +24,15 @@
 <div class={styles}>
 	{#if device === 'desktop'}
 		<div
-			class="w-36 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
+			class="w-36 bg-primary p-4 left-0 top-0 h-full flex flex-col overflow-y-auto"
 		>
 			<Tabs {device} orientation="vertical" />
 		</div>
 	{/if}
-	<div
-		class={device === 'desktop'
-			? 'ml-32 md:ml-40 lg:ml-48 flex-1 flex justify-center max-w-[64rem] mt-8'
-			: ''}
-	>
-		<div class={device === 'desktop' ? ' w-full' : ''}>
+	<div class={device === 'desktop' ? ' flex-1 flex justify-center ' : ''}>
+		<div
+			class={device === 'desktop' ? ' w-full max-w-[calc(64rem - 9rem)]' : ''}
+		>
 			{#if device !== 'desktop'}
 				<Tabs orientation="horizontal" />
 			{/if}
@@ -44,15 +42,15 @@
 				bg="bg-secondary"
 				firstContainer={true}
 			>
-				<div slot="desktop" class="flex flex-col">
+				<div slot="desktop" class="flex flex-col pt-8">
 					<MeSection device="desktop" />
-					<div class="bg-black p-4 rounded-lg mt-4">
+					<div class="bg-black p-4 rounded-b-lg">
 						<IconBanner vertical={false} />
 					</div>
 				</div>
-				<div slot="mobile" class="flex flex-col">
+				<div slot="mobile" class="flex flex-col pt-8">
 					<MeSection device="mobile" />
-					<div class="bg-black p-4 rounded-lg mt-4">
+					<div class="bg-black p-4">
 						<IconBanner vertical={false} />
 					</div>
 				</div>

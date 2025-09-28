@@ -10,18 +10,20 @@
 </script>
 
 <svelte:window bind:innerWidth />
-<div class={`${styles} ${color} ${bg} `}>
+<div class={`${styles} ${color} ${bg}  `}>
 	{#if title}
 		<div class="border-text">
-			<h2 class={`${titlePosition} text-2xl font-bold ${color} bg-primary p-4`}>
+			<h2
+				class={`${titlePosition} text-2xl font-bold ${color} bg-secondary p-2`}
+			>
 				{title}
 			</h2>
 		</div>
 	{/if}
-	<div class="hidden md:block p-8">
+	<div class="hidden md:block px-8">
 		<slot name="desktop" />
 	</div>
-	<div class="block md:hidden p-8">
+	<div class="block md:hidden px-4">
 		<slot name="mobile" />
 	</div>
 </div>
