@@ -24,18 +24,20 @@
 <div class={styles + ' mt-10 '}>
 	{#if device === 'desktop'}
 		<div
-			class="w-48 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
+			class="w-32 md:w-40 lg:w-48 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
 		>
 			<Tabs {device} orientation="vertical" />
 		</div>
 		<div
-			class="w-48 bg-primary p-16 fixed right-0 top-0 h-full flex flex-col overflow-y-auto"
+			class="w-32 md:w-40 lg:w-48 bg-primary p-16 fixed right-0 top-0 h-full flex flex-col overflow-y-auto"
 		>
 			<IconBanner vertical={true} />
 		</div>
 	{/if}
 	<div
-		class={device === 'desktop' ? 'ml-48 mr-48 flex-1 flex justify-center' : ''}
+		class={device === 'desktop'
+			? 'ml-32 md:ml-40 lg:ml-48 mr-32 md:mr-40 lg:mr-48 flex-1 flex justify-center'
+			: ''}
 	>
 		<div class={device === 'desktop' ? 'max-w-[64rem] w-full' : ''}>
 			{#if device !== 'desktop'}

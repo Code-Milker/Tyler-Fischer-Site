@@ -72,7 +72,7 @@
 			<a
 				href={link.href}
 				on:click={link.onClick}
-				class="relative rounded-lg p-1 bg-tertiary max-w-[50px] max-h-[50px] group"
+				class="relative rounded-lg p-1 bg-tertiary opacity-70 max-w-[50px] max-h-[50px] group"
 			>
 				<img class="max-w-[40px] max-h-[40px]" src={link.src} alt={link.alt} />
 				<span
@@ -84,7 +84,8 @@
 		{:else}
 			<a
 				href={link.href}
-				class="relative rounded-lg p-1 bg-tertiary max-w-[50px] max-h-[50px] group"
+				class="relative rounded-lg p-1 bg-tertiary opacity-70
+        max-w-[50px] max-h-[50px] group"
 			>
 				<img class="max-w-[40px] max-h-[40px]" src={link.src} alt={link.alt} />
 				<span

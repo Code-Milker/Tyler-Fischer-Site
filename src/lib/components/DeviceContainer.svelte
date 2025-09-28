@@ -7,12 +7,12 @@
 	$: innerWidth = 0;
 	$: styles =
 		innerWidth >= 640
-			? 'min-w-[64rem] max-w-[64rem] {color} {bg}'
+			? 'max-w-[64rem] w-full {color} {bg}'
 			: 'w-full {bg} {color}';
 </script>
 
 <svelte:window bind:innerWidth />
-<div class={`${styles} ${color} ${bg}  `}>
+<div class={`${styles} ${color} ${bg} `}>
 	{#if title}
 		<div class="border-text">
 			<h2 class={`${titlePosition} text-2xl font-bold ${color} bg-primary p-4`}>
