@@ -75,4 +75,3 @@ Senior Engineer and Developer Advocate with a deep-rooted passion for decentrali
 ### University of Wisconsin Oshkosh
 - Bachelor of Science, Computer Science (2016-2018)  
 - Bachelor of Science, Criminal Justice (2012-2018)
-

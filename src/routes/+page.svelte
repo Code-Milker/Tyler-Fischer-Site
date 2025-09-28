@@ -68,12 +68,17 @@
 				>
 					<div slot="desktop">
 						<div
-							class=" bg-primary justify-center flex rounded md:rounded-lg xs:rounded-none"
+							class="bg-primary justify-center flex rounded-lg shadow-lg md:w-[210mm] md:mx-auto md:p-10 p-4"
 						>
+							<!-- Added responsive width (A4-like on md+), mx-auto for centering, p-10 (about 2.5cm) on md+, p-4 on mobile -->
 							<ViewMarkdown filename="resume.md" />
 						</div>
 					</div>
-					<div slot="mobile">
+					<div
+						class="bg-primary justify-center flex rounded-lg shadow-lg md:w-[210mm] md:mx-auto md:p-10 p-4"
+						slot="mobile"
+					>
+						<!-- Same as above; slots are already device-switched, but classes ensure responsiveness -->
 						<ViewMarkdown filename="resume.md" />
 					</div>
 				</DeviceContainer>
