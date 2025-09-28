@@ -44,8 +44,8 @@
 	</div>
 {:else}
 	<div style="mobile">
-		<div class="bg-primary p-6">
-			<div class="bg-primary rounded-lg flex flex-col pb-0">
+		<div class="bg-primary p-6 rounded-t-lg">
+			<div class="bg-primary flex flex-col pb-0">
 				<img
 					src={me.me}
 					class="max-w-[200px] max-h-[200px] rounded-full m-auto bg-secondary"

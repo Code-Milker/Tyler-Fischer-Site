@@ -24,12 +24,12 @@
 <div class={styles}>
 	{#if device === 'desktop'}
 		<div
-			class="w-36 bg-primary p-4 left-0 top-0 h-full flex flex-col overflow-y-auto"
+			class="w-36 bg-primary p-4 fixed left-0 top-0 h-screen flex flex-col overflow-y-auto"
 		>
 			<Tabs {device} orientation="vertical" />
 		</div>
 	{/if}
-	<div class={device === 'desktop' ? ' flex-1 flex justify-center ' : ''}>
+	<div class={device === 'desktop' ? ' flex-1 flex justify-center ml-36' : ''}>
 		<div
 			class={device === 'desktop' ? ' w-full max-w-[calc(64rem - 9rem)]' : ''}
 		>
@@ -50,7 +50,7 @@
 				</div>
 				<div slot="mobile" class="flex flex-col pt-8">
 					<MeSection device="mobile" />
-					<div class="bg-black p-4">
+					<div class="bg-black p-4 rounded-b-lg">
 						<IconBanner vertical={false} />
 					</div>
 				</div>
