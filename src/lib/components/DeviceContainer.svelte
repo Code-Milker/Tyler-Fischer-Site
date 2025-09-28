@@ -6,7 +6,7 @@
 	export let firstContainer: boolean = false;
 	$: innerWidth = 0;
 	$: styles =
-		innerWidth >= 640
+		innerWidth >= 1024
 			? 'max-w-[64rem] w-full {color} {bg}'
 			: 'w-full {bg} {color}';
 </script>

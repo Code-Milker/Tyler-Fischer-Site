@@ -7,7 +7,9 @@
 	export let firstContainer: boolean = false;
 	$: innerWidth = 0;
 	$: styles =
-		innerWidth >= 640 ? 'min-w-[64rem] max-w-[64rem] {color} {bg}' : 'w-full {bg} {color}';
+		innerWidth >= 1024
+			? 'min-w-[64rem] max-w-[64rem] {color} {bg}'
+			: 'w-full {bg} {color}';
 </script>
 
 <svelte:window bind:innerWidth />

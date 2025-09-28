@@ -11,40 +11,32 @@
 	import IconBanner from '$lib/components/IconBanner.svelte';
 	$: innerWidth = 0;
 	$: styles =
-		innerWidth >= 640
+		innerWidth >= 1024
 			? 'flex flex-row text-text min-h-screen'
 			: 'flex flex-col text-text';
-	$: device = innerWidth >= 640 ? 'desktop' : 'mobile';
+	$: device = innerWidth >= 1024 ? 'desktop' : 'mobile';
 	onMount(async () => {
 		document.title = 'Ty Fischer';
 	});
 </script>
 
 <svelte:window bind:innerWidth />
-<div class={styles + ' mt-10 '}>
+<div class={styles}>
 	{#if device === 'desktop'}
 		<div
-			class="w-32 md:w-40 lg:w-48 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
+			class=" w-36 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
 		>
 			<Tabs {device} orientation="vertical" />
-		</div>
-		<div
-			class="w-32 md:w-40 lg:w-48 bg-primary p-16 fixed right-0 top-0 h-full flex flex-col overflow-y-auto"
-		>
-			<IconBanner vertical={true} />
 		</div>
 	{/if}
 	<div
 		class={device === 'desktop'
-			? 'ml-32 md:ml-40 lg:ml-48 mr-32 md:mr-40 lg:mr-48 flex-1 flex justify-center'
+			? 'ml-32 md:ml-40 lg:ml-48 flex-1 flex justify-center'
 			: ''}
 	>
 		<div class={device === 'desktop' ? 'max-w-[64rem] w-full' : ''}>
 			{#if device !== 'desktop'}
 				<Tabs orientation="horizontal" />
-				<div class="flex justify-center">
-					<IconBanner vertical={true} />
-				</div>
 			{/if}
 			<DeviceContainer
 				title=""
@@ -52,11 +44,17 @@
 				bg="bg-secondary"
 				firstContainer={true}
 			>
-				<div slot="desktop">
+				<div slot="desktop" class="flex flex-col">
 					<MeSection device="desktop" />
+					<div class="bg-black p-4 rounded-lg mt-4">
+						<IconBanner vertical={false} />
+					</div>
 				</div>
-				<div slot="mobile">
+				<div slot="mobile" class="flex flex-col">
 					<MeSection device="mobile" />
+					<div class="bg-black p-4 rounded-lg mt-4">
+						<IconBanner vertical={false} />
+					</div>
 				</div>
 			</DeviceContainer>
 			<div id="resume">

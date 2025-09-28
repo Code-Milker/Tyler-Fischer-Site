@@ -67,7 +67,7 @@
 		vertical ? 'flex-col space-y-10 items-center' : 'justify-evenly'
 	} w-full`}
 >
-	{#each [{ href: 'https://github.com/Milk-Maven', src: github, alt: 'github', tooltip: 'GitHub Profile' }, { href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin', tooltip: 'LinkedIn Profile' }, { href: '#', src: downloadResume, alt: 'download', tooltip: 'Download Resume', onClick: downloadAsPDF }] as link}
+	{#each [{ href: 'https://github.com/Code-Milker', src: github, alt: 'github', tooltip: 'GitHub Profile' }, { href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin', tooltip: 'LinkedIn Profile' }, { href: '#', src: downloadResume, alt: 'download', tooltip: 'Download Resume', onClick: downloadAsPDF }] as link}
 		{#if link.onClick}
 			<a
 				href={link.href}

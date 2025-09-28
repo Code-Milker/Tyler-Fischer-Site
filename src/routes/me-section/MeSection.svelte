@@ -51,7 +51,7 @@
 					class="max-w-[200px] max-h-[200px] rounded-full m-auto bg-secondary"
 					alt="failed to load me"
 				/>
-				<h1 class="text-2xl">Hey, I'm Ty</h1>
+				<h1 class="text-2xl text-quaternary">Hey, I'm Ty</h1>
 				<p class="text-justify mt-2">{me.description}</p>
 				<div class="flex flex-col items-center mt-4 gap-4" />
 			</div>

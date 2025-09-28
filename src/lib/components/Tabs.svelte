@@ -14,13 +14,12 @@
 	});
 </script>
 
-<div class="pt-6" />
 <nav
-	class={`flex text-center   pt-2 ${
+	class={`flex text-start pt-1    ${
 		orientation === 'vertical'
-			? 'flex-col space-y-8'
-			: 'justify-around space-x-4'
-	} my-0 text-text w-full`}
+			? 'flex-col space-y-8 '
+			: 'justify-around space-x-4  '
+	} my-4 text-text w-full`}
 >
 	<a href="#resume" class={currentTab === 'resume' ? selectedClass : baseClass}>
 		Resume
