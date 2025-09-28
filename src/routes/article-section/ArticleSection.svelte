@@ -2,20 +2,16 @@
 	import type { ContentPreviewType } from '$lib/types.ts';
 	import { onMount, tick } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
-
 	type ArticlePreviewType = Omit<ContentPreviewType, 'url'> & {
 		filename: string;
 		fullContent?: string;
 	};
-
 	let articles: ArticlePreviewType[] = [];
 	let expanded: boolean[] = [];
 	let previewRefs: (HTMLDivElement | null)[] = [];
-
 	onMount(() => {
 		getArticles();
 	});
-
 	async function getArticles() {
 		const response = await fetch('article-section');
 		articles = await response.json();
@@ -26,7 +22,6 @@
 		expanded = new Array(articles.length).fill(false);
 		previewRefs = new Array(articles.length).fill(null);
 	}
-
 	async function toggleExpand(i: number) {
 		const wasExpanded = expanded[i];
 		expanded[i] = !expanded[i];
@@ -64,14 +59,14 @@
 						class="w-[200px] h-[200px] rounded-lg object-cover"
 					/>
 				</div>
-				<div class="flex-1">
+				<div class="flex-1 flex flex-col min-h-[200px]">
 					<h2 class="text-2xl text-quaternary font-bold mb-2">
 						{article.title}
 					</h2>
 					<div class="text-text mb-4 line-clamp-[6]">
 						<SvelteMarkdown source={article.description} />
 					</div>
-					<div class="flex justify-end">
+					<div class="mt-auto flex justify-start">
 						<button
 							class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
 							on:click={() => toggleExpand(i)}
@@ -86,7 +81,7 @@
 					<div class="prose prose-invert !min-w-0 max-w-full">
 						<SvelteMarkdown source={article.fullContent} />
 					</div>
-					<div class="mt-6 flex justify-end">
+					<div class="mt-6 flex justify-center">
 						<button
 							class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
 							on:click={() => toggleExpand(i)}

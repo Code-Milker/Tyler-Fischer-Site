@@ -6,10 +6,7 @@
 	export let bg: string;
 	export let firstContainer: boolean = false;
 	$: innerWidth = 0;
-	$: styles =
-		innerWidth >= 1024
-			? 'min-w-[64rem] max-w-[64rem] {color} {bg}'
-			: 'w-full {bg} {color}';
+	$: styles = innerWidth >= 1024 ? '  {color} {bg}' : 'w-full {bg} {color}';
 </script>
 
 <svelte:window bind:innerWidth />

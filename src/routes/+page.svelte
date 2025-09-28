@@ -24,17 +24,17 @@
 <div class={styles}>
 	{#if device === 'desktop'}
 		<div
-			class=" w-36 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
+			class="w-36 bg-primary p-4 fixed left-0 top-0 h-full flex flex-col overflow-y-auto"
 		>
 			<Tabs {device} orientation="vertical" />
 		</div>
 	{/if}
 	<div
 		class={device === 'desktop'
-			? 'ml-32 md:ml-40 lg:ml-48 flex-1 flex justify-center'
+			? 'ml-32 md:ml-40 lg:ml-48 flex-1 flex justify-center max-w-[64rem] mt-8'
 			: ''}
 	>
-		<div class={device === 'desktop' ? 'max-w-[64rem] w-full' : ''}>
+		<div class={device === 'desktop' ? ' w-full' : ''}>
 			{#if device !== 'desktop'}
 				<Tabs orientation="horizontal" />
 			{/if}
@@ -66,7 +66,7 @@
 				>
 					<div slot="desktop">
 						<div
-							class="bg-primary justify-center flex rounded-lg shadow-lg md:w-[210mm] md:mx-auto md:p-10 p-4"
+							class="bg-primary justify-center flex rounded-lg md:mx-auto md:p-10 p-4"
 						>
 							<!-- Added responsive width (A4-like on md+), mx-auto for centering, p-10 (about 2.5cm) on md+, p-4 on mobile -->
 							<ViewMarkdown filename="resume.md" />

@@ -19,7 +19,7 @@
 	});
 </script>
 
-<div class="prose prose-invert pb-5 px-5">
+<div class="prose prose-invert">
 	<!-- Added prose-invert to apply dark theme styles -->
 	<SvelteMarkdown source={markdownContent} />
 </div>

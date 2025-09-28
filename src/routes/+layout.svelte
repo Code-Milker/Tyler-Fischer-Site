@@ -2,7 +2,7 @@
 	import './styles.css';
 </script>
 
-<div class="app bg-black">
+<div class="app bg-primary">
 	<main>
 		<slot />
 	</main>

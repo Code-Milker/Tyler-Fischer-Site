@@ -15,9 +15,9 @@ export default {
 				DEFAULT: {
 					css: {
 						// Base typography overrides for tighter spacing
-						maxWidth: '100ch', // Keeps content readable but constrained
-						fontSize: '0.95rem', // Slightly smaller base font for compactness
-						lineHeight: '1.5', // Reduced from default ~1.75 for less vertical space
+						maxWidth: 'full', // Keeps content readable but constrained
+						fontSize: '1rem', // Slightly smaller base font for compactness
+						lineHeight: '1.75', // Reduced from default ~1.75 for less vertical space
 						'--tw-prose-body': '#020a12', // primary dark
 						'--tw-prose-headings': '#183D3D', // secondary
 						'--tw-prose-lead': '#6A9A85', // updated tertiary
@@ -37,7 +37,7 @@ export default {
 						'--tw-prose-invert-pre-bg': 'rgb(2 10 18 / 50%)',
 						// Custom spacing reductions
 						p: {
-							marginTop: '0.75em', // Tighter than default 1.25em
+							marginTop: '1.25em', // Tighter than default 1.25em
 							marginBottom: '0.75em'
 						},
 						'h1, h2, h3, h4, h5, h6': {
