@@ -56,7 +56,7 @@
 						class="w-[200px] h-[200px] rounded-lg object-cover"
 					/>
 				</div>
-				<div class="flex-1 flex flex-col min-h-[200px]">
+				<div class="flex-1 flex flex-col max-h-[200px]">
 					<h2 class="text-2xl text-quaternary font-semibold mb-2">
 						{article.title}
 					</h2>
