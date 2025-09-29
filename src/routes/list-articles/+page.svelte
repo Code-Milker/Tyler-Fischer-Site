@@ -1,5 +1,4 @@
 <script lang="ts">
-	export const prerender = true;
 	import type { ContentPreviewType } from '$lib/types.ts';
 	import ContentPreview from '$lib/components/ContentPreview.svelte';
 	import { onMount } from 'svelte';
