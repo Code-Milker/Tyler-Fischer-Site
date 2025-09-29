@@ -61,7 +61,8 @@ export default {
 							marginBottom: '1em',
 							width: '100%', // Force tables to fit container width
 							overflowX: 'auto', // Allow horizontal scroll if content overflows
-							display: 'block' // Treat as block for scrolling
+							display: 'block', // Treat as block for scrolling
+							borderCollapse: 'collapse' // Merge borders for continuous full-width lines
 						},
 						'thead th': {
 							paddingTop: '0.25em',
@@ -77,8 +78,8 @@ export default {
 						// Enforce line breaking and overflow handling for code blocks
 						pre: {
 							whiteSpace: 'pre-wrap', // Allow wrapping while preserving whitespace
-							wordWrap: 'break-word', // Break long words if needed
-							overflowX: 'auto' // Horizontal scroll for extremely long lines
+							overflowWrap: 'break-word' // Break long words if needed (corrected from wordWrap)
+							// Removed overflowX: 'auto' to prevent horizontal scrolling and force wrapping
 						},
 						code: {
 							wordBreak: 'break-word' // Break long inline code words
@@ -87,6 +88,10 @@ export default {
 						img: {
 							maxWidth: '100%',
 							height: 'auto'
+						},
+						h1: {
+							fontSize: '1.875rem', // Smaller than default 2.25rem (equivalent to text-3xl)
+							lineHeight: '2.25rem'
 						}
 					}
 				}
