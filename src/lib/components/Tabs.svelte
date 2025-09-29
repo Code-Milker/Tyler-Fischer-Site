@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	export let device: 'mobile' | 'desktop' = 'mobile';
 	export let orientation: 'horizontal' | 'vertical' = 'horizontal';
 	let fontSize = 'text-xl';
 	let baseClass = `text-tertiary font-semibold  ${fontSize}`;

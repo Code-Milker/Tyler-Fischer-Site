@@ -9,7 +9,6 @@
 	<footer />
 </div>
 
-<!-- max-width: 64rem; -->
 <style>
 	.app {
 		display: flex;

@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-static'; // Changed to static adapter for full SSG
+
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
 import remarkGfm from 'remark-gfm'; // For GitHub-style tables
@@ -17,9 +18,7 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 	kit: {
-		adapter: adapter({
-			strict: false
-		}) // Defaults to prerendering all routes as static files
+		adapter: adapter({ fallback: 'index.html' }) // Defaults to prerendering all routes as static files
 	}
 };
 

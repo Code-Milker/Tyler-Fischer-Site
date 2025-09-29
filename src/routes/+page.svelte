@@ -7,12 +7,16 @@
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
 	import Tabs from '$lib/components/Tabs.svelte';
 	import IconBanner from '$lib/components/IconBanner.svelte';
+
+	// Import Markdown as raw string from $lib/content (assuming files are in src/lib/content)
+	import resumeMd from '$lib/content/resume.md?raw';
+
 	$: innerWidth = 0;
 	$: styles =
 		innerWidth >= 1024
 			? 'flex flex-row text-text min-h-screen'
 			: 'flex flex-col text-text';
-	onMount(async () => {
+	onMount(() => {
 		document.title = 'Ty Fischer';
 	});
 </script>
@@ -21,9 +25,7 @@
 <div class={styles + ''}>
 	<div>
 		<div class="w-full">
-			<!-- {#if device !== 'desktop'} -->
 			<Tabs orientation="horizontal" />
-			<!-- {/if} -->
 			<DeviceContainer title="" color="text-text" bg="bg-secondary">
 				<div slot="desktop" class="flex flex-col">
 					<MeSection device="desktop" />
@@ -49,16 +51,14 @@
 						<div
 							class="bg-primary justify-center flex rounded-lg md:mx-auto md:p-8 p-4"
 						>
-							<!-- Added responsive width (A4-like on md+), mx-auto for centering, p-10 (about 2.5cm) on md+, p-4 on mobile -->
-							<ViewMarkdown filename="resume.md" />
+							<ViewMarkdown source={resumeMd} />
 						</div>
 					</div>
 					<div
 						class="bg-primary justify-center flex md:w-[210mm] md:mx-auto md:p-8 p-4"
 						slot="mobile"
 					>
-						<!-- Same as above; slots are already device-switched, but classes ensure responsiveness -->
-						<ViewMarkdown filename="resume.md" />
+						<ViewMarkdown source={resumeMd} />
 					</div>
 				</DeviceContainer>
 			</div>

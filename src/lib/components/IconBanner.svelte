@@ -6,20 +6,16 @@
 	import SvelteMarkdown from 'svelte-markdown';
 	import jsPDF from 'jspdf';
 	import html2canvas from 'html2canvas';
-	const resumeFilename = 'resume.md'; // Assuming this is the file name; adjust if needed
+	import resumeMd from '$lib/content/resume.md?raw';
+
 	let markdownContent = '';
 	let contentElement: HTMLElement | null = null; // Explicitly typed to fix implicit 'any'
 	export let vertical: boolean = false;
-	onMount(async () => {
-		try {
-			const response = await fetch(`/${resumeFilename}`);
-			if (response.ok) {
-				markdownContent = await response.text();
-			}
-		} catch (error) {
-			console.error(`Failed to load resume Markdown:`, error);
-		}
+
+	onMount(() => {
+		markdownContent = resumeMd; // Set directly—no fetch needed
 	});
+
 	async function downloadAsPDF(event: MouseEvent) {
 		event.preventDefault(); // Prevent navigation if using <a>
 		if (!contentElement || !markdownContent) {
@@ -62,8 +58,9 @@
 >
 	<SvelteMarkdown source={markdownContent} />
 </div>
+
 <div
-	class={`flex    ${
+	class={`flex ${
 		vertical ? 'flex-col space-y-10 items-center' : 'justify-evenly'
 	} w-full`}
 >
@@ -85,7 +82,7 @@
 			<a
 				href={link.href}
 				class="relative rounded-lg p-1 bg-tertiary opacity-70
-        max-w-[50px] max-h-[50px] group"
+          max-w-[50px] max-h-[50px] group"
 			>
 				<img class="max-w-[40px] max-h-[40px]" src={link.src} alt={link.alt} />
 				<span
