@@ -3,7 +3,6 @@
 **Portfolio:** [tyfischer.com](https://tyfischer.com)  
 **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/tyler-fischer-4a5309141)  
 **GitHub:** [GitHub Profile](https://github.com/Code-Milker)  
-
 ## Summary
 Senior Engineer and Developer Advocate with a deep-rooted passion for decentralized technology, stemming from early involvement in DeFi and investing in foundational protocols like Chainlink since 2017. With a proven track record in both traditional FinTech and the Web3 space, I excel at bridging the gap between complex blockchain concepts and practical developer application. My journey, including navigating the personal loss of funds to a phishing attack, has forged a profound commitment to building secure, resilient, and user-centric decentralized systems. Eager to apply my hands-on experience in mobile development, AI, and smart contracts to a challenging senior or staff role.
 

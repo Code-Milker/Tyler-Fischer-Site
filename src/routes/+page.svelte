@@ -25,15 +25,16 @@
 <div class={styles + ''}>
 	<div>
 		<div class="w-full">
-			<Tabs orientation="horizontal" />
 			<DeviceContainer title="" color="text-text" bg="bg-secondary">
 				<div slot="desktop" class="flex flex-col">
+					<Tabs orientation="horizontal" />
 					<MeSection device="desktop" />
 					<div class="bg-primary p-4 rounded-b-lg">
 						<IconBanner vertical={false} />
 					</div>
 				</div>
 				<div slot="mobile" class="flex flex-col">
+					<Tabs orientation="horizontal" />
 					<MeSection device="mobile" />
 					<div class=" bg-primary p-4">
 						<IconBanner vertical={false} />
@@ -71,9 +72,11 @@
 				>
 					<div slot="desktop">
 						<ArticleSection />
+						<Tabs orientation="horizontal" />
 					</div>
 					<div slot="mobile">
 						<ArticleSection />
+						<Tabs orientation="horizontal" />
 					</div>
 				</DeviceContainer>
 			</div>

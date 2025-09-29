@@ -8,12 +8,12 @@
 </script>
 
 <svelte:window bind:innerWidth />
-<div class={`${styles} ${color} ${bg} opacity-70  `}>
-	<div class="hidden md:block px-8 max-w-[1248px] mx-auto">
+<div class={`${styles} ${color} ${bg} opacity-70   `}>
+	<div class="hidden md:block px-8 max-w-[1048px] mx-auto">
 		{#if title}
-			<div class="border-text">
+			<div class="border-text border-b-quaternary">
 				<h2
-					class={`${titlePosition} text-xl font-bold ${color}  p-2 bg-secondary `}
+					class={`${titlePosition} text-xl font-bold   p-2  text-quaternary   `}
 				>
 					{title}
 				</h2>
@@ -25,7 +25,7 @@
 		{#if title}
 			<div class="border-text">
 				<h2
-					class={`${titlePosition} text-xl font-bold ${color}  p-2 bg-secondary `}
+					class={`${titlePosition} text-xl font-bold ${color}  p-2 bg-border `}
 				>
 					{title}
 				</h2>

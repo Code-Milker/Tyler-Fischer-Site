@@ -7,42 +7,41 @@ export default {
 				primary: '#020a12',
 				secondary: '#183D3D',
 				secondaryComplement: '#3d1818',
-				tertiary: '#6A9A85', // Adjusted for better link contrast and harmony
-				quaternary: '#A0C3B5', // Softened to warmer light teal for cohesion
-				text: '#ccc'
+				tertiary: '#6A9A85',
+				quaternary: '#A0C3B5',
+				text: 'white'
 			},
 			typography: () => ({
 				DEFAULT: {
 					css: {
-						// Base typography overrides for tighter spacing
-						maxWidth: 'full', // Keeps content readable but constrained
-						fontSize: '1rem', // Slightly smaller base font for compactness
-						lineHeight: '1.75', // Reduced from default ~1.75 for less vertical space
-						'--tw-prose-body': '#020a12', // primary dark
-						'--tw-prose-headings': '#183D3D', // secondary
-						'--tw-prose-lead': '#6A9A85', // updated tertiary
-						'--tw-prose-links': '#3d1818', // secondaryComplement (swapped for variety)
+						maxWidth: 'full',
+						fontWeight: '200',
+						fontSize: '1rem',
+						lineHeight: '1.75',
+						'--tw-prose-body': '#020a12',
+						'--tw-prose-headings': '#183D3D',
+						'--tw-prose-lead': '#6A9A85',
+						'--tw-prose-links': '#A0C3B5',
+
 						'--tw-prose-bold': '#020a12',
-						'--tw-prose-code': '#183D3D',
-						'--tw-prose-pre-code': '#A0C3B5', // updated quaternary
+						'--tw-prose-code': 'white',
+						'--tw-prose-pre-code': 'white',
 						'--tw-prose-pre-bg': '#020a12',
-						// Dark mode inverted styles with softer gray (#cccccc) for less stark contrast
-						'--tw-prose-invert-body': '#cccccc', // Softer gray for body text
-						'--tw-prose-invert-headings': '#A0C3B5', // updated quaternary for headings
-						'--tw-prose-invert-lead': '#cccccc', // Match body
-						'--tw-prose-invert-links': '#6A9A85', // updated tertiary for links
-						'--tw-prose-invert-bold': '#cccccc', // Match body
-						'--tw-prose-invert-code': '#90b0a5', // Slightly desaturated quaternary
-						'--tw-prose-invert-pre-code': '#cccccc', // Match body
+						'--tw-prose-td-borders': '#183D3D',
+						'--tw-prose-invert-body': 'white',
+						'--tw-prose-invert-headings': '#A0C3B5',
+						'--tw-prose-invert-lead': 'white',
+						'--tw-prose-invert-links': '#A0C3B5',
+						'--tw-prose-invert-bold': 'white',
+						'--tw-prose-invert-code': 'white',
+						'--tw-prose-invert-pre-code': 'white',
 						'--tw-prose-invert-pre-bg': 'rgb(2 10 18 / 50%)',
-						// Custom spacing reductions
 						p: {
-							marginTop: '1.25em', // Tighter than default 1.25em
+							marginTop: '.75em',
 							marginBottom: '0.75em'
 						},
-						'h1, h2, h3, h4, h5, h6': {
-							marginTop: '1em', // Reduced from default ~1.5-2em
-							marginBottom: '0.5em'
+						strong: {
+							color: '#A0C3B5'
 						},
 						ul: {
 							marginTop: '0.75em',
@@ -53,45 +52,83 @@ export default {
 							marginBottom: '0.75em'
 						},
 						li: {
-							marginTop: '0.25em', // Tighter list items
+							marginTop: '0.25em',
 							marginBottom: '0.25em'
 						},
 						table: {
-							marginTop: '1em',
-							marginBottom: '1em',
-							width: '100%', // Force tables to fit container width
-							overflowX: 'auto', // Allow horizontal scroll if content overflows
-							display: 'block', // Treat as block for scrolling
-							borderCollapse: 'collapse' // Merge borders for continuous full-width lines
+							marginTop: '.75em',
+							marginBottom: '.75em',
+							width: '100%',
+							overflowX: 'auto',
+							display: 'block',
+							borderCollapse: 'collapse'
 						},
 						'thead th': {
 							paddingTop: '0.25em',
-							paddingBottom: '0.25em'
+							paddingBottom: '0.25em',
+							paddingLeft: '0.5em',
+							paddingRight: '0.5em',
+							borderColor: 'var(--tw-prose-td-borders)',
+							borderWidth: '0 0 1px 0',
+							width: 'auto', // Allow columns to take available space
+							minWidth: '100px' // Optional: set a minimum width to prevent collapse
 						},
-						'tbody tr': {
-							borderBottomWidth: '1px' // Keep thin borders for separation without extra space
+
+						thead: {
+							minWidth: '' // Allow columns to take available space
+						},
+						tbody: {
+							minWidth: '100%' // Allow columns to take available space
 						},
 						'tbody td': {
 							paddingTop: '0.5em',
-							paddingBottom: '0.5em'
+							paddingBottom: '0.5em',
+							paddingLeft: '0.5em',
+							paddingRight: '0.5em',
+							borderColor: 'var(--tw-prose-td-borders)',
+							borderWidth: '0 0 1px 0',
+							width: 'auto', // Allow columns to take available space
+							minWidth: '100px' // Optional: set a minimum width to prevent collapse
 						},
-						// Enforce line breaking and overflow handling for code blocks
 						pre: {
-							whiteSpace: 'pre-wrap', // Allow wrapping while preserving whitespace
-							overflowWrap: 'break-word' // Break long words if needed (corrected from wordWrap)
-							// Removed overflowX: 'auto' to prevent horizontal scrolling and force wrapping
+							whiteSpace: 'pre-wrap',
+							overflowWrap: 'break-word',
+							padding: '0'
 						},
 						code: {
-							wordBreak: 'break-word' // Break long inline code words
+							wordBreak: 'break-word'
 						},
-						// Make images responsive to prevent overflow
 						img: {
 							maxWidth: '100%',
 							height: 'auto'
 						},
 						h1: {
-							fontSize: '1.875rem', // Smaller than default 2.25rem (equivalent to text-3xl)
-							lineHeight: '2.25rem'
+							fontSize: '1.75rem',
+							lineHeight: '2.50rem',
+							marginTop: '.75em',
+							marginBottom: '0.75em'
+						},
+						h2: {
+							fontSize: '1.25rem',
+							lineHeight: '2.00rem',
+							marginTop: '.75em',
+							marginBottom: '0.75em'
+						},
+
+						h3: {
+							fontSize: '1.00rem',
+							lineHeight: '2.25rem',
+
+							marginTop: '.75em',
+							marginBottom: '0.75em'
+						},
+
+						h4: {
+							fontSize: '.75rem',
+							lineHeight: '2.25rem',
+
+							marginTop: '.75em',
+							marginBottom: '0.75em'
 						}
 					}
 				}

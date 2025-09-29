@@ -2,8 +2,8 @@
 	import { onMount } from 'svelte';
 	export let orientation: 'horizontal' | 'vertical' = 'horizontal';
 	let fontSize = 'text-xl';
-	let baseClass = `text-tertiary font-semibold  ${fontSize}`;
-	let selectedClass = `font-semibold text-tertiary underline ${fontSize}`;
+	let baseClass = `text-quaternary font-semibold  ${fontSize}`;
+	let selectedClass = `font-semibold text-quaternary underline ${fontSize}`;
 	let currentTab = '';
 	onMount(() => {
 		currentTab = window.location.hash.slice(1) || 'resume';
@@ -14,7 +14,7 @@
 </script>
 
 <nav
-	class={`flex text-center mt-4     ${
+	class={`flex text-center py-4     ${
 		orientation === 'vertical'
 			? 'flex-col space-y-8 mt-8 '
 			: 'justify-around space-x-4 pb-2  '
