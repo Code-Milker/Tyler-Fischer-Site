@@ -1,3 +1,4 @@
+export const prerender = true;
 import { json } from '@sveltejs/kit';
 import github from '$lib/images/github.png';
 import twitter from '$lib/images/twitter.svg';

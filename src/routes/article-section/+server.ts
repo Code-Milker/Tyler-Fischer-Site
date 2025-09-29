@@ -1,3 +1,4 @@
+export const prerender = true;
 import { json } from '@sveltejs/kit';
 import type { ContentPreviewType } from '$lib/types.ts';
 import Rwa from '$lib/images/rwa.png';

@@ -17,7 +17,9 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 	kit: {
-		adapter: adapter() // Defaults to prerendering all routes as static files
+		adapter: adapter({
+			strict: false
+		}) // Defaults to prerendering all routes as static files
 	}
 };
 

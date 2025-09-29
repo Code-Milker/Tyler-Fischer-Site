@@ -1,4 +1,5 @@
 <script lang="ts">
+	export const prerender = true;
 	import type { ContentPreviewType } from '$lib/types.ts';
 	import ContentPreview from '$lib/components/ContentPreview.svelte';
 	import { onMount } from 'svelte';
@@ -19,10 +20,11 @@
 		<div slot="desktop">
 			<h1 class="text-xl">Articles</h1>
 			<p>
-				This article page was born out of my frustration with the disconnect in conversations due to
-				differing use of terminology and facts. It's a platform where I sort my random thoughts into
-				theories and frameworks, bridging those gaps in understanding. Welcome to this space of
-				creative organization!
+				This article page was born out of my frustration with the disconnect in
+				conversations due to differing use of terminology and facts. It's a
+				platform where I sort my random thoughts into theories and frameworks,
+				bridging those gaps in understanding. Welcome to this space of creative
+				organization!
 			</p>
 		</div>
 		<div slot="mobile">mobile</div>
