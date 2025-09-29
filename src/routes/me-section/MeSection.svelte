@@ -44,7 +44,7 @@
 	</div>
 {:else}
 	<div style="mobile">
-		<div class="bg-primary p-6 rounded-t-lg">
+		<div class="bg-primary p-6">
 			<div class="bg-primary flex flex-col pb-0">
 				<img
 					src={me.me}

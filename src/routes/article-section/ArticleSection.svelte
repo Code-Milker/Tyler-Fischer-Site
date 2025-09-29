@@ -45,13 +45,10 @@
 <div>
 	{#each articles as article, i}
 		{#if i !== 0}
-			<div class="min-h-[40px] bg-secondary" />
+			<div class="min-h-[5px]" />
 		{/if}
-		<div
-			class="bg-primary md:rounded-lg xs:rounded-none text-text shadow-md"
-			bind:this={previewRefs[i]}
-		>
-			<div class="flex flex-row items-start p-6">
+		<div class="bg-primary text-text" bind:this={previewRefs[i]}>
+			<div class="flex flex-row p-6">
 				<div class="flex-shrink-0 mr-6">
 					<img
 						src={article.image}
@@ -60,7 +57,7 @@
 					/>
 				</div>
 				<div class="flex-1 flex flex-col min-h-[200px]">
-					<h2 class="text-2xl text-quaternary font-bold mb-2">
+					<h2 class="text-2xl text-quaternary font-semibold mb-2">
 						{article.title}
 					</h2>
 					<div class="text-text mb-4 line-clamp-[6]">

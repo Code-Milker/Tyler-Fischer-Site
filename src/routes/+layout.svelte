@@ -2,15 +2,11 @@
 	import './styles.css';
 </script>
 
-<div class="app bg-primary">
+<div class="app bg-secondary">
 	<main>
 		<slot />
 	</main>
-	<footer>
-		<div
-			class="flex justify-around w-full bg-primary text-white min-h-[40px]"
-		/>
-	</footer>
+	<footer />
 </div>
 
 <!-- max-width: 64rem; -->
@@ -18,6 +14,7 @@
 	.app {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		min-height: 100vh;
 	}
 	main {

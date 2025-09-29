@@ -3,27 +3,34 @@
 	export let titlePosition = 'text-center';
 	export let color: string;
 	export let bg: string;
-	export let firstContainer: boolean = false;
 	$: innerWidth = 0;
-	$: styles =
-		innerWidth >= 1024 ? ' w-full {color} {bg}' : 'w-full {bg} {color}';
+	$: styles = ' w-full {color} {bg}';
 </script>
 
 <svelte:window bind:innerWidth />
-<div class={`${styles} ${color} ${bg}  `}>
-	{#if title}
-		<div class="border-text">
-			<h2
-				class={`${titlePosition} text-2xl font-bold ${color} bg-secondary p-2`}
-			>
-				{title}
-			</h2>
-		</div>
-	{/if}
-	<div class="hidden md:block px-8">
+<div class={`${styles} ${color} ${bg} opacity-70  `}>
+	<div class="hidden md:block px-8 max-w-[1248px] mx-auto">
+		{#if title}
+			<div class="border-text">
+				<h2
+					class={`${titlePosition} text-xl font-bold ${color}  p-2 bg-secondary `}
+				>
+					{title}
+				</h2>
+			</div>
+		{/if}
 		<slot name="desktop" />
 	</div>
-	<div class="block md:hidden px-4">
+	<div class="block md:hidden">
+		{#if title}
+			<div class="border-text">
+				<h2
+					class={`${titlePosition} text-xl font-bold ${color}  p-2 bg-secondary `}
+				>
+					{title}
+				</h2>
+			</div>
+		{/if}
 		<slot name="mobile" />
 	</div>
 </div>

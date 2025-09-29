@@ -56,14 +56,14 @@
 
 <!-- Off-screen renderer for the Markdown content (visible in DOM but not on page) -->
 <div
-	class="prose prose-invert pb-5 absolute -left-[99999px] bg-primary px-5"
+	class="prose prose-invert pb-5 absolute left-[99999px] px-5"
 	style="width: 210mm;"
 	bind:this={contentElement}
 >
 	<SvelteMarkdown source={markdownContent} />
 </div>
 <div
-	class={`flex ${
+	class={`flex    ${
 		vertical ? 'flex-col space-y-10 items-center' : 'justify-evenly'
 	} w-full`}
 >
