@@ -80,7 +80,7 @@
 					</div>
 					<div class="mt-6 flex justify-center">
 						<button
-							class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
+							class=" min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
 							on:click={() => toggleExpand(i)}
 						>
 							Close
