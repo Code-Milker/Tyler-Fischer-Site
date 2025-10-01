@@ -2,7 +2,7 @@
 	import './styles.css';
 </script>
 
-<div class="app bg-gray-900">
+<div class="app w-full bg-gray-900">
 	<main>
 		<slot />
 	</main>
