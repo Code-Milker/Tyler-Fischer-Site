@@ -44,8 +44,8 @@ You can reach me at tylerf66@gmail.com`,
 				class="size-[200px] rounded-full m-auto bg-secondary"
 				alt="failed to load me"
 			/>
-			<h1 class="text-2xl font-bold text-quaternary pt-4">Hey, I'm Ty</h1>
-			<p class="mt-2 text-start pb-4">{myInfo.description}</p>
+			<h1 class="text-2xl font-bold text-quaternary pt-2">Hey, I'm Ty</h1>
+			<p class="text-start py-2">{myInfo.description}</p>
 			<IconBanner />
 		</div>
 	</div>

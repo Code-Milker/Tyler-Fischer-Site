@@ -2,84 +2,54 @@
 	import github from '$lib/images/github.png';
 	import linkedin from '$lib/images/linkedin.svg';
 	import downloadResume from '$lib/images/download-paper-icon.png';
-	import { onMount } from 'svelte';
-	import SvelteMarkdown from 'svelte-markdown';
-	import jsPDF from 'jspdf';
-	import html2canvas from 'html2canvas';
-	import resumeMd from '$lib/content/resume.md?raw';
+	import { triggerDownload } from '$lib/stores/DownloadStore'; // Import the store
 
-	let markdownContent = '';
-	let contentElement: HTMLElement | null = null; // Explicitly typed to fix implicit 'any'
-
-	onMount(() => {
-		markdownContent = resumeMd; // Set directly—no fetch needed
-	});
-
-	async function downloadAsPDF(event: MouseEvent) {
-		event.preventDefault(); // Prevent navigation if using <a>
-		if (!contentElement || !markdownContent) {
-			alert('Resume content not loaded yet. Please try again.');
-			return;
-		}
-		// Capture the hidden rendered HTML as a canvas
-		const canvas = await html2canvas(contentElement, {
-			scale: 2, // Higher scale for better quality
-			useCORS: true, // If there are external images
-			logging: false
-		});
-		// Create PDF
-		const pdf = new jsPDF('p', 'mm', 'a4');
-		const imgData = canvas.toDataURL('image/png');
-		const imgWidth = 210; // A4 width in mm
-		const pageHeight = 297; // A4 height in mm
-		const imgHeight = (canvas.height * imgWidth) / canvas.width;
-		let heightLeft = imgHeight;
-		let position = 0;
-		pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-		heightLeft -= pageHeight;
-		// Add extra pages if content is long
-		while (heightLeft >= 0) {
-			position = heightLeft - imgHeight;
-			pdf.addPage();
-			pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-			heightLeft -= pageHeight;
-		}
-		// Download the PDF
-		pdf.save('resume.pdf');
+	function triggerPdfDownload(event: MouseEvent) {
+		event.preventDefault();
+		triggerDownload.set({ type: 'pdf' }); // Trigger the store
 	}
 </script>
 
-<!-- Off-screen renderer for the Markdown content (visible in DOM but not on page) -->
-
 <div class="flex flex-row justify-start">
-	{#each [{ href: 'https://github.com/Code-Milker', src: github, alt: 'github', tooltip: 'GitHub Profile' }, { href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin', tooltip: 'LinkedIn Profile' }, { href: '#', src: downloadResume, alt: 'download', tooltip: 'Download Resume', onClick: downloadAsPDF }] as link}
-		{#if link.onClick}
-			<a
-				href={link.href}
-				on:click={link.onClick}
-				class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[36px] max-h-[36px] group"
-			>
-				<img class="max-w-[30px] max-h-[30px]" src={link.src} alt={link.alt} />
-				<span
-					class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
-				>
-					{link.tooltip}
-				</span>
-			</a>
-		{:else}
-			<a
-				href={link.href}
-				class="relative rounded-lg p-1 bg-tertiary opacity-100
-          max-w-[36px] max-h-[36px] group"
-			>
-				<img class="max-w-[30px] max-h-[30px]" src={link.src} alt={link.alt} />
-				<span
-					class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
-				>
-					{link.tooltip}
-				</span>
-			</a>
-		{/if}
-		<div class="mr-8" />
-	{/each}
+	<a
+		href="https://github.com/Code-Milker"
+		class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[36px] max-h-[36px] group"
+	>
+		<img class="max-w-[30px] max-h-[30px]" src={github} alt="github" />
+		<span
+			class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
+		>
+			GitHub Profile
+		</span>
+	</a>
+	<div class="mr-8" />
+	<a
+		href="https://www.linkedin.com/in/tyler-fischer-4a5309141/"
+		class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[36px] max-h-[36px] group"
+	>
+		<img class="max-w-[30px] max-h-[30px]" src={linkedin} alt="linkedin" />
+		<span
+			class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
+		>
+			LinkedIn Profile
+		</span>
+	</a>
+	<div class="mr-8" />
+	<button
+		type="button"
+		on:click={triggerPdfDownload}
+		class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[36px] max-h-[36px] group"
+	>
+		<img
+			class="max-w-[30px] max-h-[30px]"
+			src={downloadResume}
+			alt="download"
+		/>
+		<span
+			class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
+		>
+			Download Resume as PDF
+		</span>
+	</button>
+	<div class="mr-8" />
 </div>
