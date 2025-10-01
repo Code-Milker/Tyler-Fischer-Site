@@ -7,21 +7,17 @@
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
 	import Tabs from '$lib/components/Tabs.svelte';
 	import IconBanner from '$lib/components/IconBanner.svelte';
-
-	// Import Markdown as raw string from $lib/content (assuming files are in src/lib/content)
+	import { isDesktop } from '$lib/stores/DeviceType';
 	import resumeMd from '$lib/content/resume.md?raw';
 
-	$: innerWidth = 0;
-	$: styles =
-		innerWidth >= 1024
-			? 'flex flex-row text-text min-h-screen'
-			: 'flex flex-col text-text';
+	$: styles = $isDesktop
+		? 'flex flex-row text-text min-h-screen'
+		: 'flex flex-col text-text';
 	onMount(() => {
 		document.title = 'Ty Fischer';
 	});
 </script>
 
-<svelte:window bind:innerWidth />
 <div class={styles + ''}>
 	<div>
 		<div class="w-full">

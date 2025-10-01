@@ -3,21 +3,14 @@
 	export let titlePosition = 'text-center';
 	export let color: string;
 	export let bg: string;
-	$: innerWidth = 0;
-	$: styles = ' w-full {color} {bg}';
 </script>
 
-<svelte:window bind:innerWidth />
-<div class={`${styles} ${color} ${bg} opacity-70   `}>
+<div class={`w-full opacity-90 ${bg}`}>
 	<div class="hidden md:block px-8 max-w-[1048px] mx-auto">
 		{#if title}
-			<div class="border-text border-b-quaternary">
-				<h2
-					class={`${titlePosition} text-xl font-bold   p-2  text-quaternary   `}
-				>
-					{title}
-				</h2>
-			</div>
+			<h2 class={`${titlePosition} text-xl font-bold  p-2  text-quaternary`}>
+				{title}
+			</h2>
 		{/if}
 		<slot name="desktop" />
 	</div>
