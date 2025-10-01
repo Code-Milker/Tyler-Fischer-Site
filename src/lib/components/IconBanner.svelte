@@ -10,7 +10,7 @@
 	}
 </script>
 
-<div class="flex flex-row justify-start">
+<div class={`flex flex-row justify-between w-full`}>
 	<a
 		href="https://github.com/Code-Milker"
 		class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[36px] max-h-[36px] group"
@@ -22,7 +22,6 @@
 			GitHub Profile
 		</span>
 	</a>
-	<div class="mr-8" />
 	<a
 		href="https://www.linkedin.com/in/tyler-fischer-4a5309141/"
 		class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[36px] max-h-[36px] group"
@@ -34,7 +33,6 @@
 			LinkedIn Profile
 		</span>
 	</a>
-	<div class="mr-8" />
 	<button
 		type="button"
 		on:click={triggerPdfDownload}
@@ -51,5 +49,4 @@
 			Download Resume as PDF
 		</span>
 	</button>
-	<div class="mr-8" />
 </div>
