@@ -1,26 +1,25 @@
 <script lang="ts">
-	export let title: string;
-	export let titlePosition = 'text-center';
+	export let title: string = '';
 </script>
 
-<div class={`w-full opacity-90 bg-secondary`}>
-	<div class="hidden lg:block px-8 max-w-[1048px] mx-auto">
-		{#if title}
-			<h2 class={`${titlePosition} text-xl font-bold p-2 text-quaternary`}>
-				{title}
-			</h2>
-		{/if}
+<!-- desktop -->
+<div class="hidden lg:block px-8 max-w-[1048px] mx-auto bg-secondary">
+	<h2 class="text-center text-xl font-bold p-2 text-quaterary min-h-[45px]">
+		{title}
+	</h2>
+	<div class="rounded-lg bg-primary p-8">
 		<slot name="desktop" />
 	</div>
+</div>
 
-	<div class="block lg:hidden">
-		{#if title}
-			<div class="border-text">
-				<h2 class={`text-xl font-bold p-2 bg-border`}>
-					{title}
-				</h2>
-			</div>
-		{/if}
+<!-- mobile -->
+<div class="block lg:hidden bg-secondary">
+	<div class="border-text">
+		<h2 class="text-xl font-bold p-2 bg-border text-center min-h-[45px]">
+			{title}
+		</h2>
+	</div>
+	<div class="bg-primary p-4">
 		<slot name="mobile" />
 	</div>
 </div>
