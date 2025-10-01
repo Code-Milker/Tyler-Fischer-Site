@@ -1,11 +1,9 @@
 <script>
 	import '../app.css';
 	import MeSection from './me-section/MeSection.svelte';
-	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import ArticleSection from './article-section/ArticleSection.svelte';
 	import { onMount } from 'svelte';
 	import ViewMarkdown from '$lib/components/ViewMarkdown.svelte';
-	import Tabs from '$lib/components/Tabs.svelte';
 	import resumeMd from '$lib/content/resume.md?raw';
 
 	onMount(() => {

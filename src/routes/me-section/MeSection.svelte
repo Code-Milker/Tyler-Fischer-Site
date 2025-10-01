@@ -40,16 +40,18 @@ You can reach me at tylerf66@gmail.com`,
 		</div>
 	</div>
 	<div slot="mobile">
-		<div class="flex flex-col">
-			<h1 class="text-2xl font-bold text-quaternary pt-2">Hey, I'm Ty</h1>
-
+		<div class="flex row">
 			<img
 				src={myInfo.me}
-				class="aspect-square size-[200px] rounded-full bg-secondary mx-auto"
+				class="aspect-square size-[200px] rounded-full bg-secondary mr-4 my-auto"
 				alt="failed to load me"
 			/>
-			<p class="text-start py-2">{myInfo.description}</p>
-			<IconBanner />
+			<div class="flex flex-col">
+				<h1 class="text-2xl font-bold text-quaternary">Hey, I'm Ty</h1>
+
+				<p class="text-start py-4">{myInfo.description}</p>
+				<IconBanner />
+			</div>
 		</div>
 	</div>
 </DeviceContainer>
