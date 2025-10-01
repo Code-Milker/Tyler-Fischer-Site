@@ -51,46 +51,56 @@
 </script>
 
 <!-- Off-screen renderer for the Markdown content (visible in DOM but not on page) -->
-<div
-	class="prose prose-invert pb-5 absolute left-[99999px] px-5"
-	style="width: 210mm;"
-	bind:this={contentElement}
->
-	<SvelteMarkdown source={markdownContent} />
-</div>
 
-<div
-	class={`flex ${
-		vertical ? 'flex-col space-y-10 items-center' : 'justify-evenly'
-	} w-full`}
->
-	{#each [{ href: 'https://github.com/Code-Milker', src: github, alt: 'github', tooltip: 'GitHub Profile' }, { href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin', tooltip: 'LinkedIn Profile' }, { href: '#', src: downloadResume, alt: 'download', tooltip: 'Download Resume', onClick: downloadAsPDF }] as link}
-		{#if link.onClick}
-			<a
-				href={link.href}
-				on:click={link.onClick}
-				class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[50px] max-h-[50px] group"
-			>
-				<img class="max-w-[40px] max-h-[40px]" src={link.src} alt={link.alt} />
-				<span
-					class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
+<div class="bg-primary p-4 rounded-b-lg w-full">
+	<div
+		class="prose prose-invert pb-5 absolute left-[99999px] px-5"
+		bind:this={contentElement}
+	>
+		<SvelteMarkdown source={markdownContent} />
+	</div>
+
+	<div
+		class={`flex ${
+			vertical ? 'flex-col space-y-10 items-center' : 'justify-evenly'
+		} w-full`}
+	>
+		{#each [{ href: 'https://github.com/Code-Milker', src: github, alt: 'github', tooltip: 'GitHub Profile' }, { href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/', src: linkedin, alt: 'linkedin', tooltip: 'LinkedIn Profile' }, { href: '#', src: downloadResume, alt: 'download', tooltip: 'Download Resume', onClick: downloadAsPDF }] as link}
+			{#if link.onClick}
+				<a
+					href={link.href}
+					on:click={link.onClick}
+					class="relative rounded-lg p-1 bg-tertiary opacity-100 max-w-[50px] max-h-[50px] group"
 				>
-					{link.tooltip}
-				</span>
-			</a>
-		{:else}
-			<a
-				href={link.href}
-				class="relative rounded-lg p-1 bg-tertiary opacity-100
+					<img
+						class="max-w-[40px] max-h-[40px]"
+						src={link.src}
+						alt={link.alt}
+					/>
+					<span
+						class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
+					>
+						{link.tooltip}
+					</span>
+				</a>
+			{:else}
+				<a
+					href={link.href}
+					class="relative rounded-lg p-1 bg-tertiary opacity-100
           max-w-[50px] max-h-[50px] group"
-			>
-				<img class="max-w-[40px] max-h-[40px]" src={link.src} alt={link.alt} />
-				<span
-					class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
 				>
-					{link.tooltip}
-				</span>
-			</a>
-		{/if}
-	{/each}
+					<img
+						class="max-w-[40px] max-h-[40px]"
+						src={link.src}
+						alt={link.alt}
+					/>
+					<span
+						class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap"
+					>
+						{link.tooltip}
+					</span>
+				</a>
+			{/if}
+		{/each}
+	</div>
 </div>
