@@ -33,25 +33,31 @@ You can reach me at tylerf66@gmail.com`,
 			<div class="pl-8 flex flex-col justify-between min-h-[200px]">
 				<h1 class="text-3xl text-tertiary font-bold">Hey, I'm Ty</h1>
 				<p class="text-start">{myInfo.description}</p>
-				<div class="max-w-[200px]">
+				<div class="max-w-[200px] flex flex-row justify-between">
 					<IconBanner />
 				</div>
 			</div>
 		</div>
 	</div>
 	<div slot="mobile">
-		<div class="flex row">
-			<img
-				src={myInfo.me}
-				class="aspect-square size-[200px] rounded-full bg-secondary mr-4 my-auto"
-				alt="failed to load me"
-			/>
-			<div class="flex flex-col">
-				<h1 class="text-2xl font-bold text-quaternary">Hey, I'm Ty</h1>
-
-				<p class="text-start py-4">{myInfo.description}</p>
-				<IconBanner />
+		<div class="flex flex-row">
+			<div class="flex-grow">
+				<img
+					src={myInfo.me}
+					class="aspect-square size-[150px] rounded-full bg-secondary my-auto"
+					alt="failed to load me"
+				/>
+			</div>
+			<div class="my-2 flex flex-col justify-evenly align-middle flex-grow">
+				<h1 class="text-3xl font-bold text-tertiary max-w-[200px]">
+					Hey, I'm Ty
+				</h1>
+				<br />
+				<div class="flex justify-between max-w-[150px]">
+					<IconBanner />
+				</div>
 			</div>
 		</div>
+		<p class="text-start py-4">{myInfo.description}</p>
 	</div>
 </DeviceContainer>
