@@ -9,7 +9,7 @@ export default {
 				secondaryComplement: '#3d1818',
 				tertiary: '#6A9A85',
 				quaternary: '#A0C3B5',
-				text: 'white'
+				text: '#FAEBD7'
 			},
 			typography: () => ({
 				DEFAULT: {
@@ -24,17 +24,17 @@ export default {
 						'--tw-prose-links': '#A0C3B5',
 
 						'--tw-prose-bold': '#020a12',
-						'--tw-prose-code': 'white',
-						'--tw-prose-pre-code': 'white',
+						'--tw-prose-code': '#FAEBD7',
+						'--tw-prose-pre-code': '#FAEBD7',
 						'--tw-prose-pre-bg': '#020a12',
 						'--tw-prose-td-borders': '#183D3D',
-						'--tw-prose-invert-body': 'white',
+						'--tw-prose-invert-body': '#FAEBD7',
 						'--tw-prose-invert-headings': '#A0C3B5',
-						'--tw-prose-invert-lead': 'white',
+						'--tw-prose-invert-lead': '#FAEBD7',
 						'--tw-prose-invert-links': '#A0C3B5',
-						'--tw-prose-invert-bold': 'white',
-						'--tw-prose-invert-code': 'white',
-						'--tw-prose-invert-pre-code': 'white',
+						'--tw-prose-invert-bold': '#FAEBD7',
+						'--tw-prose-invert-code': '#FAEBD7',
+						'--tw-prose-invert-pre-code': '#FAEBD7',
 						'--tw-prose-invert-pre-bg': 'rgb(2 10 18 / 50%)',
 						p: {
 							marginTop: '.75em',

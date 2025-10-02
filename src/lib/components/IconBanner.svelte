@@ -3,7 +3,6 @@
 	import linkedin from '$lib/images/linkedin.svg';
 	import downloadResume from '$lib/images/download-paper-icon.png';
 	import { triggerDownload } from '$lib/stores/DownloadStore'; // Import the store
-
 	function triggerPdfDownload(event: MouseEvent) {
 		event.preventDefault();
 		triggerDownload.set({ type: 'pdf' }); // Trigger the store

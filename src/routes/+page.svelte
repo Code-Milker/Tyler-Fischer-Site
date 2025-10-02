@@ -11,9 +11,7 @@
 	});
 </script>
 
-<div class="flex flex-col text-text">
-	<MeSection />
-	<ViewMarkdown source={resumeMd} />
-	<ArticleSection />
-	<div class="lg:p-8 p-4 bg-secondary" />
-</div>
+<MeSection />
+<ViewMarkdown source={resumeMd} />
+<ArticleSection />
+<!-- <div class="lg:p-8 p-4 bg-secondary" /> -->
