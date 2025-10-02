@@ -40,23 +40,23 @@ You can reach me at tylerf66@gmail.com`,
 		</div>
 	</div>
 	<div slot="mobile">
-		<div class="flex flex-row w-full gap-4">
-			<div class="flex flex-col justify-center items-start flex-grow">
-				<h1 class="text-3xl font-bold text-center w-full text-tertiary">
-					Hey, I'm Ty
-				</h1>
-				<div class="flex flex-row">
-					<img
-						src={myInfo.me}
-						class="aspect-square size-[150px] rounded-full bg-secondary my-auto mr-4"
-						alt="failed to load me"
-					/>
-					<p class="text-start py-4">{myInfo.description}</p>
-				</div>
-				<div class="flex justify-between w-full mt-2">
-					<IconBanner />
+		<div class="flex flex-col">
+			<div class="flex flex-row justify-around">
+				<img
+					src={myInfo.me}
+					class="aspect-square size-[130px] rounded-full bg-secondary my-auto"
+					alt="failed to load me"
+				/>
+				<div class=" flex flex-col justify-evenly">
+					<h1 class="text-3xl font-bold text-center w-full text-tertiary mb-2">
+						Hey, I'm Ty
+					</h1>
+					<div class="flex justify-between w-full mt-2">
+						<IconBanner />
+					</div>
 				</div>
 			</div>
+			<p class="text-start pt-2">{myInfo.description}</p>
 		</div>
 	</div>
 </DeviceContainer>

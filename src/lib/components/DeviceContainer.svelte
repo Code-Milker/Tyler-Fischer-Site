@@ -15,11 +15,11 @@
 <!-- mobile -->
 <div class="block lg:hidden bg-secondary">
 	<div class="border-text">
-		<h2 class="text-xl font-bold p-2 bg-border text-center min-h-[45px]">
+		<h2 class="text-xl font-bold bg-border text-center">
 			{title}
 		</h2>
 	</div>
-	<div class="bg-primary p-4">
+	<div class="bg-primary p-2">
 		<slot name="mobile" />
 	</div>
 </div>

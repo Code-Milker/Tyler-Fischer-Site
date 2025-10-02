@@ -4,3 +4,8 @@
 * {
 	caret-color: transparent;
 }
+html,
+body {
+	background-color: '#020a12'; /* Uses your Tailwind primary color */
+	/* Or if using CSS vars: background-color: var(--primary); */
+}
