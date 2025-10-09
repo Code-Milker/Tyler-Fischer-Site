@@ -4,32 +4,54 @@
 	import SvelteMarkdown from 'svelte-markdown';
 	import Rwa from '$lib/images/rwa.png';
 	import WhaleComputer from '$lib/images/whale-computer.jpg';
-	import resumeMd from '$lib/content/resume.md?raw';
 	import aiMd from '$lib/content/ai.md?raw';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 
-	type ArticlePreviewType = Omit<ContentPreviewType, 'url'> & {
+	interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
 		filename: string;
-		fullContent?: string;
-	};
+		fullContent: string;
+	}
 
-	let articles: ArticlePreviewType[] = [
+	interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
+		repo: string;
+		fullContent?: string;
+	}
+
+	let repoArticles: RepoArticle[] = [
+		{
+			title: 'Effect-Less',
+			description:
+				"The project addresses TypeScript's flexibility leading to inconsistent codebases by proposing a stricter, opinionated dialect via custom lint rules with LSP integration. Key features include Go-like error handling, types derived from Zod schemas, automatic parameter validation, immutable data structures, and pure functions for enhanced reliability and maintainability.",
+			image: Rwa, // Placeholder; update to a relevant image if available
+			repo: 'Code-Milker/effect-less'
+		},
+		{
+			title: 'MooMoo.js README',
+			description:
+				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available.',
+			image: WhaleComputer, // Placeholder; update to a relevant image if available
+			repo: 'Code-Milker/moomoo.js'
+		}
+	];
+
+	let staticArticles: StaticArticle[] = [
+		// Existing static examples (uncomment/add as needed; supports MD files)
 		// {
-		//   title: 'building tooling vs feature development',
+		//   title: 'Building Tooling vs Feature Development',
 		//   description: '',
 		//   image: Rwa,
 		//   filename: '/resume.md',
 		//   fullContent: resumeMd
 		// },
 		// {
-		//   title: 'about me',
+		//   title: 'About Me',
 		//   description: '',
 		//   image: Rwa,
 		//   filename: '/resume.md',
 		//   fullContent: resumeMd
 		// },
 		// {
-		//   title: 'idea prototyping "just start writing to capture ideas"',
+		//   title: 'Idea Prototyping: Just Start Writing to Capture Ideas',
 		//   description:
 		//     'A detailed professional resume for Tyler Fischer, showcasing years of experience in software development, key projects, technical skills, and career achievements across various industries including fintech and blockchain.',
 		//   image: Rwa,
@@ -37,7 +59,7 @@
 		//   fullContent: resumeMd
 		// },
 		// {
-		//   title: 'Blockchain experiences in development, trading, and crisis',
+		//   title: 'Blockchain Experiences in Development, Trading, and Crisis',
 		//   description: '',
 		//   image: WhaleComputer,
 		//   filename: '/ai.md',
@@ -53,6 +75,11 @@
 		}
 	];
 
+	let articles: (StaticArticle | RepoArticle)[] = [
+		...repoArticles,
+		...staticArticles
+	];
+
 	let expanded: boolean[] = [];
 	let previewRefs: (HTMLDivElement | null)[] = [];
 
@@ -61,12 +88,33 @@
 		previewRefs = new Array(articles.length).fill(null);
 	});
 
-	function toggleExpand(i: number) {
+	async function fetchRepoContent(repo: string): Promise<string> {
+		try {
+			const response = await fetch(
+				`https://raw.githubusercontent.com/${repo}/main/README.md`
+			);
+			if (response.ok) {
+				return await response.text();
+			}
+			return 'Failed to fetch README from GitHub. It may not exist or the repo is private.';
+		} catch (e) {
+			return 'Error fetching README: ' + (e as Error).message;
+		}
+	}
+
+	async function toggleExpand(i: number) {
+		const article = articles[i];
+		if ('repo' in article && article.fullContent === undefined) {
+			article.fullContent = await fetchRepoContent(article.repo);
+			articles = articles; // Trigger reactivity
+		}
+
 		expanded[i] = !expanded[i];
-		if (previewRefs[i]) {
+		if (expanded[i] && previewRefs[i]) {
+			await tick();
 			previewRefs[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
-		expanded = expanded; // Trigger reactivity if needed
+		expanded = expanded;
 	}
 </script>
 
@@ -112,7 +160,7 @@
 					{#if expanded[i]}
 						<div class="px-6 py-8 border-t border-quaternary">
 							<div class="prose prose-invert !min-w-0 max-w-full">
-								<SvelteMarkdown source={article.fullContent} />
+								<SvelteMarkdown source={article.fullContent ?? ''} />
 							</div>
 							<div class="mt-6 flex justify-center">
 								<button
@@ -146,7 +194,7 @@
 							<img
 								src={article.image}
 								alt={article.title}
-								class=" aspect-square mx-auto rounded-lg object-cover"
+								class="aspect-square mx-auto rounded-lg object-cover"
 							/>
 						</div>
 						<div class="flex-1 flex flex-col">
@@ -169,7 +217,7 @@
 					{#if expanded[i]}
 						<div class="px-4 py-8 border-t border-quaternary">
 							<div class="prose prose-invert !min-w-0 max-w-full">
-								<SvelteMarkdown source={article.fullContent} />
+								<SvelteMarkdown source={article.fullContent ?? ''} />
 							</div>
 							<div class="mt-6 flex justify-center">
 								<button
