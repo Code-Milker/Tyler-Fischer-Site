@@ -21,50 +21,20 @@
 		{
 			title: 'Effect-Less',
 			description:
-				"The project addresses TypeScript's flexibility leading to inconsistent codebases by proposing a stricter, opinionated dialect via custom lint rules with LSP integration. Key features include Go-like error handling, types derived from Zod schemas, automatic parameter validation, immutable data structures, and pure functions for enhanced reliability and maintainability.",
+				"Effect-less is a project that addresses TypeScript's flexibility-related challenges, such as inconsistent codebases from mixing paradigms, gradual typing pitfalls, and runtime errors, by enforcing a stricter, opinionated dialect through custom lint rules with LSP integration for immediate feedback, automating decisions, reducing debates, and prioritizing business logic. Key features include rules for Go-like error handling with [result, error] tuples, validator-derived types from Zod schemas, automatic parameter validation, immutable data structures via const and readonly, and pure functions without side effects to promote reliability, predictability, and maintainability.",
 			image: Rwa, // Placeholder; update to a relevant image if available
 			repo: 'Code-Milker/effect-less'
 		},
 		{
-			title: 'MooMoo.js README',
+			title: 'MooMoo.js',
 			description:
-				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available.',
+				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
 			image: WhaleComputer, // Placeholder; update to a relevant image if available
 			repo: 'Code-Milker/moomoo.js'
 		}
 	];
 
 	let staticArticles: StaticArticle[] = [
-		// Existing static examples (uncomment/add as needed; supports MD files)
-		// {
-		//   title: 'Building Tooling vs Feature Development',
-		//   description: '',
-		//   image: Rwa,
-		//   filename: '/resume.md',
-		//   fullContent: resumeMd
-		// },
-		// {
-		//   title: 'About Me',
-		//   description: '',
-		//   image: Rwa,
-		//   filename: '/resume.md',
-		//   fullContent: resumeMd
-		// },
-		// {
-		//   title: 'Idea Prototyping: Just Start Writing to Capture Ideas',
-		//   description:
-		//     'A detailed professional resume for Tyler Fischer, showcasing years of experience in software development, key projects, technical skills, and career achievements across various industries including fintech and blockchain.',
-		//   image: Rwa,
-		//   filename: '/resume.md',
-		//   fullContent: resumeMd
-		// },
-		// {
-		//   title: 'Blockchain Experiences in Development, Trading, and Crisis',
-		//   description: '',
-		//   image: WhaleComputer,
-		//   filename: '/ai.md',
-		//   fullContent: aiMd
-		// },
 		{
 			title: 'AI and Prompting Approach for Development',
 			description:
@@ -81,11 +51,11 @@
 	];
 
 	let expanded: boolean[] = [];
-	let previewRefs: (HTMLDivElement | null)[] = [];
+	let articleRefs: (HTMLDivElement | null)[] = [];
 
 	onMount(() => {
 		expanded = new Array(articles.length).fill(false);
-		previewRefs = new Array(articles.length).fill(null);
+		articleRefs = new Array(articles.length).fill(null);
 	});
 
 	async function fetchRepoContent(repo: string): Promise<string> {
@@ -108,11 +78,10 @@
 			article.fullContent = await fetchRepoContent(article.repo);
 			articles = articles; // Trigger reactivity
 		}
-
 		expanded[i] = !expanded[i];
-		if (expanded[i] && previewRefs[i]) {
+		if (expanded[i] && articleRefs[i]) {
 			await tick();
-			previewRefs[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+			articleRefs[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 		expanded = expanded;
 	}
@@ -122,15 +91,15 @@
 	<div slot="desktop">
 		<div>
 			{#each articles as article, i}
-				{#if i !== 0}
+				{#if i > 0}
 					<div class="border-b border-b-border" />
 				{/if}
 				<div
+					bind:this={articleRefs[i]}
 					class="bg-primary text-text {i === 0 ? 'rounded-t-lg' : ''} {i ===
 					articles.length - 1
 						? 'rounded-b-lg'
 						: ''}"
-					bind:this={previewRefs[i]}
 				>
 					<div class="flex flex-row p-6">
 						<div class="flex-shrink-0 mb-0 mr-6 p-2">
@@ -179,15 +148,15 @@
 	<div slot="mobile">
 		<div>
 			{#each articles as article, i}
-				{#if i !== 0}
+				{#if i > 0}
 					<div class="border-b border-b-border" />
 				{/if}
 				<div
+					bind:this={articleRefs[i]}
 					class="bg-primary text-text {i === 0 ? 'rounded-t-lg' : ''} {i ===
 					articles.length - 1
 						? 'rounded-b-lg'
 						: ''}"
-					bind:this={previewRefs[i]}
 				>
 					<div class="flex flex-col p-4">
 						<div class="flex-shrink-0 mb-4 p-2">

@@ -41,7 +41,7 @@ You can reach me at tylerf66@gmail.com`,
 	</div>
 	<div slot="mobile">
 		<div class="flex flex-col">
-			<div class="flex flex-row justify-around">
+			<div class="flex flex-row justify-evenly">
 				<img
 					src={myInfo.me}
 					class="aspect-square size-[130px] rounded-full bg-secondary my-auto"
