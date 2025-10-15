@@ -16,7 +16,10 @@
 	interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
 		repo: string;
 		fullContent?: string;
+		interactiveContent?: string; // New: for separate interactive file like HTML
 		branch: string;
+		file: string; // Main content file (e.g., 'README.md')
+		interactiveFile?: string; // Optional: interactive file (e.g., 'index.html')
 	}
 
 	let repoArticles: RepoArticle[] = [
@@ -25,7 +28,9 @@
 			description: 'A single file web page that generates private keys',
 			image: Rwa, // Placeholder; update to a relevant image if available
 			repo: 'Code-Milker/bip-39',
-			branch: 'master'
+			branch: 'master',
+			file: 'README.md',
+			interactiveFile: 'index.html' // New: the interactive file to embed after README
 		},
 		{
 			title: 'Effect-Less',
@@ -33,7 +38,8 @@
 				"Effect-less is a project that addresses TypeScript's flexibility-related challenges, such as inconsistent codebases from mixing paradigms, gradual typing pitfalls, and runtime errors, by enforcing a stricter, opinionated dialect through custom lint rules with LSP integration for immediate feedback, automating decisions, reducing debates, and prioritizing business logic. Key features include rules for Go-like error handling with [result, error] tuples, validator-derived types from Zod schemas, automatic parameter validation, immutable data structures via const and readonly, and pure functions without side effects to promote reliability, predictability, and maintainability.",
 			image: Rwa, // Placeholder; update to a relevant image if available
 			repo: 'Code-Milker/effect-less',
-			branch: 'main'
+			branch: 'main',
+			file: 'README.md'
 		},
 		{
 			title: 'MooMoo.js',
@@ -41,7 +47,8 @@
 				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
 			image: WhaleComputer, // Placeholder; update to a relevant image if available
 			repo: 'Code-Milker/moomoo.js',
-			branch: 'main'
+			branch: 'main',
+			file: 'README.md'
 		}
 	];
 
@@ -71,28 +78,40 @@
 
 	async function fetchRepoContent(
 		repo: string,
-		branch: string
+		branch: string,
+		file: string
 	): Promise<string> {
+		if (!file) return ''; // Skip if no file specified
 		try {
 			const response = await fetch(
-				`https://raw.githubusercontent.com/${repo}/${branch}/README.md`
+				`https://raw.githubusercontent.com/${repo}/${branch}/${file}`
 			);
 			if (response.ok) {
 				return await response.text();
 			}
-			return 'Failed to fetch README from GitHub. It may not exist or the repo is private.';
+			return `Failed to fetch ${file} from GitHub. It may not exist or the repo is private.`;
 		} catch (e) {
-			return 'Error fetching README: ' + (e as Error).message;
+			return 'Error fetching content: ' + (e as Error).message;
 		}
 	}
 
 	async function toggleExpand(i: number) {
 		const article = articles[i];
-		if ('repo' in article && article.fullContent === undefined) {
-			article.fullContent = await fetchRepoContent(
-				article.repo,
-				article.branch
-			);
+		if ('repo' in article) {
+			if (article.fullContent === undefined) {
+				article.fullContent = await fetchRepoContent(
+					article.repo,
+					article.branch,
+					article.file
+				);
+			}
+			if (article.interactiveFile && article.interactiveContent === undefined) {
+				article.interactiveContent = await fetchRepoContent(
+					article.repo,
+					article.branch,
+					article.interactiveFile
+				);
+			}
 			articles = articles; // Trigger reactivity
 		}
 		expanded[i] = !expanded[i];
@@ -101,6 +120,12 @@
 			articleRefs[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 		expanded = expanded;
+	}
+
+	function hasInteractiveHtml(article: StaticArticle | RepoArticle): boolean {
+		return !!(
+			'interactiveFile' in article && article.interactiveFile?.endsWith('.html')
+		);
 	}
 </script>
 
@@ -150,6 +175,19 @@
 									source={article.fullContent ?? ''}
 									renderers={{ code: CodeBlock }}
 								/>
+								{#if hasInteractiveHtml(article) && article.interactiveContent}
+									<div class="mt-8">
+										<h3 class="text-xl text-quaternary font-semibold mb-4">
+											Interactive Tool
+										</h3>
+										<iframe
+											srcdoc={article.interactiveContent}
+											style="width: 100%; height: 1200px; border: none;"
+											title={article.title + ' Interactive'}
+											sandbox="allow-scripts"
+										/>
+									</div>
+								{/if}
 							</div>
 							<div class="mt-6 flex justify-center">
 								<button
@@ -210,6 +248,19 @@
 									source={article.fullContent ?? ''}
 									renderers={{ code: CodeBlock }}
 								/>
+								{#if hasInteractiveHtml(article) && article.interactiveContent}
+									<div class="mt-8">
+										<h3 class="text-xl text-quaternary font-semibold mb-4">
+											Interactive Tool
+										</h3>
+										<iframe
+											srcdoc={article.interactiveContent}
+											style="width: 100%; height: 600px; border: none;"
+											title={article.title + ' Interactive'}
+											sandbox="allow-scripts"
+										/>
+									</div>
+								{/if}
 							</div>
 							<div class="mt-6 flex justify-center">
 								<button
