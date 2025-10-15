@@ -175,7 +175,7 @@
 									source={article.fullContent ?? ''}
 									renderers={{ code: CodeBlock }}
 								/>
-								{#if hasInteractiveHtml(article) && article.interactiveContent}
+								{#if hasInteractiveHtml(article) && 'interactiveContent' in article && article.interactiveContent}
 									<div class="mt-8">
 										<h3 class="text-xl text-quaternary font-semibold mb-4">
 											Interactive Tool
@@ -248,7 +248,7 @@
 									source={article.fullContent ?? ''}
 									renderers={{ code: CodeBlock }}
 								/>
-								{#if hasInteractiveHtml(article) && article.interactiveContent}
+								{#if hasInteractiveHtml(article) && 'interactiveContent' in article && article.interactiveContent}
 									<div class="mt-8">
 										<h3 class="text-xl text-quaternary font-semibold mb-4">
 											Interactive Tool
