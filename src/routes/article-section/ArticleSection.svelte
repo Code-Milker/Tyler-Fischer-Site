@@ -6,6 +6,7 @@
 	import WhaleComputer from '$lib/images/whale-computer.jpg';
 	import aiMd from '$lib/content/ai.md?raw';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import CodeBlock from '$lib/components/CodeBlock.svelte'; // Add this for highlighting
 
 	interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
 		filename: string;
@@ -15,22 +16,32 @@
 	interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
 		repo: string;
 		fullContent?: string;
+		branch: string;
 	}
 
 	let repoArticles: RepoArticle[] = [
+		{
+			title: 'BIP39',
+			description: 'A single file web page that generates private keys',
+			image: Rwa, // Placeholder; update to a relevant image if available
+			repo: 'Code-Milker/bip-39',
+			branch: 'master'
+		},
 		{
 			title: 'Effect-Less',
 			description:
 				"Effect-less is a project that addresses TypeScript's flexibility-related challenges, such as inconsistent codebases from mixing paradigms, gradual typing pitfalls, and runtime errors, by enforcing a stricter, opinionated dialect through custom lint rules with LSP integration for immediate feedback, automating decisions, reducing debates, and prioritizing business logic. Key features include rules for Go-like error handling with [result, error] tuples, validator-derived types from Zod schemas, automatic parameter validation, immutable data structures via const and readonly, and pure functions without side effects to promote reliability, predictability, and maintainability.",
 			image: Rwa, // Placeholder; update to a relevant image if available
-			repo: 'Code-Milker/effect-less'
+			repo: 'Code-Milker/effect-less',
+			branch: 'main'
 		},
 		{
 			title: 'MooMoo.js',
 			description:
 				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
 			image: WhaleComputer, // Placeholder; update to a relevant image if available
-			repo: 'Code-Milker/moomoo.js'
+			repo: 'Code-Milker/moomoo.js',
+			branch: 'main'
 		}
 	];
 
@@ -58,10 +69,13 @@
 		articleRefs = new Array(articles.length).fill(null);
 	});
 
-	async function fetchRepoContent(repo: string): Promise<string> {
+	async function fetchRepoContent(
+		repo: string,
+		branch: string
+	): Promise<string> {
 		try {
 			const response = await fetch(
-				`https://raw.githubusercontent.com/${repo}/main/README.md`
+				`https://raw.githubusercontent.com/${repo}/${branch}/README.md`
 			);
 			if (response.ok) {
 				return await response.text();
@@ -75,7 +89,10 @@
 	async function toggleExpand(i: number) {
 		const article = articles[i];
 		if ('repo' in article && article.fullContent === undefined) {
-			article.fullContent = await fetchRepoContent(article.repo);
+			article.fullContent = await fetchRepoContent(
+				article.repo,
+				article.branch
+			);
 			articles = articles; // Trigger reactivity
 		}
 		expanded[i] = !expanded[i];
@@ -129,7 +146,10 @@
 					{#if expanded[i]}
 						<div class="px-6 py-8 border-t border-quaternary">
 							<div class="prose prose-invert !min-w-0 max-w-full">
-								<SvelteMarkdown source={article.fullContent ?? ''} />
+								<SvelteMarkdown
+									source={article.fullContent ?? ''}
+									renderers={{ code: CodeBlock }}
+								/>
 							</div>
 							<div class="mt-6 flex justify-center">
 								<button
@@ -186,7 +206,10 @@
 					{#if expanded[i]}
 						<div class="px-4 py-8 border-t border-quaternary">
 							<div class="prose prose-invert !min-w-0 max-w-full">
-								<SvelteMarkdown source={article.fullContent ?? ''} />
+								<SvelteMarkdown
+									source={article.fullContent ?? ''}
+									renderers={{ code: CodeBlock }}
+								/>
 							</div>
 							<div class="mt-6 flex justify-center">
 								<button
