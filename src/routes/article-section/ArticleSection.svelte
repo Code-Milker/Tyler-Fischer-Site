@@ -3,10 +3,14 @@
 	import { onMount, tick } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import Rwa from '$lib/images/rwa.png';
+	import Resume from '$lib/images/resume.jpeg';
 	import WhaleComputer from '$lib/images/whale-computer.jpg';
+	import Bip39 from '$lib/images/bip 39.jpeg';
+	import EffectLess from '$lib/images/less-effect.png';
 	import aiMd from '$lib/content/ai.md?raw';
+	import resumeMd from '$lib/content/resume.md?raw';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
-	import CodeBlock from '$lib/components/CodeBlock.svelte'; // Add this for highlighting
+	import CodeBlock from '$lib/components/CodeBlock.svelte';
 
 	interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
 		filename: string;
@@ -16,27 +20,27 @@
 	interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
 		repo: string;
 		fullContent?: string;
-		interactiveContent?: string; // New: for separate interactive file like HTML
+		interactiveContent?: string;
 		branch: string;
-		file: string; // Main content file (e.g., 'README.md')
-		interactiveFile?: string; // Optional: interactive file (e.g., 'index.html')
+		file: string;
+		interactiveFile?: string;
 	}
 
 	let repoArticles: RepoArticle[] = [
 		{
 			title: 'BIP39',
 			description: 'A single file web page that generates private keys',
-			image: Rwa, // Placeholder; update to a relevant image if available
+			image: Bip39,
 			repo: 'Code-Milker/bip-39',
 			branch: 'master',
 			file: 'README.md',
-			interactiveFile: 'index.html' // New: the interactive file to embed after README
+			interactiveFile: 'index.html'
 		},
 		{
 			title: 'Effect-Less',
 			description:
 				"Effect-less is a project that addresses TypeScript's flexibility-related challenges, such as inconsistent codebases from mixing paradigms, gradual typing pitfalls, and runtime errors, by enforcing a stricter, opinionated dialect through custom lint rules with LSP integration for immediate feedback, automating decisions, reducing debates, and prioritizing business logic. Key features include rules for Go-like error handling with [result, error] tuples, validator-derived types from Zod schemas, automatic parameter validation, immutable data structures via const and readonly, and pure functions without side effects to promote reliability, predictability, and maintainability.",
-			image: Rwa, // Placeholder; update to a relevant image if available
+			image: EffectLess,
 			repo: 'Code-Milker/effect-less',
 			branch: 'main',
 			file: 'README.md'
@@ -45,7 +49,7 @@
 			title: 'MooMoo.js',
 			description:
 				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
-			image: WhaleComputer, // Placeholder; update to a relevant image if available
+			image: WhaleComputer,
 			repo: 'Code-Milker/moomoo.js',
 			branch: 'main',
 			file: 'README.md'
@@ -53,6 +57,13 @@
 	];
 
 	let staticArticles: StaticArticle[] = [
+		{
+			title: 'Resume',
+			description: 'Resume for Tyler Fischer',
+			image: Resume,
+			filename: '/resume.md',
+			fullContent: resumeMd
+		},
 		{
 			title: 'AI and Prompting Approach for Development',
 			description:
@@ -81,7 +92,7 @@
 		branch: string,
 		file: string
 	): Promise<string> {
-		if (!file) return ''; // Skip if no file specified
+		if (!file) return '';
 		try {
 			const response = await fetch(
 				`https://raw.githubusercontent.com/${repo}/${branch}/${file}`
@@ -112,7 +123,7 @@
 					article.interactiveFile
 				);
 			}
-			articles = articles; // Trigger reactivity
+			articles = articles;
 		}
 		expanded[i] = !expanded[i];
 		if (expanded[i] && articleRefs[i]) {
@@ -133,29 +144,25 @@
 	<div slot="desktop">
 		<div>
 			{#each articles as article, i}
-				{#if i > 0}
-					<div class="border-b border-b-border" />
-				{/if}
 				<div
 					bind:this={articleRefs[i]}
-					class="bg-primary text-text {i === 0 ? 'rounded-t-lg' : ''} {i ===
-					articles.length - 1
-						? 'rounded-b-lg'
-						: ''}"
+					class="bg-primary text-text {i !== 0 ? 'my-8' : 'mb-8'} {i === 0
+						? 'rounded-t-lg'
+						: ''} {i === articles.length - 1 ? 'rounded-b-lg mb-0' : ''}"
 				>
-					<div class="flex flex-row p-6">
-						<div class="flex-shrink-0 mb-0 mr-6 p-2">
+					<div class="flex flex-row">
+						<div class="flex-shrink-0 mb-0 mr-6">
 							<img
 								src={article.image}
 								alt={article.title}
-								class="w-[300px] aspect-square rounded-lg object-cover"
+								class="w-[200px] aspect-square rounded-lg object-cover"
 							/>
 						</div>
 						<div class="flex-1 flex flex-col">
 							<h2 class="text-2xl text-quaternary font-semibold mb-2">
 								{article.title}
 							</h2>
-							<div class="text-text mb-4 line-clamp-[6] prose prose-invert">
+							<div class="text-text mb-4 line-clamp-[3] prose prose-invert">
 								<SvelteMarkdown source={article.description} />
 							</div>
 							<div class="flex justify-start">
@@ -169,7 +176,7 @@
 						</div>
 					</div>
 					{#if expanded[i]}
-						<div class="px-6 py-8 border-t border-quaternary">
+						<div class="my-8">
 							<div class="prose prose-invert !min-w-0 max-w-full">
 								<SvelteMarkdown
 									source={article.fullContent ?? ''}
@@ -211,8 +218,11 @@
 				{/if}
 				<div
 					bind:this={articleRefs[i]}
-					class="bg-primary text-text {i === 0 ? 'rounded-t-lg' : ''} {i ===
-					articles.length - 1
+					class="bg-primary text-text {i === articles.length - 1
+						? 'mt-8'
+						: i !== 0
+						? 'mt-8'
+						: ''} {i === 0 ? 'rounded-t-lg' : ''} {i === articles.length - 1
 						? 'rounded-b-lg'
 						: ''}"
 				>
