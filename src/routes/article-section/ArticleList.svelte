@@ -1,8 +1,5 @@
 <script lang="ts">
-	import type { ContentPreviewType } from '$lib/types.ts';
-	import { onMount, tick } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
-	import Rwa from '$lib/images/rwa.png';
 	import Resume from '$lib/images/resume.jpeg';
 	import WhaleComputer from '$lib/images/whale-computer.jpg';
 	import Bip39 from '$lib/images/bip 39.jpeg';
@@ -10,21 +7,8 @@
 	import aiMd from '$lib/content/ai.md?raw';
 	import resumeMd from '$lib/content/resume.md?raw';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
-	import CodeBlock from '$lib/components/CodeBlock.svelte';
-
-	interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
-		filename: string;
-		fullContent: string;
-	}
-
-	interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
-		repo: string;
-		fullContent?: string;
-		interactiveContent?: string;
-		branch: string;
-		file: string;
-		interactiveFile?: string;
-	}
+	import type { RepoArticle, StaticArticle } from '$lib/stores/ArticleStore';
+	import { selectedArticle } from '$lib/stores/ArticleStore';
 
 	let repoArticles: RepoArticle[] = [
 		{
@@ -64,7 +48,6 @@
 			file: 'README.md'
 		}
 	];
-
 	let staticArticles: StaticArticle[] = [
 		{
 			title: 'Resume',
@@ -82,25 +65,14 @@
 			fullContent: aiMd
 		}
 	];
-
 	let articles: (StaticArticle | RepoArticle)[] = [
 		...repoArticles,
 		...staticArticles
 	];
-
 	let chunks: (StaticArticle | RepoArticle)[][] = [];
 	for (let i = 0; i < articles.length; i += 2) {
 		chunks.push(articles.slice(i, i + 2));
 	}
-
-	let expanded: boolean[] = [];
-	let articleRefs: (HTMLDivElement | null)[] = [];
-
-	onMount(() => {
-		expanded = new Array(articles.length).fill(false);
-		articleRefs = new Array(articles.length).fill(null);
-	});
-
 	async function fetchRepoContent(
 		repo: string,
 		branch: string,
@@ -119,8 +91,7 @@
 			return 'Error fetching content: ' + (e as Error).message;
 		}
 	}
-
-	async function toggleExpand(i: number) {
+	async function selectArticle(i: number) {
 		const article = articles[i];
 		if ('repo' in article) {
 			if (article.fullContent === undefined) {
@@ -139,18 +110,8 @@
 			}
 			articles = articles;
 		}
-		expanded[i] = !expanded[i];
-		if (expanded[i] && articleRefs[i]) {
-			await tick();
-			articleRefs[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
-		expanded = expanded;
-	}
-
-	function hasInteractiveHtml(article: StaticArticle | RepoArticle): boolean {
-		return !!(
-			'interactiveFile' in article && article.interactiveFile?.endsWith('.html')
-		);
+		selectedArticle.set(article);
+		console.log(`Selected article: ${article.title}`);
 	}
 </script>
 
@@ -163,20 +124,11 @@
 				>
 					{#each chunk as article, j}
 						{@const i = chunkIndex * 2 + j}
-						<div
-							bind:this={articleRefs[i]}
-							class="bg-primary text-text overflow-hidden"
-						>
+						<div class="bg-primary text-text overflow-hidden">
 							<div
-								class={`flex flex-row cursor-pointer hover:bg-tertiary transition-colors ${
+								class={`flex flex-row transition-colors p-4 ${
 									j === 0 ? 'border-r-2 border-r-secondary' : ''
 								} border-t-2 border-t-secondary`}
-								on:click={() => toggleExpand(i)}
-								on:keydown={(e) => {
-									if (e.key === 'Enter') toggleExpand(i);
-								}}
-								role="button"
-								tabindex="0"
 							>
 								<div class="flex-shrink-0">
 									<img
@@ -194,39 +146,14 @@
 									>
 										<SvelteMarkdown source={article.description} />
 									</div>
+									<a
+										href="#"
+										class="text-quaternary hover:underline"
+										on:click|preventDefault={() => selectArticle(i)}
+										>Read More</a
+									>
 								</div>
 							</div>
-							{#if expanded[i]}
-								<div class="p-4 border-quaternary">
-									<div class="prose prose-invert !min-w-0 max-w-full">
-										<SvelteMarkdown
-											source={article.fullContent ?? ''}
-											renderers={{ code: CodeBlock }}
-										/>
-										{#if hasInteractiveHtml(article) && 'interactiveContent' in article && article.interactiveContent}
-											<div class="mt-8">
-												<h3 class="text-xl text-quaternary font-semibold mb-4">
-													Interactive Tool
-												</h3>
-												<iframe
-													srcdoc={article.interactiveContent}
-													style="width: 100%; height: 1200px; border: none;"
-													title={article.title + ' Interactive'}
-													sandbox="allow-scripts"
-												/>
-											</div>
-										{/if}
-									</div>
-									<div class="mt-6 flex justify-center">
-										<button
-											class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
-											on:click={() => toggleExpand(i)}
-										>
-											Close
-										</button>
-									</div>
-								</div>
-							{/if}
 						</div>
 					{/each}
 				</div>
@@ -240,20 +167,11 @@
 					<div class="border-b border-b-border" />
 				{/if}
 				<div
-					bind:this={articleRefs[i]}
 					class="bg-primary text-text {i === articles.length - 1
 						? 'rounded-b-lg'
 						: ''} {i === 0 ? 'rounded-t-lg' : ''}"
 				>
-					<div
-						class="flex flex-col p-4 cursor-pointer hover:bg-tertiary transition-colors"
-						on:click={() => toggleExpand(i)}
-						on:keydown={(e) => {
-							if (e.key === 'Enter') toggleExpand(i);
-						}}
-						role="button"
-						tabindex="0"
-					>
+					<div class="flex flex-col p-4 transition-colors">
 						<div class="flex-shrink-0 mb-4 p-2">
 							<img
 								src={article.image}
@@ -270,39 +188,13 @@
 							>
 								<SvelteMarkdown source={article.description} />
 							</div>
+							<a
+								href="#"
+								class="text-quaternary hover:underline"
+								on:click|preventDefault={() => selectArticle(i)}>Read More</a
+							>
 						</div>
 					</div>
-					{#if expanded[i]}
-						<div class="px-4 py-8 border-t border-quaternary">
-							<div class="prose prose-invert !min-w-0 max-w-full">
-								<SvelteMarkdown
-									source={article.fullContent ?? ''}
-									renderers={{ code: CodeBlock }}
-								/>
-								{#if hasInteractiveHtml(article) && 'interactiveContent' in article && article.interactiveContent}
-									<div class="mt-8">
-										<h3 class="text-xl text-quaternary font-semibold mb-4">
-											Interactive Tool
-										</h3>
-										<iframe
-											srcdoc={article.interactiveContent}
-											style="width: 100%; height: 600px; border: none;"
-											title={article.title + ' Interactive'}
-											sandbox="allow-scripts"
-										/>
-									</div>
-								{/if}
-							</div>
-							<div class="mt-6 flex justify-center">
-								<button
-									class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
-									on:click={() => toggleExpand(i)}
-								>
-									Close
-								</button>
-							</div>
-						</div>
-					{/if}
 				</div>
 			{/each}
 		</div>
