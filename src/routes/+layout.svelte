@@ -2,7 +2,7 @@
 	import './styles.css';
 </script>
 
-<main class="text-text">
+<main class="text-text h-full">
 	<slot />
 </main>
 <footer />

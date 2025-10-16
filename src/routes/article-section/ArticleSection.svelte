@@ -37,6 +37,15 @@
 			interactiveFile: 'index.html'
 		},
 		{
+			title: 'BIP39',
+			description: 'A single file web page that generates private keys',
+			image: Bip39,
+			repo: 'Code-Milker/bip-39',
+			branch: 'master',
+			file: 'README.md',
+			interactiveFile: 'index.html'
+		},
+		{
 			title: 'Effect-Less',
 			description:
 				"Effect-less is a project that addresses TypeScript's flexibility-related challenges, such as inconsistent codebases from mixing paradigms, gradual typing pitfalls, and runtime errors, by enforcing a stricter, opinionated dialect through custom lint rules with LSP integration for immediate feedback, automating decisions, reducing debates, and prioritizing business logic. Key features include rules for Go-like error handling with [result, error] tuples, validator-derived types from Zod schemas, automatic parameter validation, immutable data structures via const and readonly, and pure functions without side effects to promote reliability, predictability, and maintainability.",
@@ -65,7 +74,7 @@
 			fullContent: resumeMd
 		},
 		{
-			title: 'AI and Prompting Approach for Development',
+			title: 'Prompting 101',
 			description:
 				'Thoughts on a generalized approach to leveraging AI efficiently and securely across any environment, emphasizing controlled access, precise prompting, output verification, and future safeguards to mitigate risks like hallucinations, biases, and privacy breaches while maximizing productivity.',
 			image: WhaleComputer,
@@ -78,6 +87,11 @@
 		...repoArticles,
 		...staticArticles
 	];
+
+	let chunks: (StaticArticle | RepoArticle)[][] = [];
+	for (let i = 0; i < articles.length; i += 2) {
+		chunks.push(articles.slice(i, i + 2));
+	}
 
 	let expanded: boolean[] = [];
 	let articleRefs: (HTMLDivElement | null)[] = [];
@@ -141,71 +155,80 @@
 </script>
 
 <DeviceContainer title="Articles">
-	<div slot="desktop">
-		<div>
-			{#each articles as article, i}
+	<div slot="desktop" class="bg-secondary pt-0">
+		<div class="bg-primary">
+			{#each chunks as chunk, chunkIndex}
 				<div
-					bind:this={articleRefs[i]}
-					class="bg-primary text-text {i !== 0 ? 'my-8' : 'mb-8'} {i === 0
-						? 'rounded-t-lg'
-						: ''} {i === articles.length - 1 ? 'rounded-b-lg mb-0' : ''}"
+					class="grid grid-cols-2 {chunkIndex < chunks.length - 1 ? '' : ''}"
 				>
-					<div class="flex flex-row">
-						<div class="flex-shrink-0 mb-0 mr-6">
-							<img
-								src={article.image}
-								alt={article.title}
-								class="w-[200px] aspect-square rounded-lg object-cover"
-							/>
-						</div>
-						<div class="flex-1 flex flex-col">
-							<h2 class="text-2xl text-quaternary font-semibold mb-2">
-								{article.title}
-							</h2>
-							<div class="text-text mb-4 line-clamp-[3] prose prose-invert">
-								<SvelteMarkdown source={article.description} />
-							</div>
-							<div class="flex justify-start">
-								<button
-									class="min-w-[120px] bg-secondary text-text px-2 py-2 rounded hover:bg-tertiary transition-colors"
-									on:click={() => toggleExpand(i)}
-								>
-									{expanded[i] ? 'Close' : 'Expand'}
-								</button>
-							</div>
-						</div>
-					</div>
-					{#if expanded[i]}
-						<div class="my-8">
-							<div class="prose prose-invert !min-w-0 max-w-full">
-								<SvelteMarkdown
-									source={article.fullContent ?? ''}
-									renderers={{ code: CodeBlock }}
-								/>
-								{#if hasInteractiveHtml(article) && 'interactiveContent' in article && article.interactiveContent}
-									<div class="mt-8">
-										<h3 class="text-xl text-quaternary font-semibold mb-4">
-											Interactive Tool
-										</h3>
-										<iframe
-											srcdoc={article.interactiveContent}
-											style="width: 100%; height: 1200px; border: none;"
-											title={article.title + ' Interactive'}
-											sandbox="allow-scripts"
-										/>
+					{#each chunk as article, j}
+						{@const i = chunkIndex * 2 + j}
+						<div
+							bind:this={articleRefs[i]}
+							class="bg-primary text-text overflow-hidden"
+						>
+							<div
+								class={`flex flex-row cursor-pointer hover:bg-tertiary transition-colors ${
+									j === 0 ? 'border-r-2 border-r-secondary' : ''
+								} border-t-2 border-t-secondary`}
+								on:click={() => toggleExpand(i)}
+								on:keydown={(e) => {
+									if (e.key === 'Enter') toggleExpand(i);
+								}}
+								role="button"
+								tabindex="0"
+							>
+								<div class="flex-shrink-0">
+									<img
+										src={article.image}
+										alt={article.title}
+										class="w-[200px] aspect-square object-cover"
+									/>
+								</div>
+								<div class="flex-1 flex flex-col p-4">
+									<h2 class="text-2xl text-quaternary font-semibold mb-2">
+										{article.title}
+									</h2>
+									<div
+										class="text-text mb-4 line-clamp-3 prose prose-invert min-h-[calc(3*1.75em)]"
+									>
+										<SvelteMarkdown source={article.description} />
 									</div>
-								{/if}
+								</div>
 							</div>
-							<div class="mt-6 flex justify-center">
-								<button
-									class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
-									on:click={() => toggleExpand(i)}
-								>
-									Close
-								</button>
-							</div>
+							{#if expanded[i]}
+								<div class="p-4 border-quaternary">
+									<div class="prose prose-invert !min-w-0 max-w-full">
+										<SvelteMarkdown
+											source={article.fullContent ?? ''}
+											renderers={{ code: CodeBlock }}
+										/>
+										{#if hasInteractiveHtml(article) && 'interactiveContent' in article && article.interactiveContent}
+											<div class="mt-8">
+												<h3 class="text-xl text-quaternary font-semibold mb-4">
+													Interactive Tool
+												</h3>
+												<iframe
+													srcdoc={article.interactiveContent}
+													style="width: 100%; height: 1200px; border: none;"
+													title={article.title + ' Interactive'}
+													sandbox="allow-scripts"
+												/>
+											</div>
+										{/if}
+									</div>
+									<div class="mt-6 flex justify-center">
+										<button
+											class="min-w-[120px] bg-secondary text-text px-4 py-2 rounded hover:bg-tertiary transition-colors"
+											on:click={() => toggleExpand(i)}
+										>
+											Close
+										</button>
+									</div>
+								</div>
+							{/if}
 						</div>
-					{/if}
+					{/each}
 				</div>
 			{/each}
 		</div>
@@ -219,14 +242,18 @@
 				<div
 					bind:this={articleRefs[i]}
 					class="bg-primary text-text {i === articles.length - 1
-						? 'mt-8'
-						: i !== 0
-						? 'mt-8'
-						: ''} {i === 0 ? 'rounded-t-lg' : ''} {i === articles.length - 1
 						? 'rounded-b-lg'
-						: ''}"
+						: ''} {i === 0 ? 'rounded-t-lg' : ''}"
 				>
-					<div class="flex flex-col p-4">
+					<div
+						class="flex flex-col p-4 cursor-pointer hover:bg-tertiary transition-colors"
+						on:click={() => toggleExpand(i)}
+						on:keydown={(e) => {
+							if (e.key === 'Enter') toggleExpand(i);
+						}}
+						role="button"
+						tabindex="0"
+					>
 						<div class="flex-shrink-0 mb-4 p-2">
 							<img
 								src={article.image}
@@ -238,16 +265,10 @@
 							<h2 class="text-2xl text-quaternary font-semibold mb-2">
 								{article.title}
 							</h2>
-							<div class="text-text mb-4 line-clamp-[6] prose prose-invert">
+							<div
+								class="text-text mb-4 line-clamp-6 prose prose-invert min-h-[calc(6*1.75em)]"
+							>
 								<SvelteMarkdown source={article.description} />
-							</div>
-							<div class="mt-auto flex justify-start">
-								<button
-									class="min-w-[120px] bg-secondary text-text px-2 py-2 rounded hover:bg-tertiary transition-colors"
-									on:click={() => toggleExpand(i)}
-								>
-									{expanded[i] ? 'Close' : 'Expand'}
-								</button>
 							</div>
 						</div>
 					</div>

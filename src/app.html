@@ -1,8 +1,5 @@
 <!doctype html>
-<html
-	lang="en"
-	class="min-h-screen w-screen bg-gray-900 flex flex-col justify-center"
->
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/moo.jpeg" />
@@ -15,7 +12,14 @@
 		</style>
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div>%sveltekit.body%</div>
+	<body
+		data-sveltekit-preload-data="hover"
+		class="h-full flex justify-center flex-col w-screen bg-primary"
+	>
+		<div
+			class="min-h-screen h-full mx-auto border-x-2 border-secondary flex flex-col justify-start"
+		>
+			%sveltekit.body%
+		</div>
 	</body>
 </html>

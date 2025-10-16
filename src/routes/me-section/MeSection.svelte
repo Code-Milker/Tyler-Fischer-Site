@@ -23,14 +23,14 @@ You can reach me at tylerf66@gmail.com`,
 </script>
 
 <DeviceContainer>
-	<div slot="desktop">
-		<div class="flex flex-row">
+	<div slot="desktop" class="bg-primary">
+		<div class="flex flex-row bg-primary">
 			<img
 				src={myInfo.me}
-				class="size-[200px] rounded-full"
+				class="size-[200px] border-primary"
 				alt="failed to load me"
 			/>
-			<div class="pl-8 flex flex-col justify-between min-h-[200px]">
+			<div class="pl-4 py-4 flex flex-col justify-between min-h-[200px]">
 				<h1 class="text-3xl text-tertiary font-bold">Hey, I'm Ty</h1>
 				<p class="text-start">{myInfo.description}</p>
 				<div class="max-w-[200px] flex flex-row justify-between">
