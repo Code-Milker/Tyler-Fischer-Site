@@ -2,8 +2,16 @@
 	import SvelteMarkdown from 'svelte-markdown';
 	import Resume from '$lib/images/resume.jpeg';
 	import WhaleComputer from '$lib/images/whale-computer.jpg';
-	import Bip39 from '$lib/images/bip 39.jpeg';
-	import EffectLess from '$lib/images/less-effect.png';
+	import Moo2 from '$lib/images/moo2.jpeg';
+	import RWA from '$lib/images/rwa.png';
+	import GoldenCalf from '$lib/images/calf.png';
+	import Bip39 from '$lib/images/bip39new.png';
+	import Poomy from '$lib/images/poomy2.jpg';
+	import EffectLess from '$lib/images/effectless-new.jpeg';
+	import SurfPunk from '$lib/images/surfpunk.avif';
+	import Deso from '$lib/images/DesoLogo.jpeg';
+	import ThisSite from '$lib/images/svelte-logo.svg';
+	import IronFox from '$lib/images/ironfox.jpg';
 	import aiMd from '$lib/content/ai.md?raw';
 	import resumeMd from '$lib/content/resume.md?raw';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
@@ -11,10 +19,20 @@
 	import { selectedArticle } from '$lib/stores/ArticleStore';
 	let repoArticles: RepoArticle[] = [
 		{
-			title: 'BIP39',
+			title: 'Poomy',
 			description: 'A single file web page that generates private keys',
-			image: Bip39,
-			repo: 'Code-Milker/bip-39',
+			image: Poomy,
+			repo: 'Code-Milker/VentureWisconsinMobile',
+			branch: 'master',
+			file: 'README.md',
+			interactiveFile: 'index.html'
+		},
+		{
+			title: 'ERC7540- tokenVault',
+			description:
+				'Token Vault contract for bridging real world assets for chatuea capital',
+			image: RWA,
+			repo: 'Code-Milker/tokenVault',
 			branch: 'master',
 			file: 'README.md',
 			interactiveFile: 'index.html'
@@ -38,10 +56,53 @@
 			file: 'README.md'
 		},
 		{
+			title: 'Surf Punks v2',
+			description: 'first gig in blockchain, based on x blah blah',
+			image: SurfPunk,
+			repo: 'Code-Milker/surf-punks-v2',
+			branch: 'main',
+			file: 'README.md'
+		},
+		{
+			title: 'This Site',
+			description:
+				'Built with Svelte and tailwind, this site features a custom markdown generator blah blah',
+			image: ThisSite,
+			repo: 'Code-Milker/moomoo.js',
+			branch: 'main',
+			file: 'README.md'
+		},
+		{
+			title: 'Deso.js',
+			description:
+				'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js, https://build.deso.com/main/welcome',
+			image: Deso,
+			repo: 'https://github.com/deso-protocol/deso-workspace/tree/66d616bd480b1dfbf597b2db10b4c227fde4fee9/libs/deso-protocol',
+			branch: 'main',
+			file: 'README.md'
+		},
+		{
 			title: 'MooMoo.js',
 			description:
 				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
-			image: WhaleComputer,
+			image: Moo2,
+			repo: 'Code-Milker/moomoo.js',
+			branch: 'main',
+			file: 'README.md'
+		},
+		{
+			title: 'Golden Calf',
+			description: 'Prediction Market app prototype for the Deso Blockchain',
+			image: GoldenCalf,
+			repo: 'Code-Milker/moomoo.js',
+			branch: 'main',
+			file: 'README.md'
+		},
+		{
+			title: 'Iron Fox',
+			description:
+				'crypto anylatics that automatically detect mixers blah blah',
+			image: IronFox,
 			repo: 'Code-Milker/moomoo.js',
 			branch: 'main',
 			file: 'README.md'
@@ -135,7 +196,7 @@
 									<img
 										src={article.image}
 										alt={article.title}
-										class="w-[200px] aspect-square object-cover"
+										class="w-[200px] h-[200px]"
 									/>
 								</div>
 								<div class="flex-1 flex flex-col p-4">
