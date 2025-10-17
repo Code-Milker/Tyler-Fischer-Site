@@ -1,6 +1,5 @@
 import type { ContentPreviewType } from '$lib/types.ts';
 import { writable } from 'svelte/store';
-
 export const selectedArticle = writable<StaticArticle | RepoArticle | null>(
 	null
 );
@@ -15,4 +14,5 @@ export interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
 	branch: string;
 	file: string;
 	interactiveFile?: string;
+	showPrototype?: boolean;
 }

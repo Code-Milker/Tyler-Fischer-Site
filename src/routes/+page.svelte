@@ -23,16 +23,16 @@
 		<StaticArticleHeader />
 	{/if}
 	<div class="bg-primary p-4 text-text prose prose-invert max-w-4xl mx-auto">
-		<SvelteMarkdown source={$selectedArticle.fullContent} />
-		{#if 'interactiveContent' in $selectedArticle && $selectedArticle.interactiveContent}
-			<h2 class="text-2xl text-quaternary font-semibold mt-8 mb-4">
-				Interactive Demo
-			</h2>
-			<iframe
-				srcdoc={$selectedArticle.interactiveContent}
-				class="w-full h-[600px] border-2 border-secondary"
-				title="Interactive Content"
-			/>
+		{#if 'showPrototype' in $selectedArticle && $selectedArticle.showPrototype}
+			{#if 'interactiveContent' in $selectedArticle && $selectedArticle.interactiveContent}
+				<iframe
+					srcdoc={$selectedArticle.interactiveContent}
+					class=" w-full h-[800px]"
+					title="Interactive Content"
+				/>
+			{/if}
+		{:else}
+			<SvelteMarkdown source={$selectedArticle.fullContent} />
 		{/if}
 	</div>
 {/if}
