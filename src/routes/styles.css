@@ -6,17 +6,3 @@
 	--font-mono: 'Fira Mono', monospace;
 	font-family: var(--font-body);
 }
-
-body,
-html {
-}
-
-/* input, */
-/* button { */
-/* 	font-size: inherit; */
-/* 	font-family: inherit; */
-/* } */
-/**/
-/* button:focus:not(:focus-visible) { */
-/* 	outline: none; */
-/* } */

@@ -28,7 +28,7 @@
 			interactiveFile: 'index.html'
 		},
 		{
-			title: 'ERC7540- tokenVault',
+			title: 'RWA ERC-7540',
 			description:
 				'Token Vault contract for bridging real world assets for chatuea capital',
 			image: RWA,
