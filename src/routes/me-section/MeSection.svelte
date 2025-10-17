@@ -1,26 +1,35 @@
 <!-- src/routes/me-section/MeSection.svelte -->
 <script lang="ts">
-	import type { LinksType } from '$lib/types';
-	import github from '$lib/images/github.png';
-	import linkedin from '$lib/images/linkedin.svg';
-	import me from '$lib/images/me.jpeg';
-	import IconBanner from '$lib/components/IconBanner.svelte';
+	import type { IconProps } from '$lib/types';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
-
-	let myInfo: { description: string; me: string; links: LinksType[] } = {
+	import { triggerDownload } from '$lib/stores/DownloadStore';
+	import github from '$lib/images/github.png';
+	import me from '$lib/images/me.jpeg';
+	import downloadResume from '$lib/images/download-paper-icon.png';
+	import linkedin from '$lib/images/linkedin.svg';
+	let myInfo: { description: string; me: string } = {
 		description: `Welcome, I'm your dedicated software contractor, specializing in web, blockchain, and mobile
 development. My mission is to bring your software ideas to life with expertise and precision.
 You can reach me at tylerf66@gmail.com`,
-		me: me,
-		links: [
-			{ href: 'https://github.com/Milk-Maven', src: github, alt: 'github' },
-			{
-				href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/',
-				src: linkedin,
-				alt: 'linkedin'
-			}
-		]
+		me: me
 	};
+	let icons: IconProps[] = [
+		{
+			href: 'https://github.com/Milk-Maven',
+			src: github,
+			alt: 'github'
+		},
+		{
+			href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/',
+			src: linkedin,
+			alt: 'linkedin'
+		},
+		{
+			onClick: () => triggerDownload.set({ type: 'pdf' }),
+			src: downloadResume,
+			alt: 'download'
+		}
+	];
 </script>
 
 <SectionHeader
@@ -28,6 +37,5 @@ You can reach me at tylerf66@gmail.com`,
 	description={myInfo.description}
 	image={myInfo.me}
 	alt="me"
->
-	<IconBanner slot="actions" />
-</SectionHeader>
+	{icons}
+/>

@@ -1,15 +1,18 @@
 <!-- src/lib/components/SectionHeader.svelte -->
 <script lang="ts">
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import type { IconProps } from '$lib/types';
+	import Icon from './Icon.svelte';
 
 	export let title: string;
 	export let description: string;
 	export let image: string;
 	export let alt: string = '';
+	export let icons: IconProps[] = [];
 </script>
 
-<DeviceContainer class="w-full">
-	<div slot="desktop" class="bg-primary">
+<DeviceContainer>
+	<div slot="desktop" class="bg-primary w-full">
 		<div class="flex flex-row bg-primary p-4 w-full">
 			<img
 				src={image}
@@ -20,7 +23,9 @@
 				<h1 class="text-3xl text-tertiary font-bold">{title}</h1>
 				<p class="text-start">{description}</p>
 				<div class="max-w-[200px] flex flex-row justify-between">
-					<slot name="actions" />
+					{#each icons as icon}
+						<Icon {...icon} />
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -37,9 +42,7 @@
 					<h1 class="text-3xl font-bold text-tertiary mb-2">
 						{title}
 					</h1>
-					<div class="flex justify-between w-full mt-2">
-						<slot name="actions" />
-					</div>
+					<div class="flex justify-between w-full mt-2" />
 				</div>
 			</div>
 			<p class="text-start pt-2 px-4">{description}</p>

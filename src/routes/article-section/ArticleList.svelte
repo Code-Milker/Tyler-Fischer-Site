@@ -9,7 +9,6 @@
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import type { RepoArticle, StaticArticle } from '$lib/stores/ArticleStore';
 	import { selectedArticle } from '$lib/stores/ArticleStore';
-
 	let repoArticles: RepoArticle[] = [
 		{
 			title: 'BIP39',
@@ -119,16 +118,18 @@
 	<div slot="desktop" class="bg-secondary pt-0">
 		<div class="bg-primary">
 			{#each chunks as chunk, chunkIndex}
-				<div
-					class="grid grid-cols-2 {chunkIndex < chunks.length - 1 ? '' : ''}"
-				>
+				<div class="grid grid-cols-2">
 					{#each chunk as article, j}
 						{@const i = chunkIndex * 2 + j}
 						<div class="bg-primary text-text overflow-hidden">
 							<div
 								class={`flex flex-row transition-colors p-4 ${
 									j === 0 ? 'border-r-2 border-r-secondary' : ''
-								} border-t-2 border-t-secondary`}
+								} ${
+									chunkIndex < chunks.length - 1
+										? 'border-b-2 border-b-secondary'
+										: ''
+								}`}
 							>
 								<div class="flex-shrink-0">
 									<img

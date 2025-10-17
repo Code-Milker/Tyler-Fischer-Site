@@ -7,7 +7,9 @@
 	<!-- <h2 class="text-center text-xl font-bold p-2 text-quaterary min-h-[45px]"> -->
 	<!-- 	{title} -->
 	<!-- </h2> -->
-	<div class="bg-primary mx-auto max-w-[1098px]">
+	<div
+		class="bg-primary mx-auto max-w-[1098px] min-w-[1098px] border-b-2 border-b-secondary"
+	>
 		<slot name="desktop" />
 	</div>
 </div>
