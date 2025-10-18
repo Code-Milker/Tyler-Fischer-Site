@@ -29,26 +29,24 @@
 			</div>
 		</div>
 	</div>
-	<div slot="mobile" class=" border-b-secondary border-b-2">
-		<div class="flex flex-col">
-			<div class="flex flex-row items-center pl-4">
-				<img
-					src={image}
-					class="aspect-square size-[130px] bg-secondary"
-					alt={`failed to load ${alt}`}
-				/>
-				<div class="flex flex-col justify-center pl-4 flex-1">
-					<h1 class="text-3xl font-bold text-tertiary mb-2">
-						{title}
-					</h1>
-					<div class="flex flex-row items-center space-x-4 mt-2">
-						{#each icons as icon}
-							<Icon {...icon} />
-						{/each}
-					</div>
-				</div>
-			</div>
-			<p class="text-start py-2 px-4">{description}</p>
+	<div slot="mobile" class=" border-b-secondary border-b-2 px-4">
+		<h1 class="text-2xl font-bold text-tertiary p-4">
+			{title}
+		</h1>
+		<div class="w-full bg-secondary p-4">
+			<img
+				src={image}
+				class="aspect-square size-[225px] object-cover bg-secondary rounded-lg mx-auto"
+				alt={`failed to load ${alt}`}
+			/>
 		</div>
+		<div class="flex flex-col justify-center flex-1">
+			<div class="flex flex-row items-center space-x-4 mt-2">
+				{#each icons as icon}
+					<Icon {...icon} />
+				{/each}
+			</div>
+		</div>
+		<p class="text-start py-2">{description}</p>
 	</div>
 </DeviceContainer>
