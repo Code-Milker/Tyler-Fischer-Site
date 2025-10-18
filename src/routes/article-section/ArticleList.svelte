@@ -208,6 +208,8 @@
 									>
 										<SvelteMarkdown source={article.description} />
 									</div>
+
+									<!-- svelte-ignore a11y-invalid-attribute -->
 									<a
 										href="#"
 										class="text-quaternary underline hover:text-emerald-400"
@@ -249,6 +251,7 @@
 						<div class="text-text line-clamp-6 prose prose-invert mt-2">
 							<SvelteMarkdown source={article.description} />
 						</div>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
 							href="#"
 							class="text-quaternary underline text-lg pt-2"

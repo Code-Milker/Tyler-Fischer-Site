@@ -18,7 +18,9 @@
 				class="size-[200px] border-primary"
 				alt={`failed to load ${alt}`}
 			/>
-			<div class="pl-4 py-4 flex flex-col justify-between min-h-[200px] flex-1">
+			<div
+				class="pl-4 py-4 flex flex-col justify-between max-h-[200px] min-h-[200px] flex-1"
+			>
 				<h1 class="text-3xl text-tertiary font-bold">{title}</h1>
 				<p class="text-start">{description}</p>
 				<div class="flex flex-row items-center space-x-4">
