@@ -34,7 +34,7 @@
 	{:else}
 		<StaticArticleHeader />
 	{/if}
-	<div class="bg-primary p-4 text-text prose prose-invert max-w-4xl mx-auto">
+	<div class="bg-primary p-4 text-text prose prose-invert mx-auto">
 		{#if 'showPrototype' in $selectedArticle && $selectedArticle.showPrototype}
 			{#if 'interactiveContent' in $selectedArticle && $selectedArticle.interactiveContent}
 				<iframe

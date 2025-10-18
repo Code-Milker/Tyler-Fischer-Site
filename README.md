@@ -65,4 +65,3 @@ Suggestions for improvements are welcome; open an issue to discuss.
 MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contact
-Reach out at tylerf66@gmail.com or via [LinkedIn](https://www.linkedin.com/in/tyler-fischer-4a5309141).
