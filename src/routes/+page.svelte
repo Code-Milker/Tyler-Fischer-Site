@@ -13,6 +13,8 @@
 		document.title = 'Ty Fischer';
 		unsubscribe = selectedArticle.subscribe(async () => {
 			await tick();
+			await tick();
+			await tick();
 			window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 		});
 	});
@@ -41,7 +43,12 @@
 				/>
 			{/if}
 		{:else}
-			<SvelteMarkdown source={$selectedArticle.fullContent} />
+			<SvelteMarkdown
+				on:parsed={() => {
+					window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+				}}
+				source={$selectedArticle.fullContent}
+			/>
 		{/if}
 	</div>
 {/if}
