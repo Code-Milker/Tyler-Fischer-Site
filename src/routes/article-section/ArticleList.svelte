@@ -69,7 +69,7 @@
 				'Built with Svelte and tailwind, this site features a custom markdown generator blah blah',
 			image: ThisSite,
 			repo: 'Code-Milker/Tyler-Fischer-Site',
-			branch: 'main',
+			branch: 'master',
 			file: 'README.md'
 		},
 		{
