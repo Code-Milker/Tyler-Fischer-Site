@@ -1,14 +1,22 @@
 <script>
 	import '../app.css';
 	import MeSection from './me-section/MeSection.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { selectedArticle } from '$lib/stores/ArticleStore';
 	import ArticleList from './article-section/ArticleList.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import RepoArticleHeader from '$lib/components/RepoArticleHeader.svelte';
 	import StaticArticleHeader from '$lib/components/StaticArticleHeader.svelte';
+
+	let unsubscribe;
 	onMount(() => {
 		document.title = 'Ty Fischer';
+		unsubscribe = selectedArticle.subscribe(() => {
+			window.scrollTo(0, 0);
+		});
+	});
+	onDestroy(() => {
+		if (unsubscribe) unsubscribe();
 	});
 </script>
 
