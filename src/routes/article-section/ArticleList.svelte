@@ -68,7 +68,7 @@
 			description:
 				'Built with Svelte and tailwind, this site features a custom markdown generator blah blah',
 			image: ThisSite,
-			repo: 'Code-Milker/moomoo.js',
+			repo: 'Code-Milker/Tyler-Fischer-Site',
 			branch: 'main',
 			file: 'README.md'
 		},

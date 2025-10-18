@@ -1,38 +1,68 @@
-# create-svelte
+# Ty Fischer's Personal Portfolio Site
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Overview
+This is the source code for [tyfischer.com](https://tyfischer.com), a responsive personal portfolio website designed to showcase professional experience, projects, articles, and a resume. It serves as a professional landing page to attract job opportunities, clients, and collaborators, emphasizing expertise in web development, blockchain, AI, and mobile applications. The site features a clean, intuitive design with a custom color palette, ensuring seamless navigation and content accessibility across devices.
 
-## Creating a project
+## Features
+### Core Functionality
+- **Introduction Section**: Provides a personal bio, contact information, and quick access to social profiles and resume download.
+- **Content Browser**: Allows users to explore a curated selection of articles and projects, with dynamic loading of detailed views upon selection.
+- **Resume Handling**: Supports viewing and downloading the resume in PDF format, generated on-the-fly for accuracy.
+- **Responsive Layout**: Adapts content presentation for optimal viewing on desktop and mobile, prioritizing usability.
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Key Integrations
+- **Custom Markdown Renderer**: Utilizes Svelte-Markdown integrated with Highlight.js for syntax-highlighted code blocks, enabling rich, formatted rendering of article content with support for prose styling, images, and code snippets in an inverted (dark mode) theme.
+- **GitHub Repository Integration**: Dynamically fetches README files from specified public GitHub repositories to populate article content, ensuring up-to-date information without manual updates.
+- **Prototype Demonstrations**: For select projects, includes interactive prototypes loaded via iframes, allowing users to toggle between markdown descriptions and live demos directly within the site.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Best Practices Demonstrated
+This site serves as an example of modern Svelte development, incorporating best practices for state management, templating, and styling to create a maintainable, performant application:
+- **State Management**: Leverages Svelte stores for reactive handling of global state, such as selected articles and download triggers, promoting clean data flow and easy extensibility without external libraries.
+- **Templating and Components**: Employs reusable Svelte components for modular structure, with slots for flexible content injection (e.g., device-specific rendering), reducing duplication and enhancing composability.
+- **Styling**: Uses Tailwind CSS with a custom theme for utility-first styling, ensuring consistency across components while supporting responsive breakpoints and dark mode through prose utilities.
+- **Dynamic Content Loading**: Implements asynchronous fetching for external resources like GitHub content, with error handling and caching to improve load times and user experience.
+- **Accessibility and Performance**: Focuses on semantic HTML, proper alt text for images, and lazy loading where applicable, while keeping the bundle size minimal through Svelte's compiler optimizations.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Technologies
+- **Framework**: Svelte for reactive UI components and routing.
+- **Styling**: Tailwind CSS with typography plugin.
+- **Markdown Rendering**: Svelte-Markdown and Highlight.js.
+- **State Management**: Svelte Stores.
+- **PDF Generation**: jsPDF and html2canvas.
+- **Fetching**: Native Fetch API.
 
-## Developing
+## Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/Code-Milker/tyfischer.com.git
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+4. Build for production:
+   ```
+   npm run build
+   ```
+5. Preview the build:
+   ```
+   npm run preview
+   ```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Note: GitHub integrations rely on public repository access. For private repos, implement authentication as needed.
 
-```bash
-npm run dev
+## Usage
+Navigate to the root to view the introduction and content list. Select items for detailed views, toggle prototypes where available, and use icons for external links or downloads.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Contributing
+Suggestions for improvements are welcome; open an issue to discuss.
 
-## Building
+## License
+MIT License. See [LICENSE](LICENSE) for details.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Contact
+Reach out at tylerf66@gmail.com or via [LinkedIn](https://www.linkedin.com/in/tyler-fischer-4a5309141).
