@@ -11,7 +11,7 @@
 				onClick: () => selectedArticle.set(null),
 				src: backArrow,
 				alt: 'back',
-				tooltip: 'Back to articles'
+				tooltip: 'Back'
 			}
 		];
 	}

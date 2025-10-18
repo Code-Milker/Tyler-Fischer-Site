@@ -1,4 +1,3 @@
-<!-- src/lib/components/RepoArticleHeader.svelte -->
 <script lang="ts">
 	import type { IconProps } from '$lib/types';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
@@ -13,7 +12,7 @@
 				onClick: () => selectedArticle.set(null),
 				src: backArrow,
 				alt: 'back',
-				tooltip: 'Back to articles'
+				tooltip: 'Back'
 			},
 			{
 				onClick: () => {
@@ -26,13 +25,13 @@
 				},
 				src: gear,
 				alt: 'prototype',
-				tooltip: 'Toggle prototype view'
+				tooltip: 'Demo'
 			},
 			{
 				href: `https://github.com/${$selectedArticle.repo}`,
 				src: github,
 				alt: 'github',
-				tooltip: 'View repository on GitHub'
+				tooltip: 'GitHub'
 			}
 		];
 	}
