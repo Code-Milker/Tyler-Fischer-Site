@@ -12,11 +12,12 @@
 	onMount(() => {
 		document.title = 'Ty Fischer';
 		unsubscribe = selectedArticle.subscribe(async () => {
-			await tick();
-			await tick();
-			await tick();
-			window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+			await tick(); // One tick is usually enough
+			requestAnimationFrame(() => {
+				window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+			});
 		});
+		return () => unsubscribe();
 	});
 	onDestroy(() => {
 		if (unsubscribe) unsubscribe();
@@ -45,7 +46,9 @@
 		{:else}
 			<SvelteMarkdown
 				on:parsed={() => {
-					window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+					requestAnimationFrame(() => {
+						window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+					});
 				}}
 				source={$selectedArticle.fullContent}
 			/>
