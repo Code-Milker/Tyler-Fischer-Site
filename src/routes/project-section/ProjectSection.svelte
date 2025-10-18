@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ProjectThumbnail from '$lib/components/ProjectThumbnail.svelte';
 	import type { ContentPreviewType } from '$lib/types.ts';
-	import { onMount } from 'svelte';
 
 	import SurfPunk from '$lib/images/surfpunk.avif';
 	import Ture from '$lib/images/ture.png';

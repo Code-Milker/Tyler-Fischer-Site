@@ -12,7 +12,8 @@
 			{
 				onClick: () => selectedArticle.set(null),
 				src: backArrow,
-				alt: 'back'
+				alt: 'back',
+				tooltip: 'Back to articles'
 			},
 			{
 				onClick: () => {
@@ -24,12 +25,14 @@
 					});
 				},
 				src: gear,
-				alt: 'prototype'
+				alt: 'prototype',
+				tooltip: 'Toggle prototype view'
 			},
 			{
 				href: `https://github.com/${$selectedArticle.repo}`,
 				src: github,
-				alt: 'github'
+				alt: 'github',
+				tooltip: 'View repository on GitHub'
 			}
 		];
 	}

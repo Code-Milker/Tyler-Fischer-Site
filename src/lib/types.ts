@@ -9,8 +9,8 @@ export interface LinksType {
 	src: string;
 	alt: string;
 }
-
 export interface IconProps {
+	tooltip?: string;
 	src: string;
 	alt: string;
 	href?: string;

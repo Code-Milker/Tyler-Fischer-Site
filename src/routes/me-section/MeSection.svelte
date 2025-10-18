@@ -17,17 +17,20 @@ You can reach me at tylerf66@gmail.com`,
 		{
 			href: 'https://github.com/Milk-Maven',
 			src: github,
-			alt: 'github'
+			alt: 'github',
+			tooltip: 'View my GitHub profile'
 		},
 		{
 			href: 'https://www.linkedin.com/in/tyler-fischer-4a5309141/',
 			src: linkedin,
-			alt: 'linkedin'
+			alt: 'linkedin',
+			tooltip: 'Connect with me on LinkedIn'
 		},
 		{
 			onClick: () => triggerDownload.set({ type: 'pdf' }),
 			src: downloadResume,
-			alt: 'download'
+			alt: 'download',
+			tooltip: 'Download my resume'
 		}
 	];
 </script>
