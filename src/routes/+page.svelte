@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import MeSection from './me-section/MeSection.svelte';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, tick } from 'svelte';
 	import { selectedArticle } from '$lib/stores/ArticleStore';
 	import ArticleList from './article-section/ArticleList.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
@@ -11,8 +11,10 @@
 	let unsubscribe;
 	onMount(() => {
 		document.title = 'Ty Fischer';
-		unsubscribe = selectedArticle.subscribe(() => {
-			window.scrollTo(0, 0);
+		unsubscribe = selectedArticle.subscribe(async () => {
+			await tick();
+			document.documentElement.scrollTop = 0;
+			document.body.scrollTop = 0;
 		});
 	});
 	onDestroy(() => {
