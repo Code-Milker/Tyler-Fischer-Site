@@ -4,12 +4,10 @@
 	import { onMount, onDestroy, tick } from 'svelte';
 	import { selectedArticle } from '$lib/stores/ArticleStore';
 	import ArticleList from './article-section/ArticleList.svelte';
-	import SvelteMarkdown from 'svelte-markdown';
-	import RepoArticleHeader from '$lib/components/RepoArticleHeader.svelte';
-	import StaticArticleHeader from '$lib/components/StaticArticleHeader.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
-	import type { Unsubscriber } from 'svelte/store';
 	import Content from '$lib/components/Content.svelte';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import type { Unsubscriber } from 'svelte/store';
 	let unsubscribe: Unsubscriber;
 	onMount(() => {
 		document.title = 'Ty Fischer';
@@ -30,10 +28,14 @@
 {#if !$selectedArticle}
 	<MeSection />
 	<ArticleList />
-{:else if 'repo' in $selectedArticle}
-	<RepoArticleHeader />
 {:else}
-	<StaticArticleHeader />
+	<SectionHeader
+		title={$selectedArticle.title}
+		description={$selectedArticle.description}
+		image={$selectedArticle.image}
+		alt={$selectedArticle.title}
+		icons={$selectedArticle.icons}
+	/>
 {/if}
 <Content />
 <div class="h-full bg-primary" />

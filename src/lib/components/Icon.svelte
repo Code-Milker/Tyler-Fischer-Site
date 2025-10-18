@@ -7,9 +7,13 @@
 </script>
 
 {#if href}
-	<a {href} class="group relative opacity-100 flex flex-row items-center">
+	<a
+		{href}
+		class="group relative opacity-100 flex flex-row items-center [-webkit-tap-highlight-color:transparent]"
+	>
 		<div
-			class="bg-tertiary group-hover:bg-emerald-400 size-[36px] flex justify-center items-center"
+			class="bg-tertiary size-[36px] flex justify-center items-center"
+			class:group-hover:bg-emerald-400={!!tooltip}
 			class:rounded-lg={!tooltip}
 			class:rounded-l-lg={!!tooltip}
 			class:rounded-r-lg={!!tooltip}
@@ -29,10 +33,11 @@
 	<button
 		type="button"
 		on:click={onClick}
-		class="group relative opacity-100 flex flex-row items-center"
+		class="group relative opacity-100 flex flex-row items-center [-webkit-tap-highlight-color:transparent]"
 	>
 		<div
-			class="bg-tertiary group-hover:bg-emerald-400 size-[36px] flex justify-center items-center"
+			class="bg-tertiary size-[36px] flex justify-center items-center"
+			class:group-hover:bg-emerald-400={!!tooltip}
 			class:rounded-lg={!tooltip}
 			class:rounded-l-lg={!!tooltip}
 			class:rounded-r-lg={!!tooltip}

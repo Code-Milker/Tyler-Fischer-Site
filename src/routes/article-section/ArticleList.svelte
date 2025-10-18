@@ -1,138 +1,10 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
-	import Resume from '$lib/images/resume.jpeg';
-	import WhaleComputer from '$lib/images/whale-computer.jpg';
-	import Moo2 from '$lib/images/moo2.jpeg';
-	import RWA from '$lib/images/rwa.png';
-	import GoldenCalf from '$lib/images/calf.png';
-	import Bip39 from '$lib/images/bip39new.png';
-	import Poomy from '$lib/images/poomy2.jpg';
-	import EffectLess from '$lib/images/effectless-new.jpeg';
-	import SurfPunk from '$lib/images/surfpunk.avif';
-	import Deso from '$lib/images/DesoLogo.jpeg';
-	import ThisSite from '$lib/images/svelte-logo.svg';
-	import IronFox from '$lib/images/ironfox.jpg';
-	import aiMd from '$lib/content/ai.md?raw';
-	import resumeMd from '$lib/content/resume.md?raw';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import type { RepoArticle, StaticArticle } from '$lib/stores/ArticleStore';
-	import { selectedArticle } from '$lib/stores/ArticleStore';
-	let repoArticles: RepoArticle[] = [
-		{
-			title: 'Poomy',
-			description: 'A single file web page that generates private keys',
-			image: Poomy,
-			repo: 'Code-Milker/VentureWisconsinMobile',
-			branch: 'master',
-			file: 'README.md',
-			interactiveFile: 'index.html'
-		},
-		{
-			title: 'RWA ERC-7540',
-			description:
-				'Token Vault contract for bridging real world assets for chatuea capital',
-			image: RWA,
-			repo: 'Code-Milker/tokenVault',
-			branch: 'master',
-			file: 'README.md',
-			interactiveFile: 'index.html'
-		},
-		{
-			title: 'BIP39',
-			description: 'A single file web page that generates private keys',
-			image: Bip39,
-			repo: 'Code-Milker/bip-39',
-			branch: 'master',
-			file: 'README.md',
-			interactiveFile: 'index.html'
-		},
-		{
-			title: 'Effect-Less',
-			description:
-				"Effect-less is a project that addresses TypeScript's flexibility-related challenges, such as inconsistent codebases from mixing paradigms, gradual typing pitfalls, and runtime errors, by enforcing a stricter, opinionated dialect through custom lint rules with LSP integration for immediate feedback, automating decisions, reducing debates, and prioritizing business logic. Key features include rules for Go-like error handling with [result, error] tuples, validator-derived types from Zod schemas, automatic parameter validation, immutable data structures via const and readonly, and pure functions without side effects to promote reliability, predictability, and maintainability.",
-			image: EffectLess,
-			repo: 'Code-Milker/effect-less',
-			branch: 'main',
-			file: 'README.md'
-		},
-		{
-			title: 'Surf Punks v2',
-			description: 'first gig in blockchain, based on x blah blah',
-			image: SurfPunk,
-			repo: 'Code-Milker/surf-punks-v2',
-			branch: 'main',
-			file: 'README.md'
-		},
-		{
-			title: 'This Site',
-			description:
-				'Built with Svelte and tailwind, this site features a custom markdown generator blah blah',
-			image: ThisSite,
-			repo: 'Code-Milker/Tyler-Fischer-Site',
-			branch: 'master',
-			file: 'README.md'
-		},
-		{
-			title: 'Deso.js',
-			description:
-				'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js, https://build.deso.com/main/welcome',
-			image: Deso,
-			repo: 'https://github.com/deso-protocol/deso-workspace/tree/66d616bd480b1dfbf597b2db10b4c227fde4fee9/libs/deso-protocol',
-			branch: 'main',
-			file: 'README.md'
-		},
-		{
-			title: 'MooMoo.js',
-			description:
-				'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
-			image: Moo2,
-			repo: 'Code-Milker/moomoo.js',
-			branch: 'main',
-			file: 'README.md'
-		},
-		{
-			title: 'Golden Calf',
-			description: 'Prediction Market app prototype for the Deso Blockchain',
-			image: GoldenCalf,
-			repo: 'Code-Milker/moomoo.js',
-			branch: 'main',
-			file: 'README.md'
-		},
-		{
-			title: 'Iron Fox',
-			description:
-				'crypto anylatics that automatically detect mixers blah blah',
-			image: IronFox,
-			repo: 'Code-Milker/moomoo.js',
-			branch: 'main',
-			file: 'README.md'
-		}
-	];
-	let staticArticles: StaticArticle[] = [
-		{
-			title: 'Resume',
-			description: 'Resume for Tyler Fischer',
-			image: Resume,
-			filename: '/resume.md',
-			fullContent: resumeMd
-		},
-		{
-			title: 'Prompting 101',
-			description:
-				'Thoughts on a generalized approach to leveraging AI efficiently and securely across any environment, emphasizing controlled access, precise prompting, output verification, and future safeguards to mitigate risks like hallucinations, biases, and privacy breaches while maximizing productivity.',
-			image: WhaleComputer,
-			filename: '/ai.md',
-			fullContent: aiMd
-		}
-	];
-	let articles: (StaticArticle | RepoArticle)[] = [
-		...repoArticles,
-		...staticArticles
-	];
-	let chunks: (StaticArticle | RepoArticle)[][] = [];
-	for (let i = 0; i < articles.length; i += 2) {
-		chunks.push(articles.slice(i, i + 2));
-	}
+	import { articles, selectedArticle } from '$lib/stores/ArticleStore';
+	import { get } from 'svelte/store';
+
 	async function fetchRepoContent(
 		repo: string,
 		branch: string,
@@ -152,7 +24,8 @@
 		}
 	}
 	async function selectArticle(i: number) {
-		const article = articles[i];
+		const arts = get(articles);
+		const article = arts[i];
 		if ('repo' in article) {
 			if (article.fullContent === undefined) {
 				article.fullContent = await fetchRepoContent(
@@ -168,9 +41,9 @@
 					article.interactiveFile
 				);
 			}
-			articles = articles;
 		}
 		selectedArticle.set(article);
+		articles.update(() => arts);
 		console.log(`Selected article: ${article.title}`);
 	}
 </script>
@@ -178,16 +51,16 @@
 <DeviceContainer>
 	<div slot="desktop" class="bg-secondary pt-0">
 		<div class="bg-primary">
-			{#each chunks as chunk, chunkIndex}
+			{#each { length: Math.ceil($articles.length / 2) } as _, chunkIndex}
 				<div class="grid grid-cols-2">
-					{#each chunk as article, j}
+					{#each $articles.slice(chunkIndex * 2, chunkIndex * 2 + 2) as article, j}
 						{@const i = chunkIndex * 2 + j}
 						<div class="bg-primary text-text overflow-hidden">
 							<div
 								class={`flex flex-row transition-colors p-4 ${
 									j === 0 ? 'border-r-2 border-r-secondary' : ''
 								} ${
-									chunkIndex < chunks.length - 1
+									chunkIndex < Math.ceil($articles.length / 2) - 1
 										? 'border-b-2 border-b-secondary'
 										: ''
 								}`}
@@ -208,7 +81,6 @@
 									>
 										<SvelteMarkdown source={article.description} />
 									</div>
-
 									<!-- svelte-ignore a11y-invalid-attribute -->
 									<a
 										href="#"
@@ -226,12 +98,12 @@
 	</div>
 	<div slot="mobile">
 		<div>
-			{#each articles as article, i}
+			{#each $articles as article, i}
 				{#if i > 0}
 					<div class="border-b border-b-secondary" />
 				{/if}
 				<div
-					class="bg-primary text-text {i === articles.length - 1
+					class="bg-primary text-text {i === $articles.length - 1
 						? 'rounded-b-lg'
 						: ''} {i === 0 ? 'rounded-t-lg' : ''}"
 				>

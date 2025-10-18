@@ -15,7 +15,7 @@ You can reach me at tylerf66@gmail.com`,
 	};
 	let icons: IconProps[] = [
 		{
-			href: 'https://github.com/Milk-Maven',
+			href: 'https://github.com/Code-Milker',
 			src: github,
 			alt: 'github',
 			tooltip: 'GitHub'

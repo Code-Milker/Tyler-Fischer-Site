@@ -15,7 +15,7 @@
 			title: 'BIP 39',
 			description:
 				'A BIP39 mnemonic phrase is a sequence of words used to generate deterministic keys for securely storing and managing cryptocurrency assets',
-			url: 'https://github.com/Milk-Maven/bip-39',
+			url: 'https://github.com/Code-Milker/bip-39',
 			image: Bip39
 		},
 		{
@@ -43,7 +43,7 @@
 			title: 'MooMoo.js',
 			description:
 				'MooMoo.js offers an alternative way to build web apps with a strong focus on separation of concerns, keeping things simple, and staying vanilla',
-			url: 'https://github.com/Milk-Maven/moomoo.js',
+			url: 'https://github.com/Code-Milker/moomoo.js',
 			image: MooMoo
 		},
 		{
