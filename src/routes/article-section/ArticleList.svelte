@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
-	import type { RepoArticle, StaticArticle } from '$lib/stores/ArticleStore';
 	import { articles, selectedArticle } from '$lib/stores/ArticleStore';
 	import { get } from 'svelte/store';
 

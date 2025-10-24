@@ -37,6 +37,7 @@
 		icons={$selectedArticle.icons}
 	/>
 {/if}
-<Content />
-<div class="h-full bg-primary" />
+{#if $selectedArticle}
+	<Content selectedArticle={$selectedArticle} />
+{/if}
 <!-- <Footer /> -->

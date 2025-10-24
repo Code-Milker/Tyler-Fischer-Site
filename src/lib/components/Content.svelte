@@ -1,73 +1,54 @@
-<script lang="ts">
-	import { selectedArticle } from '$lib/stores/ArticleStore';
+<script>
+	export let selectedArticle;
 	import SvelteMarkdown from 'svelte-markdown';
 	import DeviceContainer from './DeviceContainer.svelte';
-	import { onMount } from 'svelte';
-
-	let desktopIframe: HTMLIFrameElement;
-	let mobileIframe: HTMLIFrameElement;
-
-	const resizeIframe = (iframe: HTMLIFrameElement) => {
-		if (iframe && iframe.contentDocument) {
-			const height = iframe.contentDocument.body.scrollHeight;
-			iframe.style.height = height + 'px';
-		}
-	};
 </script>
 
-{#if $selectedArticle}
-	<DeviceContainer>
-		<div
-			slot="desktop"
-			class=" bg-primary p-4 text-text prose prose-invert mx-auto"
-		>
-			{#if 'showPrototype' in $selectedArticle && $selectedArticle.showPrototype}
-				{#if 'interactiveContent' in $selectedArticle && $selectedArticle.interactiveContent}
-					<iframe
-						bind:this={desktopIframe}
-						on:load={() => resizeIframe(desktopIframe)}
-						srcdoc={$selectedArticle.interactiveContent}
-						class="w-full"
-						title="Interactive Content"
-						style="border: none; overflow: hidden;"
-					/>
-				{/if}
-			{:else}
-				<SvelteMarkdown
-					on:parsed={() => {
-						requestAnimationFrame(() => {
-							window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-						});
-					}}
-					source={$selectedArticle.fullContent}
-				/>
-			{/if}
+<DeviceContainer>
+	<div slot="desktop" class="flex flex-col h-full">
+		<div class="bg-primary p-4 text-text prose prose-invert mx-auto flex-none">
+			<SvelteMarkdown
+				on:parsed={() => {
+					requestAnimationFrame(() => {
+						window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+					});
+				}}
+				source={selectedArticle.fullContent}
+			/>
 		</div>
-		<div
-			slot="mobile"
-			class="bg-primary p-4 text-text prose prose-invert max-w-screen"
-		>
-			{#if 'showPrototype' in $selectedArticle && $selectedArticle.showPrototype}
-				{#if 'interactiveContent' in $selectedArticle && $selectedArticle.interactiveContent}
-					<iframe
-						bind:this={mobileIframe}
-						on:load={() => resizeIframe(mobileIframe)}
-						srcdoc={$selectedArticle.interactiveContent}
-						class="w-full"
-						title="Interactive Content"
-						style="border: none; overflow: hidden;"
-					/>
-				{/if}
-			{:else}
-				<SvelteMarkdown
-					on:parsed={() => {
-						requestAnimationFrame(() => {
-							window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-						});
-					}}
-					source={$selectedArticle.fullContent}
+		{#if 'interactiveContent' in selectedArticle && selectedArticle.interactiveContent}
+			<div class="flex-grow bg-primary">
+				<iframe
+					srcdoc={selectedArticle.interactiveContent}
+					class="h-full w-full"
+					title="Interactive Content"
 				/>
-			{/if}
+			</div>
+		{/if}
+	</div>
+	<div slot="mobile" class="flex flex-col h-full">
+		<div
+			class="bg-primary p-4 text-text prose prose-invert max-w-screen flex-none"
+		>
+			<SvelteMarkdown
+				on:parsed={() => {
+					requestAnimationFrame(() => {
+						window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+					});
+				}}
+				source={selectedArticle.fullContent}
+			/>
 		</div>
-	</DeviceContainer>
-{/if}
+		{#if 'showPrototype' in selectedArticle && selectedArticle.showPrototype}
+			{#if 'interactiveContent' in selectedArticle && selectedArticle.interactiveContent}
+				<div class="flex-grow bg-primary">
+					<iframe
+						srcdoc={selectedArticle.interactiveContent}
+						class="h-full w-full"
+						title="Interactive Content"
+					/>
+				</div>
+			{/if}
+		{/if}
+	</div>
+</DeviceContainer>

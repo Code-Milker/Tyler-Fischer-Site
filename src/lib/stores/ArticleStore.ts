@@ -6,7 +6,7 @@ import Moo2 from '$lib/images/moo2.jpeg';
 import RWA from '$lib/images/rwa.png';
 import GoldenCalf from '$lib/images/calf.png';
 import Bip39 from '$lib/images/bip39new.png';
-import Poomy from '$lib/images/poomy2.jpg';
+import SubSpark from '$lib/images/subspark.jpg';
 import EffectLess from '$lib/images/effectless-new.jpeg';
 import SurfPunk from '$lib/images/surfpunk.avif';
 import Deso from '$lib/images/DesoLogo.jpeg';
@@ -17,18 +17,16 @@ import resumeMd from '$lib/content/resume.md?raw';
 import github from '$lib/images/github.png';
 import gear from '$lib/images/gear.png';
 import backArrow from '$lib/images/back-arrow.png';
-
+import Phone from '$lib/images/phone.png';
 export const selectedArticle = writable<StaticArticle | RepoArticle | null>(
 	null
 );
-
 const backIcon: IconProps = {
 	onClick: () => selectedArticle.set(null),
 	src: backArrow,
 	alt: 'back',
 	tooltip: 'Back'
 };
-
 const getDemoIcon = (): IconProps => ({
 	onClick: () => {
 		selectedArticle.update((a) => {
@@ -42,33 +40,33 @@ const getDemoIcon = (): IconProps => ({
 	alt: 'prototype',
 	tooltip: 'Demo'
 });
-
 const getGithubIcon = (repo: string): IconProps => ({
 	href: `https://github.com/${repo}`,
 	src: github,
 	alt: 'github',
 	tooltip: 'GitHub'
 });
-
+const getDownloadIcon = (repo: string, branch: string): IconProps => ({
+	href: `https://github.com/${repo}/archive/${branch}.zip`,
+	src: Phone,
+	alt: 'download',
+	tooltip: 'Download'
+});
 const repoArticles: RepoArticle[] = [
 	{
-		title: 'Poomy',
-		description: 'A single file web page that generates private keys',
-		image: Poomy,
+		title: 'Sub Spark',
+		description:
+			'Sub Spark is a React Native app linking users to local businesses via maps, listings, coupons, and payments, showcasing full-stack expertise in a production prototype.',
+		image: SubSpark,
 		repo: 'Code-Milker/VentureWisconsinMobile',
 		branch: 'main',
 		file: 'readme.md',
-		interactiveFile: 'index.html',
-		icons: [
-			backIcon,
-			getDemoIcon(),
-			getGithubIcon('Code-Milker/VentureWisconsinMobile')
-		]
+		icons: [backIcon, getGithubIcon('Code-Milker/VentureWisconsinMobile')]
 	},
 	{
-		title: 'RWA ERC-7540',
+		title: ' ERC-7540',
 		description:
-			'Token Vault contract for bridging real world assets for chatuea capital',
+			'Token Vault contract for bridging real world assets to chatuea capital',
 		image: RWA,
 		repo: 'Code-Milker/tokenVault',
 		branch: 'master',
@@ -77,7 +75,7 @@ const repoArticles: RepoArticle[] = [
 		icons: [backIcon, getDemoIcon(), getGithubIcon('Code-Milker/tokenVault')]
 	},
 	{
-		title: 'BIP39',
+		title: 'BIP-39',
 		description: 'A single file web page that generates private keys',
 		image: Bip39,
 		repo: 'Code-Milker/bip-39',
@@ -87,7 +85,7 @@ const repoArticles: RepoArticle[] = [
 		icons: [backIcon, getDemoIcon(), getGithubIcon('Code-Milker/bip-39')]
 	},
 	{
-		title: 'Effect-Less',
+		title: 'Effect Less',
 		description:
 			"Struggling with TypeScript's flexibility causing inconsistent code, runtime errors, and endless debates? Effect-less enforces a stricter dialect via custom lint rules, Go-like error handling, Zod-derived types, immutable structures, and pure functions—boosting reliability and focus on business logic.",
 		image: EffectLess,
@@ -97,7 +95,7 @@ const repoArticles: RepoArticle[] = [
 		icons: [backIcon, getGithubIcon('Code-Milker/effect-less')]
 	},
 	{
-		title: 'Surf Punks v2',
+		title: 'Surf Punks V2',
 		description: 'first gig in blockchain, based on x blah blah',
 		image: SurfPunk,
 		repo: 'Code-Milker/surf-punks-v2',
@@ -154,7 +152,6 @@ const repoArticles: RepoArticle[] = [
 		icons: [backIcon, getGithubIcon('Code-Milker/iron-fox')]
 	}
 ];
-
 const staticArticles: StaticArticle[] = [
 	{
 		title: 'Resume',
@@ -174,12 +171,10 @@ const staticArticles: StaticArticle[] = [
 		icons: [backIcon]
 	}
 ];
-
 export const articles = writable<(StaticArticle | RepoArticle)[]>([
-	...repoArticles,
-	...staticArticles
+	...staticArticles,
+	...repoArticles
 ]);
-
 export interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
 	filename: string;
 	fullContent: string;
