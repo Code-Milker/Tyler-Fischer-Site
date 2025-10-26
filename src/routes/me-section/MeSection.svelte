@@ -2,7 +2,7 @@
 <script lang="ts">
 	import type { IconProps } from '$lib/types';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
-	import { triggerDownload } from '$lib/stores/DownloadStore';
+	import { downloadResumePDF } from '$lib/utils/downloadResume';
 	import github from '$lib/images/github.png';
 	import me from '$lib/images/me.jpeg';
 	import downloadResume from '$lib/images/download-paper-icon.png';
@@ -27,10 +27,10 @@ You can reach me at tylerf66@gmail.com`,
 			tooltip: 'LinkedIn'
 		},
 		{
-			onClick: () => triggerDownload.set({ type: 'pdf' }),
+			onClick: downloadResumePDF,
 			src: downloadResume,
 			alt: 'download',
-			tooltip: 'Resume'
+			tooltip: 'Download Resume'
 		}
 	];
 </script>

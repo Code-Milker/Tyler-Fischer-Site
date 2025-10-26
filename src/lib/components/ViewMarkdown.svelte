@@ -119,7 +119,7 @@
 	});
 </script>
 
-<DeviceContainer title="Resume">
+<DeviceContainer>
 	<div slot="desktop">
 		<div class="prose prose-invert" bind:this={contentElement}>
 			<SvelteMarkdown {source} />
