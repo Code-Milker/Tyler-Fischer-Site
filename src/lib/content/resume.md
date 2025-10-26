@@ -2,17 +2,17 @@
 **414-614-3453** | **[tylerf66@gmail.com](mailto:tylerf66@gmail.com)** | **[tyfischer.com](https://tyfischer.com)**  
 
 ## Summary  
-Senior Engineer and Developer Advocate with deep expertise in decentralized technology, from early DeFi involvement and investments in protocols like Chainlink since 2017. Proven in FinTech and Web3, bridging blockchain concepts to practical developer tools. Hands-on in mobile development, AI, and smart contracts; seeking senior/staff roles to drive secure, scalable systems.  
+Seasoned Senior Engineer and Developer Advocate with deep-rooted expertise in TypeScript, cultivated since its early adoption in Angular 2 beta in 2016 and leveraged across diverse domains including FinTech, Web3, blockchain, mobile development, and AI. An early DeFi pioneer, investing in core protocols like Chainlink since 2017, with a strong history of translating intricate decentralized technologies into accessible developer solutions through innovative libraries, developer hubs, and community initiatives. Passionate about crafting secure, scalable, and user-focused systems, with hands-on proficiency in smart contracts, payment integrations, and cross-platform applications; eager to contribute to senior or staff-level roles advancing decentralized finance, mobile innovations, and fintech ecosystems.  
 
 ## Skills  
 | Category | Technologies & Skills |  
 |-------------------|-----------------------|  
-| Languages | JavaScript, TypeScript, Solidity, Python, HTML/CSS, SASS |  
-| Blockchain | Ethereum/EVM, DeSo Protocol, Smart Contract Development, DeFi, Oracles, L1/L2 Scaling |  
-| Frameworks | React Native, React, Angular, Node.js, Next.js, Hardhat, Ethers.js, Web3.js |  
-| Tools & Platforms | GitHub, Docker, CI/CD, Truffle Suite, GitLab, Postman, GraphQL |  
+| Languages | JavaScript, TypeScript, Solidity, Python, HTML/CSS, SASS, Lua |  
+| Blockchain | Ethereum/EVM, DeSo Protocol, Smart Contract Development, DeFi, Oracles, L1/L2 Scaling, OpenZeppelin |  
+| Frameworks | React Native, React, Angular, Node.js, Next.js, Hardhat, Ethers.js, Web3.js, Svelte, Expo, Recoil, Zod |  
+| Tools & Platforms | GitHub, Docker, CI/CD, Truffle Suite, GitLab, Postman, GraphQL, Docusaurus, GitBook, Stripe, Detox, Neovim |  
 | Developer Relations | Technical Writing, Public Speaking, Community Building, API Documentation, SDK Design |  
-| FinTech & AI | Payment Systems, Asset Transfer & Management, AI in Software Development (Research) |  
+| FinTech & AI | Payment Systems, Asset Transfer & Management, AI in Software Development (Research), Prompt Engineering, Internationalization (i18n) |  
 
 ## Professional Experience  
 ### Freelance Software Engineer  
@@ -20,7 +20,7 @@ Senior Engineer and Developer Advocate with deep expertise in decentralized tech
 - Developed Surf Punks v2, an ERC-721 NFT application on Ethereum for minting surf-themed tokens with reveal mechanics, utilizing Solidity, Hardhat, Ethers.js, and React.  
 - Created ERC-7540-inspired RWA smart contract for Chateau Capital to manage tokenized real-world assets with secure deposits, redemptions, fees, and role-based access; built with Solidity, OpenZeppelin, IERC7540, and ERC4626 standards (audited by ByteDance). [TokenVault Repo](https://github.com/Code-Milker/tokenvault)  
 - Built locale plugins for Docusaurus and GitBook in the Blendin AI project, enabling multi-language support and documentation localization using Node.js and i18n tools. [Blendin Plugins Repo](https://github.com/Code-Milker/blendin-plugins)  
-- Designed Sub Spark, a subscription app for local stores (drinks, food, entertainment) with geolocation, listings, coupons, and payments; developed MVP using React Native, Expo, TypeScript, Recoil, and Stripe integration for cross-platform iOS/Android. [SubSpark Repo](https://github.com/Code-Milker/VentureWisconsinMobile)  
+- Designed Sub Spark, a subscription app for local stores (drinks, food, entertainment) with geolocation, listings, coupons, and payments; developed MVP using React Native, Expo, TypeScript, Recoil, and Stripe integration for cross-platform iOS/Android. [SubSpark Repo](https://github.com/Code-Milker/SubSparkMobile)  
 - Contributed 600+ GitHub commits in the past year across personal and client repositories, maintaining active development in blockchain and mobile projects.  
 
 ### Developer Advocate Engineer | The DeSo Foundation  
@@ -45,9 +45,9 @@ Senior Engineer and Developer Advocate with deep expertise in decentralized tech
 - Designed a dynamic client parsing service generating custom Angular 4 apps from JSON configurations.  
 
 ## Selected Projects  
-- **xDAI Omnibridge UI**: Styled interface for ERC-20 token bridging. [Project Link—add if available]  
 - **Lua Prompt Generation Library**: Created for AI prompt engineering in dev tools, integrated with Neovim for quick prompt creation and customization. [Repo Link](https://github.com/Code-Milker/dot-files/blob/main/nvim/lua/config/prompt.lua)  
-- **DeFi Engagement**: Analyzed and traded protocols like Uniswap, Aave, Compound during 2021 DeFi boom.  
+- **Effectless**: Developed an opinionated TypeScript dialect with custom lint rules to enforce reliable, predictable code, including Go-like error handling, Zod-derived types, automatic validation, immutability, and pure functions. [Repo Link](https://github.com/Code-Milker/effect-less)  
+- **Iron Fox**: Prototyped a crypto hack report and fund tracing application following a malicious attack. [Repo Link](https://github.com/Code-Milker/crypto-hack-report)  
 
 ## Education  
 **University of Wisconsin Oshkosh**  
