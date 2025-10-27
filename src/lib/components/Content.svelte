@@ -28,7 +28,7 @@
 			</div>
 		{/if}
 	</div>
-	<div slot="mobile" class="flex flex-col h-full">
+	<div slot="mobile" class="flex flex-col h-full max-w-screen">
 		<div
 			class="bg-primary p-4 text-text prose prose-invert max-w-screen flex-none"
 		>
