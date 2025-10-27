@@ -14,7 +14,7 @@ export async function downloadResumePDF() {
 		offscreenDiv.style.left = '-9999px';
 		offscreenDiv.style.top = '0';
 		offscreenDiv.style.width = '210mm'; // Match A4 width for accurate capture
-		offscreenDiv.classList.add('px-8', 'bg-white', 'prose');
+		offscreenDiv.classList.add('px-8', 'bg-white', 'prose', 'prose-invert');
 		// Override last-child margin to reduce bottom space
 		const style = document.createElement('style');
 		style.textContent = '.prose :last-child { margin-bottom: 0; }';

@@ -14,7 +14,7 @@ Welcome to my portfolio. I'm a seasoned Senior Engineer and Developer Advocate w
 
 Today, I excel at tooling and systems design from the ground up, simplifying complex decentralized tech into secure, scalable solutions via libraries, SDKs, and smart contracts. Recently, I've built a full-stack mobile app with interactive mapping, geolocation, and payments (my latest non-blockchain work) and crypto tracing tools for fund recovery, inspired by surviving a personal malware attack. I'm seeking team roles in DeFi, blockchain-mobile, or fintech. 
 
-This site was built from the ground up with svelte and tailwind, it showcases my professional journey and contributions. Below, you'll find my resume, along with featured projects, each with details, repos, and "Read More" links to dive deeper into my work in blockchain, AI prompting, and mobile development. Explore the cards to see code, articles, and live demos.`,
+This site was built from the ground up with svelte and tailwind, it showcases my professional journey and contributions. Below, you'll find my resume, along with featured projects, each with details, repos, and "Read More" links to dive deeper into my work in blockchain, mobile development, and web development. Explore the cards to see code, articles, and live demos.`,
 		me: me
 	};
 	let icons: IconProps[] = [
