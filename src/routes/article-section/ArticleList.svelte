@@ -1,9 +1,10 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { articles, selectedArticle } from '$lib/stores/ArticleStore';
 	import { get } from 'svelte/store';
-
+	import backArrow from '$lib/images/back-arrow.png';
 	async function fetchRepoContent(
 		repo: string,
 		branch: string,
@@ -80,13 +81,13 @@
 									>
 										<SvelteMarkdown source={article.description} />
 									</div>
-									<!-- svelte-ignore a11y-invalid-attribute -->
-									<a
-										href="#"
-										class="text-quaternary underline hover:text-emerald-400"
-										on:click|preventDefault={() => selectArticle(i)}
-										>Read More</a
-									>
+									<Icon
+										src={backArrow}
+										alt="Read More"
+										tooltip="Read More"
+										onClick={() => selectArticle(i)}
+										imgClass="rotate-180"
+									/>
 								</div>
 							</div>
 						</div>
@@ -98,18 +99,12 @@
 	<div slot="mobile">
 		<div>
 			{#each $articles as article, i}
-				{#if i > 0}
-					<div class="border-b border-b-secondary" />
-				{/if}
 				<div
 					class="bg-primary text-text {i === $articles.length - 1
 						? 'rounded-b-lg'
 						: ''} {i === 0 ? 'rounded-t-lg' : ''}"
 				>
 					<div class="flex flex-col p-4 transition-colors">
-						<h2 class="text-2xl text-quaternary font-semibold mb-4">
-							{article.title}
-						</h2>
 						<div class="flex-shrink-0 p-8 bg-secondary">
 							<div class="bg-primary">
 								<img
@@ -119,15 +114,20 @@
 								/>
 							</div>
 						</div>
-						<div class="text-text line-clamp-6 prose prose-invert mt-2">
+						<h2 class="text-2xl text-quaternary font-semibold pt-4">
+							{article.title}
+						</h2>
+						<div class="text-text line-clamp-6 prose prose-invert py-4">
 							<SvelteMarkdown source={article.description} />
 						</div>
-						<!-- svelte-ignore a11y-invalid-attribute -->
-						<a
-							href="#"
-							class="text-quaternary underline text-lg pt-2"
-							on:click|preventDefault={() => selectArticle(i)}>Read More</a
-						>
+						<Icon
+							src={backArrow}
+							alt="Read More"
+							tooltip="Read More"
+							onClick={() => selectArticle(i)}
+							imgClass="rotate-180"
+							showTooltipOnMobile={true}
+						/>
 					</div>
 				</div>
 			{/each}

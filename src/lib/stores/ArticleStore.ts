@@ -1,6 +1,6 @@
 import type { ContentPreviewType, IconProps } from '$lib/types.ts';
+import me from '$lib/images/me.jpeg';
 import { writable } from 'svelte/store';
-import Resume from '$lib/images/resume.jpeg';
 import WhaleComputer from '$lib/images/whale-computer.jpg';
 import Moo2 from '$lib/images/moo2.jpeg';
 import RWA from '$lib/images/rwa.png';
@@ -16,7 +16,6 @@ import aiMd from '$lib/content/ai.md?raw';
 import desoMd from '$lib/content/deso.md?raw';
 import resumeMd from '$lib/content/resume.md?raw';
 import github from '$lib/images/github.png';
-import gear from '$lib/images/gear.png';
 import backArrow from '$lib/images/back-arrow.png';
 import Phone from '$lib/images/phone.png';
 export const selectedArticle = writable<StaticArticle | RepoArticle | null>(
@@ -119,10 +118,10 @@ const repoArticles: RepoArticle[] = [
 	{
 		title: 'MooMoo.js',
 		description:
-			'A JavaScript project from the MooMoo.js GitHub repository. Details will be fetched dynamically from the README if available, though the repository appears to lack a detailed description.',
+			'MooMoo is a lightweight TypeScript library for building web components declaratively, using a chained builder pattern to enforce structure: providers, state, actions, side effects, children, and templates. It generates self-contained HTML+JS with bindings for reactivity, avoiding heavy frameworks like React by focusing on direct templating and semantic enforcement for simpler, type-safe UI creation.',
 		image: Moo2,
 		repo: 'Code-Milker/moomoo.js',
-		branch: 'main',
+		branch: 'master',
 		file: 'README.md',
 		icons: [backIcon, getGithubIcon('Code-Milker/moomoo.js')]
 	},
@@ -151,14 +150,14 @@ const staticArticles: StaticArticle[] = [
 	{
 		title: 'Resume',
 		description: 'Resume for Tyler Fischer',
-		image: Resume,
+		image: me,
 		fullContent: resumeMd,
 		icons: [backIcon]
 	},
 	{
 		title: 'Deso',
 		description:
-			'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js, https://build.deso.com/main/welcome',
+			'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js.',
 		image: Deso,
 		// repo: 'deso-protocol/deso-workspace',
 		// branch: '66d616bd480b1dfbf597b2db10b4c227fde4fee9',
