@@ -22,7 +22,7 @@
 			<div class="flex-grow bg-primary">
 				<iframe
 					srcdoc={selectedArticle.interactiveContent}
-					class="h-full w-full"
+					class="h-[1000px] w-full"
 					title="Interactive Content"
 				/>
 			</div>

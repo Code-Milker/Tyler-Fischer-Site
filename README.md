@@ -31,37 +31,6 @@ This site serves as an example of modern Svelte development, incorporating best 
 - **PDF Generation**: jsPDF and html2canvas.
 - **Fetching**: Native Fetch API.
 
-## Installation
-1. Clone the repository:
-   ```
-   git clone https://github.com/Code-Milker/tyfischer.com.git
-   ```
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Run the development server:
-   ```
-   npm run dev
-   ```
-4. Build for production:
-   ```
-   npm run build
-   ```
-5. Preview the build:
-   ```
-   npm run preview
-   ```
-
-Note: GitHub integrations rely on public repository access. For private repos, implement authentication as needed.
-
-## Usage
-Navigate to the root to view the introduction and content list. Select items for detailed views, toggle prototypes where available, and use icons for external links or downloads.
-
-## Contributing
-Suggestions for improvements are welcome; open an issue to discuss.
-
 ## License
 MIT License. See [LICENSE](LICENSE) for details.
 
-## Contact

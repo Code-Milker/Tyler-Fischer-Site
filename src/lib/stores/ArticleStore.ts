@@ -13,6 +13,7 @@ import Deso from '$lib/images/DesoLogo.jpeg';
 import ThisSite from '$lib/images/svelte-logo.svg';
 import IronFox from '$lib/images/ironfox.jpg';
 import aiMd from '$lib/content/ai.md?raw';
+import desoMd from '$lib/content/deso.md?raw';
 import resumeMd from '$lib/content/resume.md?raw';
 import github from '$lib/images/github.png';
 import gear from '$lib/images/gear.png';
@@ -27,19 +28,19 @@ const backIcon: IconProps = {
 	alt: 'back',
 	tooltip: 'Back'
 };
-const getDemoIcon = (): IconProps => ({
-	onClick: () => {
-		selectedArticle.update((a) => {
-			if (a && 'repo' in a) {
-				a.showPrototype = !a.showPrototype;
-			}
-			return a;
-		});
-	},
-	src: gear,
-	alt: 'prototype',
-	tooltip: 'Demo'
-});
+// const getDemoIcon = (): IconProps => ({
+// 	onClick: () => {
+// 		selectedArticle.update((a) => {
+// 			if (a && 'repo' in a) {
+// 				a.showPrototype = !a.showPrototype;
+// 			}
+// 			return a;
+// 		});
+// 	},
+// 	src: gear,
+// 	alt: 'prototype',
+// 	tooltip: 'Demo'
+// });
 const getGithubIcon = (repo: string): IconProps => ({
 	href: `https://github.com/${repo}`,
 	src: github,
@@ -72,7 +73,7 @@ const repoArticles: RepoArticle[] = [
 		branch: 'master',
 		file: 'README.md',
 		interactiveFile: 'index.html',
-		icons: [backIcon, getDemoIcon(), getGithubIcon('Code-Milker/tokenVault')]
+		icons: [backIcon, getGithubIcon('Code-Milker/tokenVault')]
 	},
 	{
 		title: 'BIP-39',
@@ -82,7 +83,7 @@ const repoArticles: RepoArticle[] = [
 		branch: 'master',
 		file: 'README.md',
 		interactiveFile: 'index.html',
-		icons: [backIcon, getDemoIcon(), getGithubIcon('Code-Milker/bip-39')]
+		icons: [backIcon, getGithubIcon('Code-Milker/bip-39')]
 	},
 	{
 		title: 'Effect Less',
@@ -96,10 +97,11 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Surf Punks V2',
-		description: 'first gig in blockchain, based on x blah blah',
+		description:
+			'Surf Punks V2 is an ERC-721 NFT smart contract on Ethereum where users mint unrevealed "trunks" tokens that later get revealed through randomization into unique "surfer" collectibles with varying rarities and attributes, emphasizing surf culture themes with owner-controlled minting and metadata management.',
 		image: SurfPunk,
 		repo: 'Code-Milker/surf-punks-v2',
-		branch: 'main',
+		branch: 'master',
 		file: 'README.md',
 		icons: [backIcon, getGithubIcon('Code-Milker/surf-punks-v2')]
 	},
@@ -113,16 +115,7 @@ const repoArticles: RepoArticle[] = [
 		file: 'README.md',
 		icons: [backIcon, getGithubIcon('Code-Milker/Tyler-Fischer-Site')]
 	},
-	{
-		title: 'Deso.js',
-		description:
-			'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js, https://build.deso.com/main/welcome',
-		image: Deso,
-		repo: 'deso-protocol/deso-workspace',
-		branch: '66d616bd480b1dfbf597b2db10b4c227fde4fee9',
-		file: 'libs/deso-protocol/README.md',
-		icons: [backIcon, getGithubIcon('deso-protocol/deso-workspace')]
-	},
+
 	{
 		title: 'MooMoo.js',
 		description:
@@ -135,7 +128,8 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Golden Calf',
-		description: 'Prediction Market app prototype for the Deso Blockchain',
+		description:
+			'Golden Calf is a blockchain-based game on the DeSo protocol where players participate in weekly cycles by submitting offerings (bets) and making sacrifices (tips or transfers) for decentralized rewards and interactions.',
 		image: GoldenCalf,
 		repo: 'Code-Milker/golden-calf',
 		branch: 'main',
@@ -144,7 +138,8 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Iron Fox',
-		description: 'crypto anylatics that automatically detect mixers blah blah',
+		description:
+			'A prototype CLI tool for tracing stolen crypto funds from phishing attacks, uncovering paths to fiat off-ramps with smart caching and manual overrides for complex trails.',
 		image: IronFox,
 		repo: 'Code-Milker/iron-fox',
 		branch: 'main',
@@ -157,16 +152,24 @@ const staticArticles: StaticArticle[] = [
 		title: 'Resume',
 		description: 'Resume for Tyler Fischer',
 		image: Resume,
-		filename: '/resume.md',
 		fullContent: resumeMd,
 		icons: [backIcon]
+	},
+	{
+		title: 'Deso',
+		description:
+			'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js, https://build.deso.com/main/welcome',
+		image: Deso,
+		// repo: 'deso-protocol/deso-workspace',
+		// branch: '66d616bd480b1dfbf597b2db10b4c227fde4fee9',
+		fullContent: desoMd,
+		icons: [backIcon, getGithubIcon('deso-protocol/deso-workspace')]
 	},
 	{
 		title: 'Prompting 101',
 		description:
 			'Thoughts on a generalized approach to leveraging AI efficiently and securely across any environment, emphasizing controlled access, precise prompting, output verification, and future safeguards to mitigate risks like hallucinations, biases, and privacy breaches while maximizing productivity.',
 		image: WhaleComputer,
-		filename: '/ai.md',
 		fullContent: aiMd,
 		icons: [backIcon]
 	}
@@ -176,7 +179,6 @@ export const articles = writable<(StaticArticle | RepoArticle)[]>([
 	...repoArticles
 ]);
 export interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
-	filename: string;
 	fullContent: string;
 	icons: IconProps[];
 }
