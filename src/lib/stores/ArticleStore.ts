@@ -128,7 +128,7 @@ const repoArticles: RepoArticle[] = [
 		title: 'MooMoo.js',
 		slug: 'moomoo-js',
 		description:
-			'MooMoo is a lightweight TypeScript library for building web components declaratively, using a chained builder pattern to enforce structure: providers, state, actions, side effects, children, and templates. It generates self-contained HTML+JS with bindings for reactivity, avoiding heavy frameworks like React by focusing on direct templating and semantic enforcement for simpler, type-safe UI creation.',
+			'MooMoo.js is a lightweight TypeScript library for declaratively building web components via a chained builder pattern that enforces structure: providers, state, actions, side effects, children, and templates. It generates self-contained HTML+JS with reactivity bindings, avoiding heavy frameworks like React through direct templating and semantic enforcement for simpler, type-safe UIs.',
 		image: Moo2,
 		repo: 'Code-Milker/moomoo.js',
 		branch: 'master',

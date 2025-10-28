@@ -12,7 +12,7 @@
 
 <DeviceContainer>
 	<div slot="desktop" class="bg-primary w-full">
-		<div class="flex flex-row items-start bg-primary p-4 w-full">
+		<div class="flex flex-row items-center bg-primary p-4 w-full">
 			{#if image}
 				<div class="flex-shrink-0">
 					<img src={image} {alt} class="w-[200px] h-[200px]" />

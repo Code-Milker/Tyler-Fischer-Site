@@ -11,6 +11,8 @@
 {#if href}
 	<a
 		{href}
+		target="_blank"
+		rel="noopener noreferrer"
 		class="group relative opacity-100 flex flex-row items-center [-webkit-tap-highlight-color:transparent]"
 	>
 		<div
