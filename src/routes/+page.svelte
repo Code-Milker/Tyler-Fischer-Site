@@ -1,19 +1,21 @@
 <script lang="ts">
-	import '../app.css';
-	import MeSection from './me-section/MeSection.svelte';
-	import { onMount, onDestroy, tick } from 'svelte';
-	import {
-		selectedArticle,
-		articles,
-		scrollPosition
-	} from '$lib/stores/ArticleStore';
-	import ArticleList from './article-section/ArticleList.svelte';
+	import { browser } from '$app/environment';
 	import Content from '$lib/components/Content.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import {
+		articles,
+		fetchRepoContent,
+		scrollPosition,
+		selectedArticle
+	} from '$lib/stores/ArticleStore';
+	import { onMount, tick } from 'svelte';
 	import type { Unsubscriber } from 'svelte/store';
-	import { browser } from '$app/environment';
 	import { get } from 'svelte/store';
-	import { fetchRepoContent } from '$lib/stores/ArticleStore';
+	import '../app.css';
+	import ArticleList from './article-section/ArticleList.svelte';
+	import MeSection from './me-section/MeSection.svelte';
+	import backArrow from '$lib/images/back-arrow.png';
+	import Icon from '$lib/components/Icon.svelte';
 	let unsubscribe: Unsubscriber;
 	let popstateListener: () => void;
 	async function parseAndSet() {
@@ -106,5 +108,13 @@
 {/if}
 {#if $selectedArticle}
 	<Content selectedArticle={$selectedArticle} />
+	<div class="p-4 bg-primary flex justify-start border-t-2 border-t-secondary">
+		<Icon
+			src={backArrow}
+			alt="Back"
+			tooltip="Back"
+			onClick={() => history.back()}
+		/>
+	</div>
 {/if}
 <!-- <Footer /> -->
