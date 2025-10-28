@@ -20,9 +20,9 @@
 	let popstateListener: () => void;
 	async function parseAndSet() {
 		if (!browser) return;
-		const path = window.location.pathname;
-		if (path.startsWith('/article/')) {
-			const slug = path.slice('/article/'.length);
+		const url = new URL(window.location.href);
+		const slug = url.searchParams.get('article');
+		if (slug) {
 			const arts = get(articles);
 			const article = arts.find((a) => a.slug === slug);
 			if (article) {
@@ -47,11 +47,6 @@
 				}
 				selectedArticle.set(article);
 				articles.update(() => arts);
-				// Add home to history for direct loads to enable back to home
-				if (window.history.state === null) {
-					history.replaceState({}, '', '/');
-					history.pushState({}, '', path);
-				}
 			} else {
 				// Slug not found, redirect to home
 				selectedArticle.set(null);
@@ -91,6 +86,16 @@
 			if (unsubscribe) unsubscribe();
 		};
 	});
+	function handleBack() {
+		if (browser) {
+			if (history.length > 1) {
+				history.back();
+			} else {
+				selectedArticle.set(null);
+				history.replaceState({}, '', '/');
+			}
+		}
+	}
 </script>
 
 <!-- <Header /> -->
@@ -109,12 +114,7 @@
 {#if $selectedArticle}
 	<Content selectedArticle={$selectedArticle} />
 	<div class="p-4 bg-primary flex justify-start border-t-2 border-t-secondary">
-		<Icon
-			src={backArrow}
-			alt="Back"
-			tooltip="Back"
-			onClick={() => history.back()}
-		/>
+		<Icon src={backArrow} alt="Back" tooltip="Back" onClick={handleBack} />
 	</div>
 {/if}
 <!-- <Footer /> -->

@@ -37,7 +37,7 @@
 		articles.update(() => arts);
 		console.log(`Selected article: ${article.title}`);
 		if (browser) {
-			history.pushState({}, '', `/article/${article.slug}`);
+			history.pushState({}, '', `/?article=${article.slug}`);
 		}
 	}
 </script>
@@ -71,7 +71,7 @@
 										{article.title}
 									</h2>
 									<div
-										class="text-text prose prose-invert line-clamp-3 min-h-[calc(3*1.75em)]"
+										class="text-text prose prose-invert overflow-hidden line-clamp-3 min-h-[5.5rem] max-h-[5.5rem]"
 									>
 										<SvelteMarkdown source={article.description} />
 									</div>
@@ -113,7 +113,10 @@
 						<h2 class="text-2xl text-quaternary font-semibold pt-4">
 							{article.title}
 						</h2>
-						<div class="text-text line-clamp-6 prose prose-invert py-4">
+						<div
+							class="text-text prose prose-invert py-4 max-h-[18em] overflow-hidden"
+						>
+							<!-- Adjusted: max-h for cap, no line-clamp -->
 							<SvelteMarkdown source={article.description} />
 						</div>
 						<Icon

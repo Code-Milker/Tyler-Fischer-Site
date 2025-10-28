@@ -56,7 +56,7 @@ const getDownloadIcon = (repo: string, branch: string): IconProps => ({
 	alt: 'download',
 	tooltip: 'Download'
 });
-const repoArticles: RepoArticle[] = [
+export const repoArticles: RepoArticle[] = [
 	{
 		title: 'Sub Spark',
 		slug: 'sub-spark',
@@ -162,7 +162,8 @@ const staticArticles: StaticArticle[] = [
 	{
 		title: 'Resume',
 		slug: 'resume',
-		description: 'Resume for Tyler Fischer',
+		description:
+			'A comprehensive overview of my professional experience, skills, and achievements in software engineering, blockchain, Web3, and full-stack development.',
 		image: me,
 		fullContent: resumeMd,
 		icons: [backIcon]
