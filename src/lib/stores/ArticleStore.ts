@@ -12,6 +12,7 @@ import SurfPunk from '$lib/images/surfpunk.avif';
 import Deso from '$lib/images/DesoLogo.jpeg';
 import ThisSite from '$lib/images/svelte-logo.svg';
 import IronFox from '$lib/images/ironfox.jpg';
+import BlendinPlugins from '$lib/images/blendin-ai.jpeg';
 import aiMd from '$lib/content/ai.md?raw';
 import desoMd from '$lib/content/deso.md?raw';
 import resumeMd from '$lib/content/resume.md?raw';
@@ -156,6 +157,17 @@ export const repoArticles: RepoArticle[] = [
 		branch: 'main',
 		file: 'README.md',
 		icons: [backIcon, getGithubIcon('Code-Milker/iron-fox')]
+	},
+	{
+		title: 'Blendin Plugins',
+		slug: 'blendin-plugins',
+		description:
+			'Plugins developed for Blendin AI to enable multi-language support and documentation localization in Docusaurus and GitBook.',
+		image: BlendinPlugins,
+		repo: 'Code-Milker/blendin-plugins',
+		branch: 'main',
+		file: 'README.md',
+		icons: [backIcon, getGithubIcon('Code-Milker/blendin-plugins')]
 	}
 ];
 const staticArticles: StaticArticle[] = [
