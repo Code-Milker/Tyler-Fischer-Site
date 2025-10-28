@@ -44,8 +44,8 @@ const backIcon: IconProps = {
 // alt: 'prototype',
 // tooltip: 'Demo'
 // });
-const getGithubIcon = (repo: string): IconProps => ({
-	href: `https://github.com/${repo}`,
+const getGithubIcon = (repo: string, branch?: string): IconProps => ({
+	href: `https://github.com/${repo}${branch ? `/tree/${branch}` : ''}`,
 	src: github,
 	alt: 'github',
 	tooltip: 'GitHub'
@@ -169,7 +169,7 @@ const staticArticles: StaticArticle[] = [
 		icons: [backIcon]
 	},
 	{
-		title: 'Deso',
+		title: 'Deso Advocte Portfolio',
 		slug: 'deso',
 		description:
 			'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js.',
@@ -177,7 +177,13 @@ const staticArticles: StaticArticle[] = [
 		// repo: 'deso-protocol/deso-workspace',
 		// branch: '66d616bd480b1dfbf597b2db10b4c227fde4fee9',
 		fullContent: desoMd,
-		icons: [backIcon, getGithubIcon('deso-protocol/deso-workspace')]
+		icons: [
+			backIcon,
+			getGithubIcon(
+				'deso-protocol/deso-workspace',
+				'66d616bd480b1dfbf597b2db10b4c227fde4fee9'
+			)
+		]
 	},
 	{
 		title: 'Prompting 101',
