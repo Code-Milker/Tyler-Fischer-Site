@@ -4,25 +4,9 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { articles, selectedArticle } from '$lib/stores/ArticleStore';
 	import { get } from 'svelte/store';
+	import { browser } from '$app/environment';
 	import backArrow from '$lib/images/back-arrow.png';
-	async function fetchRepoContent(
-		repo: string,
-		branch: string,
-		file: string
-	): Promise<string> {
-		if (!file) return '';
-		try {
-			const response = await fetch(
-				`https://raw.githubusercontent.com/${repo}/${branch}/${file}`
-			);
-			if (response.ok) {
-				return await response.text();
-			}
-			return `Failed to fetch ${file} from GitHub. It may not exist or the repo is private.`;
-		} catch (e) {
-			return 'Error fetching content: ' + (e as Error).message;
-		}
-	}
+	import { fetchRepoContent } from '$lib/stores/ArticleStore';
 	async function selectArticle(i: number) {
 		const arts = get(articles);
 		const article = arts[i];
@@ -45,6 +29,9 @@
 		selectedArticle.set(article);
 		articles.update(() => arts);
 		console.log(`Selected article: ${article.title}`);
+		if (browser) {
+			history.pushState({}, '', `/article/${article.slug}`);
+		}
 	}
 </script>
 

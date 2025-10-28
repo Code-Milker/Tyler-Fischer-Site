@@ -18,27 +18,30 @@ import resumeMd from '$lib/content/resume.md?raw';
 import github from '$lib/images/github.png';
 import backArrow from '$lib/images/back-arrow.png';
 import Phone from '$lib/images/phone.png';
+import { browser } from '$app/environment';
 export const selectedArticle = writable<StaticArticle | RepoArticle | null>(
 	null
 );
 const backIcon: IconProps = {
-	onClick: () => selectedArticle.set(null),
+	onClick: () => {
+		if (browser) window.history.back();
+	},
 	src: backArrow,
 	alt: 'back',
 	tooltip: 'Back'
 };
 // const getDemoIcon = (): IconProps => ({
-// 	onClick: () => {
-// 		selectedArticle.update((a) => {
-// 			if (a && 'repo' in a) {
-// 				a.showPrototype = !a.showPrototype;
-// 			}
-// 			return a;
-// 		});
-// 	},
-// 	src: gear,
-// 	alt: 'prototype',
-// 	tooltip: 'Demo'
+// onClick: () => {
+// selectedArticle.update((a) => {
+// if (a && 'repo' in a) {
+// a.showPrototype = !a.showPrototype;
+// }
+// return a;
+// });
+// },
+// src: gear,
+// alt: 'prototype',
+// tooltip: 'Demo'
 // });
 const getGithubIcon = (repo: string): IconProps => ({
 	href: `https://github.com/${repo}`,
@@ -55,6 +58,7 @@ const getDownloadIcon = (repo: string, branch: string): IconProps => ({
 const repoArticles: RepoArticle[] = [
 	{
 		title: 'Sub Spark',
+		slug: 'sub-spark',
 		description:
 			'Sub Spark is a React Native app linking users to local businesses via maps, listings, coupons, and payments, showcasing full-stack expertise in a production prototype.',
 		image: SubSpark,
@@ -65,6 +69,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: ' ERC-7540',
+		slug: 'erc-7540',
 		description:
 			'Token Vault contract for bridging real world assets to chatuea capital',
 		image: RWA,
@@ -76,6 +81,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'BIP-39',
+		slug: 'bip-39',
 		description: 'A single file web page that generates private keys',
 		image: Bip39,
 		repo: 'Code-Milker/bip-39',
@@ -86,6 +92,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Effect Less',
+		slug: 'effect-less',
 		description:
 			"Struggling with TypeScript's flexibility causing inconsistent code, runtime errors, and endless debates? Effect-less enforces a stricter dialect via custom lint rules, Go-like error handling, Zod-derived types, immutable structures, and pure functions—boosting reliability and focus on business logic.",
 		image: EffectLess,
@@ -96,6 +103,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Surf Punks V2',
+		slug: 'surf-punks-v2',
 		description:
 			'Surf Punks V2 is an ERC-721 NFT smart contract on Ethereum where users mint unrevealed "trunks" tokens that later get revealed through randomization into unique "surfer" collectibles with varying rarities and attributes, emphasizing surf culture themes with owner-controlled minting and metadata management.',
 		image: SurfPunk,
@@ -106,6 +114,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'This Site',
+		slug: 'this-site',
 		description:
 			'Built with Svelte and tailwind, this site features a custom markdown generator blah blah',
 		image: ThisSite,
@@ -114,9 +123,9 @@ const repoArticles: RepoArticle[] = [
 		file: 'README.md',
 		icons: [backIcon, getGithubIcon('Code-Milker/Tyler-Fischer-Site')]
 	},
-
 	{
 		title: 'MooMoo.js',
+		slug: 'moomoo-js',
 		description:
 			'MooMoo is a lightweight TypeScript library for building web components declaratively, using a chained builder pattern to enforce structure: providers, state, actions, side effects, children, and templates. It generates self-contained HTML+JS with bindings for reactivity, avoiding heavy frameworks like React by focusing on direct templating and semantic enforcement for simpler, type-safe UI creation.',
 		image: Moo2,
@@ -127,6 +136,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Golden Calf',
+		slug: 'golden-calf',
 		description:
 			'Golden Calf is a blockchain-based game on the DeSo protocol where players participate in weekly cycles by submitting offerings (bets) and making sacrifices (tips or transfers) for decentralized rewards and interactions.',
 		image: GoldenCalf,
@@ -137,6 +147,7 @@ const repoArticles: RepoArticle[] = [
 	},
 	{
 		title: 'Iron Fox',
+		slug: 'iron-fox',
 		description:
 			'A prototype CLI tool for tracing stolen crypto funds from phishing attacks, uncovering paths to fiat off-ramps with smart caching and manual overrides for complex trails.',
 		image: IronFox,
@@ -149,6 +160,7 @@ const repoArticles: RepoArticle[] = [
 const staticArticles: StaticArticle[] = [
 	{
 		title: 'Resume',
+		slug: 'resume',
 		description: 'Resume for Tyler Fischer',
 		image: me,
 		fullContent: resumeMd,
@@ -156,6 +168,7 @@ const staticArticles: StaticArticle[] = [
 	},
 	{
 		title: 'Deso',
+		slug: 'deso',
 		description:
 			'While serving as a developer advocate at deso I solely created the inital implemenation of deso.js.',
 		image: Deso,
@@ -166,6 +179,7 @@ const staticArticles: StaticArticle[] = [
 	},
 	{
 		title: 'Prompting 101',
+		slug: 'prompting-101',
 		description:
 			'Thoughts on a generalized approach to leveraging AI efficiently and securely across any environment, emphasizing controlled access, precise prompting, output verification, and future safeguards to mitigate risks like hallucinations, biases, and privacy breaches while maximizing productivity.',
 		image: WhaleComputer,
@@ -178,10 +192,12 @@ export const articles = writable<(StaticArticle | RepoArticle)[]>([
 	...repoArticles
 ]);
 export interface StaticArticle extends Omit<ContentPreviewType, 'url'> {
+	slug: string;
 	fullContent: string;
 	icons: IconProps[];
 }
 export interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
+	slug: string;
 	repo: string;
 	fullContent?: string;
 	interactiveContent?: string;
@@ -190,4 +206,22 @@ export interface RepoArticle extends Omit<ContentPreviewType, 'url'> {
 	interactiveFile?: string;
 	showPrototype?: boolean;
 	icons: IconProps[];
+}
+export async function fetchRepoContent(
+	repo: string,
+	branch: string,
+	file: string
+): Promise<string> {
+	if (!file) return '';
+	try {
+		const response = await fetch(
+			`https://raw.githubusercontent.com/${repo}/${branch}/${file}`
+		);
+		if (response.ok) {
+			return await response.text();
+		}
+		return `Failed to fetch ${file} from GitHub. It may not exist or the repo is private.`;
+	} catch (e) {
+		return 'Error fetching content: ' + (e as Error).message;
+	}
 }
