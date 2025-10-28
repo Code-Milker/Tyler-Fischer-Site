@@ -2,7 +2,11 @@
 	import '../app.css';
 	import MeSection from './me-section/MeSection.svelte';
 	import { onMount, onDestroy, tick } from 'svelte';
-	import { selectedArticle, articles } from '$lib/stores/ArticleStore';
+	import {
+		selectedArticle,
+		articles,
+		scrollPosition
+	} from '$lib/stores/ArticleStore';
 	import ArticleList from './article-section/ArticleList.svelte';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import Content from '$lib/components/Content.svelte';
@@ -43,8 +47,10 @@
 				selectedArticle.set(article);
 				articles.update(() => arts);
 				// Add home to history for direct loads to enable back to home
-				history.replaceState({}, '', '/');
-				history.pushState({}, '', path);
+				if (window.history.state === null) {
+					history.replaceState({}, '', '/');
+					history.pushState({}, '', path);
+				}
 			} else {
 				// Slug not found, redirect to home
 				selectedArticle.set(null);
@@ -65,7 +71,17 @@
 		unsubscribe = selectedArticle.subscribe(async (art) => {
 			document.title = art ? art.title : 'Ty Fischer';
 			await tick();
-			window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+			if (browser) {
+				if (art) {
+					window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+				} else {
+					window.scrollTo({
+						top: get(scrollPosition),
+						left: 0,
+						behavior: 'instant'
+					});
+				}
+			}
 		});
 		return () => {
 			if (browser && popstateListener) {

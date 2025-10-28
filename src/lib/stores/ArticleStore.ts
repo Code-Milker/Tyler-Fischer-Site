@@ -22,9 +22,10 @@ import { browser } from '$app/environment';
 export const selectedArticle = writable<StaticArticle | RepoArticle | null>(
 	null
 );
+export const scrollPosition = writable(0);
 const backIcon: IconProps = {
 	onClick: () => {
-		if (browser) window.history.back();
+		if (browser) history.back();
 	},
 	src: backArrow,
 	alt: 'back',
