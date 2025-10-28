@@ -12,6 +12,7 @@
 	onMount(() => {
 		document.title = 'Ty Fischer';
 		unsubscribe = selectedArticle.subscribe(async () => {
+			console.log($selectedArticle);
 			await tick(); // One tick is usually enough
 			requestAnimationFrame(() => {
 				window.scrollTo({ top: 0, left: 0, behavior: 'instant' });

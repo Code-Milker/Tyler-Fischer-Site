@@ -42,7 +42,7 @@ This site was built from the ground up with svelte and tailwind, it showcases my
 <SectionHeader
 	title="Hey, I'm Ty"
 	description={myInfo.description}
-	image={myInfo.me}
+	image={undefined}
 	alt="me"
 	{icons}
 />

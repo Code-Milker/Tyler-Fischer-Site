@@ -72,22 +72,24 @@
 										class="w-[200px] h-[200px]"
 									/>
 								</div>
-								<div class="flex-1 flex flex-col p-4">
-									<h2 class="text-2xl text-quaternary font-semibold mb-2">
+								<div class="flex-1 flex flex-col pl-4 min-h-[200px]">
+									<h2 class="text-2xl text-quaternary font-semibold pb-4">
 										{article.title}
 									</h2>
 									<div
-										class="text-text mb-4 line-clamp-3 prose prose-invert min-h-[calc(3*1.75em)]"
+										class="text-text prose prose-invert line-clamp-3 min-h-[calc(3*1.75em)]"
 									>
 										<SvelteMarkdown source={article.description} />
 									</div>
-									<Icon
-										src={backArrow}
-										alt="Read More"
-										tooltip="Read More"
-										onClick={() => selectArticle(i)}
-										imgClass="rotate-180"
-									/>
+									<div class="mt-auto pt-4">
+										<Icon
+											src={backArrow}
+											alt="Read More"
+											tooltip="Read More"
+											onClick={() => selectArticle(i)}
+											imgClass="rotate-180"
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
