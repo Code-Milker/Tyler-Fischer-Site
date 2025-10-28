@@ -8,7 +8,6 @@
 		scrollPosition
 	} from '$lib/stores/ArticleStore';
 	import ArticleList from './article-section/ArticleList.svelte';
-	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import Content from '$lib/components/Content.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import type { Unsubscriber } from 'svelte/store';

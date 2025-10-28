@@ -9,6 +9,7 @@
 	<div slot="desktop" class="flex flex-col h-full">
 		<div class="bg-primary p-4 text-text prose prose-invert mx-auto flex-none">
 			<SvelteMarkdown
+				options={{ mangle: false }}
 				renderers={{ code: CodeBlock }}
 				on:parsed={() => {
 					requestAnimationFrame(() => {
@@ -28,11 +29,12 @@
 			</div>
 		{/if}
 	</div>
-	<div slot="mobile" class="flex flex-col h-full max-w-screen">
+	<div slot="mobile" class="flex flex-col h-full max-w-full">
 		<div
-			class="bg-primary p-4 text-text prose prose-invert max-w-screen flex-none"
+			class="bg-primary p-4 text-text prose prose-invert max-w-full flex-none"
 		>
 			<SvelteMarkdown
+				options={{ mangle: false }}
 				renderers={{ code: CodeBlock }}
 				on:parsed={() => {
 					requestAnimationFrame(() => {

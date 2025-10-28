@@ -14,7 +14,7 @@
 	});
 </script>
 
-<pre><code class="hljs max-w-2">{@html highlighted}</code></pre>
+<pre><code class="hljs">{@html highlighted}</code></pre>
 
 <style>
 	pre {
@@ -26,7 +26,8 @@
 		margin: 0 0 1.5rem 0; /* Add bottom margin for separation between consecutive code blocks */
 	}
 	code {
-		white-space: pre;
-		word-break: normal;
+		white-space: pre-wrap;
+		overflow-wrap: break-word;
+		padding: 0 0 0 0;
 	}
 </style>
