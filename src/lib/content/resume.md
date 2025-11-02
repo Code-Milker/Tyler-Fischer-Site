@@ -45,5 +45,5 @@ Seasoned Senior Engineer and Developer Advocate with 8+ years of TypeScript expe
 - **Iron Fox**: Crypto hack fund tracing app; generated reports for fiat deposits across 12 obscured accounts. [Repo](https://github.com/Code-Milker/crypto-hack-report)
 - **BIP39 Generator**: Secure, dependency-free HTML tool for mnemonic keys; compliant with wallets like Ledger. [Repo](https://github.com/Code-Milker/bip39-generator)
 
-## University of Wisconsin Oshkosh
+### University of Wisconsin Oshkosh
 B.S. Computer Science | B.S. Criminal Justice  
