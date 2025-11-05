@@ -9,7 +9,7 @@ Seasoned Senior Engineer and Developer Advocate with 8+ years of TypeScript expe
 | Category | Technologies & Skills |
 |-------------------|-----------------------|
 | Languages | JavaScript, TypeScript, Solidity, Python, HTML/CSS/SCSS, Lua |
-| Blockchain | Ethereum/EVM, DeSo, Smart Contracts, DeFi, Oracles, L1/L2 Scaling, OpenZeppelin, Hardhat, Foundry |
+| Blockchain | Ethereum/EVM, DeSo, Smart Contracts, DeFi, L1/L2 Scaling, OpenZeppelin, Hardhat, Foundry |
 | Frameworks | React Native, React, Angular, Node.js, Next.js, Hardhat, Ethers.js, Web3.js, Svelte, Expo, Recoil, Zod |
 | Developer Relations | Public Speaking, Community Building, API Docs, SDK Design, Community Calls, Hackathon Streams (e.g., MLH events with 1,213 total views) |
 | Tools & Practices | GitHub (630+ commits in past year), Jest/Detox Testing, Agile/Remote |
@@ -41,7 +41,7 @@ Seasoned Senior Engineer and Developer Advocate with 8+ years of TypeScript expe
 
 ## Selected Projects
 - **Lua Prompt Library**: AI prompt engineering tool for Neovim, streamlining dev workflows. [Repo](https://github.com/Code-Milker/dot-files/blob/main/nvim/lua/config/prompt.lua)
-- **Effectless**: Stricter TypeScript dialect with custom lint rules for reliable code (Go-like errors, Zod types, immutability); enforced in 5+ prototypes, reducing bugs by 30%. [Repo](https://github.com/Code-Milker/effect-less)
+- **Effectless**: Stricter TypeScript dialect with custom lint rules for reliable code (Go-like errors, Zod types, immutability). [Repo](https://github.com/Code-Milker/effect-less)
 - **Iron Fox**: Crypto hack fund tracing app; generated reports for fiat deposits across 12 obscured accounts. [Repo](https://github.com/Code-Milker/crypto-hack-report)
 - **BIP39 Generator**: Secure, dependency-free HTML tool for mnemonic keys; compliant with wallets like Ledger. [Repo](https://github.com/Code-Milker/bip39-generator)
 
