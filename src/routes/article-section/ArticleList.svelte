@@ -63,7 +63,7 @@
 									<img
 										src={article.image}
 										alt={article.title}
-										class="w-[200px] h-[200px]"
+										class="max-w-[200px] max-h-[200px] w-[200px] h-[200px]"
 									/>
 								</div>
 								<div class="flex-1 flex flex-col pl-4 min-h-[200px]">
