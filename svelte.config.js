@@ -1,16 +1,15 @@
-import adapter from '@sveltejs/adapter-static'; // Changed to static adapter for full SSG
-
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
-import remarkGfm from 'remark-gfm'; // For GitHub-style tables
-import rehypeSlug from 'rehype-slug'; // Adds IDs to headings
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'; // Auto-links headings
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.md'],
-	remarkPlugins: [remarkGfm], // Enhances tables with GFM styling
-	rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] // Heading IDs and links
+	remarkPlugins: [remarkGfm],
+	rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
 };
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -18,7 +17,13 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 	kit: {
-		adapter: adapter({ fallback: 'index.html' }) // Defaults to prerendering all routes as static files
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: 'index.html', // Ensures SPA fallback for dynamic routes on Vercel
+			precompress: false,
+			strict: true
+		})
 	}
 };
 
