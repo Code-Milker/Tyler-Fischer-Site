@@ -5,7 +5,7 @@
 	import github from '$lib/images/github.png';
 	import me from '$lib/images/me.jpeg';
 	import downloadResume from '$lib/images/download-paper-icon.png';
-	import resumePdf from '$lib/images/resume.pdf';
+	import resumePdf from '$lib/images/TylerFischerResume.pdf';
 	import linkedin from '$lib/images/linkedin.svg';
 	import coverLetterMd from '$lib/content/coverLetter.md?raw';
 	let myInfo: { description: string; me: string } = {
