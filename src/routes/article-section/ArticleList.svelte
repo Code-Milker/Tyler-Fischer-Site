@@ -2,59 +2,23 @@
 	import SvelteMarkdown from 'svelte-markdown';
 	import DeviceContainer from '$lib/components/DeviceContainer.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import {
-		articles,
-		selectedArticle,
-		scrollPosition
-	} from '$lib/stores/ArticleStore';
-	import { get } from 'svelte/store';
-	import { browser } from '$app/environment';
+	import { articlesList } from '$lib/articles';
 	import backArrow from '$lib/images/back-arrow.png';
-	import { fetchRepoContent } from '$lib/stores/ArticleStore';
-	async function selectArticle(i: number) {
-		const arts = get(articles);
-		const article = arts[i];
-		if (browser) {
-			scrollPosition.set(window.scrollY);
-		}
-		if ('repo' in article) {
-			if (article.fullContent === undefined) {
-				article.fullContent = await fetchRepoContent(
-					article.repo,
-					article.branch,
-					article.file
-				);
-			}
-			if (article.interactiveFile && article.interactiveContent === undefined) {
-				article.interactiveContent = await fetchRepoContent(
-					article.repo,
-					article.branch,
-					article.interactiveFile
-				);
-			}
-		}
-		selectedArticle.set(article);
-		articles.update(() => arts);
-		console.log(`Selected article: ${article.title}`);
-		if (browser) {
-			history.pushState({}, '', `/?article=${article.slug}`);
-		}
-	}
 </script>
 
 <DeviceContainer>
 	<div slot="desktop" class="bg-secondary pt-0">
 		<div class="bg-primary">
-			{#each { length: Math.ceil($articles.length / 2) } as _, chunkIndex}
+			{#each { length: Math.ceil(articlesList.length / 2) } as _, chunkIndex}
 				<div class="grid grid-cols-2">
-					{#each $articles.slice(chunkIndex * 2, chunkIndex * 2 + 2) as article, j}
+					{#each articlesList.slice(chunkIndex * 2, chunkIndex * 2 + 2) as article, j}
 						{@const i = chunkIndex * 2 + j}
 						<div class="bg-primary text-text overflow-hidden">
 							<div
 								class={`flex flex-row transition-colors p-4 ${
 									j === 0 ? 'border-r-2 border-r-secondary' : ''
 								} ${
-									chunkIndex < Math.ceil($articles.length / 2) - 1
+									chunkIndex < Math.ceil(articlesList.length / 2) - 1
 										? 'border-b-2 border-b-secondary'
 										: ''
 								}`}
@@ -77,11 +41,10 @@
 									</div>
 									<div class="mt-auto pt-4">
 										<Icon
+											href={`/article/${article.slug}`}
 											src={backArrow}
 											alt="Read More"
 											tooltip="Read More"
-											onClick={() => selectArticle(i)}
-											imgClass="rotate-180"
 										/>
 									</div>
 								</div>
@@ -94,9 +57,9 @@
 	</div>
 	<div slot="mobile">
 		<div>
-			{#each $articles as article, i}
+			{#each articlesList as article, i}
 				<div
-					class="bg-primary text-text {i === $articles.length - 1
+					class="bg-primary text-text {i === articlesList.length - 1
 						? 'rounded-b-lg'
 						: ''} {i === 0 ? 'rounded-t-lg' : ''}"
 				>
@@ -116,15 +79,13 @@
 						<div
 							class="text-text prose prose-invert py-4 max-h-[18em] overflow-hidden"
 						>
-							<!-- Adjusted: max-h for cap, no line-clamp -->
 							<SvelteMarkdown source={article.description} />
 						</div>
 						<Icon
+							href={`/article/${article.slug}`}
 							src={backArrow}
 							alt="Read More"
 							tooltip="Read More"
-							onClick={() => selectArticle(i)}
-							imgClass="rotate-180"
 							showTooltipOnMobile={true}
 						/>
 					</div>
